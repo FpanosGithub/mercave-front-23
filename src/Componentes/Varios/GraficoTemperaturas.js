@@ -18,10 +18,8 @@ function GraficoTemperaturas ({datos}){
               height = {230} />
             <DetalleTemperaturas
                 tempa_max = {datos.tempa_max}
-                tempa_med = {datos.tempa_med}
                 tempa_min = {datos.tempa_min}
                 tempb_max = {datos.tempa_max}
-                tempb_med = {datos.tempa_med}
                 tempb_min = {datos.tempb_min}
                 />  
           </PanelTemperaturas>

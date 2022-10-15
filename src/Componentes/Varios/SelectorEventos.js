@@ -41,21 +41,24 @@ function SelectorEventos ({rango, setRango, height, width}) {
 
     const handleClick = (event) => {
         setRango ({type:'ACTUALIZAR_RANGO', payload: {'inicio': inicio_interno, 'fin': fin_interno, 'num_max': num_max_interno}})
+        setColorBoton('primary')
     };
+
+
 
     return(
         <>
-        <Card sx={{height:{height}, width:{width}, pr:4}}>
+        <Card sx={{height:{height}, width:{width}}}>
             <CardContent>
-                    <TextField id="fecha_inicio" onChange = {handleChangeInicio} label="Fecha inicio"  value={inicio_interno} sx = {{width:{width}, mt:0}}/>
-                    <TextField id="fecha_fin" onChange = {handleChangeFin} label="Fecha fin"  value={fin_interno} sx = {{width:{width}, mt:1.5}}/>
-                    <TextField id="num_eventos" onChange = {handleChangeNum} label="Num."  value={num_max_interno} sx = {{width:60, mt:1.5, mr:4}}/>
+                    <TextField id="fecha_inicio" onChange = {handleChangeInicio} label="Fecha inicio"  value={inicio_interno.slice(0,10)} sx = {{ mt:0}}/>
+                    <TextField id="fecha_fin" onChange = {handleChangeFin} label="Fecha fin"  value={fin_interno.slice(0,10)} sx = {{ mt:1.5}}/>
+                    <TextField id="num_eventos" onChange = {handleChangeNum} label="Num."  value={num_max_interno} sx = {{width:60, mt:1.5, mr:0}}/>
                     <Switch
                         checked={todos}
                         onChange={handleChangeTodos}
                         inputProps={{ 'aria-label': 'controlled' }}
-                        sx = {{width:60, mt:1.5, mr:3}}/>
-                    <Button size="medium" variant='outlined' color ={color_boton} onClick = {handleClick} sx ={{height:55, mt:1.5, mb:1, ml:0.1, mr:-3.7, color:{color_boton}}}>Aplicar</Button>
+                        sx = {{width:60, mt:1.5, mr:0}}/>
+                    <Button size="medium" variant='outlined' color ={color_boton} onClick = {handleClick} sx ={{height:55, width:75 ,mt:1.5, mb:1, ml:0.1, mr:-3.7, color:{color_boton}}}>Aplicar</Button>
             </CardContent>
         </Card>
         <ResumenRangoCambios

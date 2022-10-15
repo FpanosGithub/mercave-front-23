@@ -62,7 +62,7 @@ const ResponsiveAppBar = ({onClick}) => {
               textDecoration: 'none',
             }}
           >
-            Trams-Mercave
+          {/* Trams-Mercave */}
           </Typography>
 
           {/*  Hamburger (+ menú escamoteable) + icono tren + mercave: APARECEN en xs  DESAPARECEN en md */}
@@ -120,7 +120,7 @@ const ResponsiveAppBar = ({onClick}) => {
               textDecoration: 'none',
             }}
           >
-            Trams - mercave
+          {/* Trams-Mercave */}
           </Typography>
           {/*   Artículos del menú: DESAPARECE xs. APARECE md  */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

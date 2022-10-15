@@ -56,6 +56,7 @@ function ContainerEjes ({ejes, filtro, filtroDispatcher, actores, seleccion, sel
                         actores = {actores}
                         onSeleccion = {seleccionDispatcher}
                         ejes = {ejes}
+                        url = {url}
                          />        
                         )
                 :                                       

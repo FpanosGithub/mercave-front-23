@@ -8,7 +8,7 @@ export default function RangoCirculaciones({codigo_eje, rango, setRango, circula
   return (
     <PanelRango>
       <SelectorRango
-        titulo = {`Circulaciones - ${codigo_eje}`}
+        titulo = {`Circulaciones: ${codigo_eje}`}
         rango = {rango}
         setRango = {setRango}/>
       <GraficasCirculaciones 

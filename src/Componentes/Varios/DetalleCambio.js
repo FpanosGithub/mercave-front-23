@@ -14,7 +14,7 @@ function DetalleCambio ({evento}){
         // Render JSX
         return (
                 <> 
-                <Paper elevation = {3} sx={{height:175, pt:2, pl:1, pb:0, pr:1, mt:0.3}}>
+                <Paper elevation = {3} sx={{height:175, pt:1, pl:1, pb:0, pr:1, mt:0.3, mb:-2}}>
                         <Stack direction="row" spacing={1}>
                         <Tarjeta22
                                 texto1 = 'Cambio:'
@@ -31,13 +31,13 @@ function DetalleCambio ({evento}){
                                 valor1 = {evento.cambiador}
                                 texto2 = 'Sentido:'
                                 valor2 = {evento.sentido}
-                                minWidth= {200}/>
+                                minWidth= {100}/>
                         <Tarjeta22
                                 texto2 = 'Velocidad:'
                                 valor2 = {`${evento.V} m/s`}
                                 texto1= 'Peso:'
                                 valor1 = {`${evento.FV} kN`}
-                                minWidth= {150}/>
+                                minWidth= {100}/>
                         <Alarmasb tipo= '' activa = {evento.alarma}/>
                         </Stack>
                 </Paper>

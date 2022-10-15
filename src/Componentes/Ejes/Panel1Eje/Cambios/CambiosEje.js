@@ -7,7 +7,7 @@ import SeleccionarEvento from '../../../../Utilidades/SeleccionarEvento';
 import RangoCambios from './RangoCambios';
 import ListaCambiosEje from './ListaCambiosEje';
 import DetalleCambioEje from '../../../Varios/DetalleCambio';
-import MapaEje from '../../../Varios/MapaEje';
+import MapaCambios from './MapaCambios';
 
 
 
@@ -16,6 +16,7 @@ function CambiosEje ({eje, url}){
     // Iniciamos variables para cambios
     const [rango_cambios, rangoCambiosDispatcher] = useRango (60)
     const [seleccion_cambio, setSeleccionCambio] = React.useState (0)
+    const [hover_cambios, setHoverCambios] = React.useState(-1)
     const [cambios, cambiosDispatcher] = useEventos()
     
     // Lanzamos el side effect para cragar la info de los cambios del eje seleccionado
@@ -66,7 +67,12 @@ function CambiosEje ({eje, url}){
                     seleccion = {seleccion_cambio}
                     onSeleccion = {setSeleccionCambio} />
                 <PanelMapaEventos>
-                    <MapaEje mapa = {cambios.mapa}/>
+                    <MapaCambios 
+                        hoverCambios = {hover_cambios}
+                        onHoverCambios = {setHoverCambios}
+                        cambios = {cambios.lista}  
+                        ejeSeleccionado = {eje}
+                        />
                     <DetalleCambioEje  
                         evento = {cambio}/>
                 </PanelMapaEventos>          
@@ -80,7 +86,7 @@ const PanelEventos = styled.div`
     display:grid;
     padding:1px, 1px;
     gap:2px;
-    grid-template-rows: 0fr 1fr;
+    grid-template-rows: 0fr 0fr;
     `
 const PanelLista = styled.div`
     display:grid;
@@ -91,8 +97,6 @@ const PanelLista = styled.div`
 const PanelMapaEventos = styled.div`
         display:grid;
         gap:1px;
-        align-items: center;
-        background-color: black;
-        grid-template-rows: 1fr 0fr;
+        grid-template-rows: 30rem 13rem;
     `
 export default CambiosEje;

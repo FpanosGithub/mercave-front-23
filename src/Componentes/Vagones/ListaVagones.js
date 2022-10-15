@@ -9,15 +9,15 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
 const columns = [
-  {id: 'codigo',      label: 'Vagón', minWidth: 85},
-  {id: 'modelo',label: 'Tipo', minWidth: 60},
-  {id: 'keeper',label: 'Keeper', minWidth: 70},
-  {id: 'operador',label: 'Operador', minWidth: 70},
-  {id: 'mantenedor',label: 'Mantenedor', minWidth: 70},
-  {id: 'alarma',label: 'Alarma', minWidth: 40},
+  {id:'codigo',    label:'Vagón',     minWidth: 85},
+  {id:'modelo',    label:'Tipo',      minWidth: 60},
+  {id:'keeper',    label:'Keeper',    minWidth: 70},
+  {id:'operador',  label:'Operador',  minWidth: 70},
+  {id:'mantenedor',label:'Mantenedor',minWidth: 70},
+  {id:'alarma',    label:'Alarma',    minWidth: 40},
 ];
 
-export default function ListaVagones({vagones, onSeleccion, setVerTodos}) {
+export default function ListaVagones({vagones, onSeleccion, onHover, setVerTodos}) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(6);
   const [selected, setSelected] = React.useState([]);
@@ -25,20 +25,21 @@ export default function ListaVagones({vagones, onSeleccion, setVerTodos}) {
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-
   const handleClick = (event, id) => {
     setSelected(id)
     onSeleccion (id)
     setVerTodos(false)
   };
+  const handleHover = (id) => {
+    onHover(id)
+    setSelected(id)
+  };
 
   const isSelected = (id) => selected === id;
-
 
   return (
     <>
@@ -67,6 +68,7 @@ export default function ListaVagones({vagones, onSeleccion, setVerTodos}) {
                       tabIndex={-1} 
                       key={vagon.id}
                       onClick={(event) => handleClick(event,vagon.id)}
+                      onMouseOver={() => handleHover(vagon.id)}
                       selected={isItemSelected}>
                     {columns.map((column) => {
                       const value = vagon[column.id];

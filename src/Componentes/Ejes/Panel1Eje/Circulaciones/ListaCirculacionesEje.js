@@ -23,7 +23,7 @@ const columns = [
 
 export default function ListaCirculacionesEje({error, seleccion, onSeleccion, circulaciones}) {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(15);
+  const [rowsPerPage, setRowsPerPage] = React.useState(30);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -94,7 +94,7 @@ export default function ListaCirculacionesEje({error, seleccion, onSeleccion, ci
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[15, 20, 25]}
+        rowsPerPageOptions={[]}
         component="div"
         count={circulaciones.length}
         rowsPerPage={rowsPerPage}

@@ -4,7 +4,10 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import SelectorEventosVagon from '../Varios/SelectorEventosVagon';
 
-function LeyendaMapa ({ver_todos, onSeleccion, codigo_vagon,loading, error, rango, setRango}){
+
+
+function LeyendaMapa ({ver_todos, onSeleccion, onHoverCirculaciones, codigo_vagon,loading, error, rango, setRango}){
+    
     let titulo1 = ''
     let titulo2 = ''
     let boton_todos = false
@@ -18,6 +21,12 @@ function LeyendaMapa ({ver_todos, onSeleccion, codigo_vagon,loading, error, rang
         titulo2 = `${codigo_vagon}`
         boton_todos = true
     }
+    
+    function HandleClick () {
+        onSeleccion(true)
+        onHoverCirculaciones(-1)
+    }
+    
     return(
         <>
         <PanelGeneral>
@@ -52,7 +61,7 @@ function LeyendaMapa ({ver_todos, onSeleccion, codigo_vagon,loading, error, rang
                     setRango = {setRango}
                     height = {220}
                     width = {160}/>
-                <Button size="medium" variant="outlined" onClick = {()=>onSeleccion(true)} sx ={{mt:1, mb:0, pl:2, pr:2, color:'green', height:40}}>Ver todos</Button>
+                <Button size="medium" variant="outlined" onClick = {HandleClick} sx ={{mt:1, mb:0, pl:2, pr:2, color:'green', height:40}}>Ver todos</Button>
                 </>
                 )
                 : (<></>)

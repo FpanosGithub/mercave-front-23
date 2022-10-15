@@ -11,8 +11,7 @@ function eventosReducer(state, action) {
                     ...state,
                     error: false,
                     cargando:false,
-                    lista:action.data.lista,
-                    mapa:action.data.mapa,
+                    lista:action.data
                   }
         case 'ERROR':
             return {

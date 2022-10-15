@@ -11,8 +11,7 @@ function activosReducer(state, action) {
                     ...state,
                     error: null,
                     cargando:null,
-                    lista:action.data.lista,
-                    mapa:action.data.mapa,
+                    lista:action.data,
                   }
         case 'ERROR':
             return {
@@ -20,7 +19,6 @@ function activosReducer(state, action) {
                     cargando:null,
                     error:action.data,
                     lista:[],
-                    mapa:'<></>'
                     }
         default: {
             throw new Error(`Unsupported action type: ${action.type}`)

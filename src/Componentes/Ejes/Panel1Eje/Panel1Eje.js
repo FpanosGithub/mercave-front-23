@@ -33,6 +33,6 @@ const PanelContenido = styled.div`
   min-height: 100%;
   width:100%;
   margin-top:2px;
-  margin-bottom:2px
+  margin-bottom:2px;
   `
 export default Panel1Eje;

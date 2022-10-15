@@ -7,7 +7,8 @@ const Imagen = ({ nombre, alt, height, width }) => {
     // If the image doesn't exist. return null
     if (!image) {console.log('NO HAY IMAGEN'); return null}
     return <img src={image} alt = {alt} height = {height} width = {width}/>;
-  } catch (error) {
+  } 
+  catch (error) {
     console.log(`Imagen con el nombre: "${nombre}" no existe`);
     return null;
   }

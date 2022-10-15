@@ -8,7 +8,7 @@ import FichaVagon from './FichaVagon';
 import useEventos from '../../Hooks/useEventos';
 import useRango from '../../Hooks/useRango';
 
-//Función que busca el eje seleccionado en la lista de ejes y devuelve un objeto eje
+//Función que busca el vagón seleccionado en la lista de vagones y devuelve un objeto vagón
 const seleccionarVagon = (seleccion, vagones)=> {
         if(vagones.length > 0){
                 let indice = 0
@@ -26,19 +26,29 @@ const seleccionarVagon = (seleccion, vagones)=> {
         return {id:-1, codigo:'NaN', imagen:'vagones.jpg', ejes:[]}
 }
 
+//------------//
 // COMPONENTE //
+//------------//
 function ContainerVagones ({vagones, filtro, filtroDispatcher, actores, seleccionDispatcher, url})
         {
+        // Estados para gestionar la navegación en el mapa y leyenda del mapa
         const [ver_todos, setVerTodos] = React.useState (true)
         const [seleccion_vagon, setSeleccionVagon] = React.useState (-1)
+        const [hover_vagones, setHoverVagones] = React.useState(-1)
+        const [hover_circulaciones, setHoverCirculaciones] = React.useState(-1)
+        
+        // Estados de circulaciones del vagón selecionado + filtro para query
         const [circulaciones_vagon, setCirculaciones] = useEventos()
         const [rango_circulaciones, rangoCirculacionesDispatcher] = useRango (600)
+        
         //llama a las funciones de datos para recoger los datos a pasar a los componentes hacia abajo
         const vagon = seleccionarVagon(seleccion_vagon, vagones.lista)  
-        // Efecto para cargar el mapa de circulaciones cuando hay cambio en la selección!!!
+        
+        // Efecto para cargar la lista de circulaciones cuando hay cambio en la selección!!!
         React.useEffect(() => {
                 if(seleccion_vagon !== -1){
                         setVerTodos(false)
+                        setHoverCirculaciones(-1)
                         const requestParams = {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
@@ -92,14 +102,20 @@ function ContainerVagones ({vagones, filtro, filtroDispatcher, actores, seleccio
                                         <PanelLista>
                                                 <ListaVagones
                                                         onSeleccion = {setSeleccionVagon}
+                                                        onHover = {setHoverVagones} 
                                                         setVerTodos = {setVerTodos}
                                                         vagones = {vagones.lista} />   
                                                 <MapaVagones 
-                                                        mapa_todos = {vagones.mapa}
-                                                        circulaciones = {circulaciones_vagon}
+                                                        hoverVagones = {hover_vagones}
+                                                        onHoverVagones = {setHoverVagones}
+                                                        vagones = {vagones.lista}
+                                                        onSeleccionVagon = {setSeleccionVagon}
+                                                        hoverCirculaciones = {hover_circulaciones}
+                                                        onHoverCirculaciones = {setHoverCirculaciones}
+                                                        circulaciones = {circulaciones_vagon.lista}
                                                         ver_todos = {ver_todos}
                                                         setVerTodos = {setVerTodos}
-                                                        codigo_vagon = {vagon.codigo}
+                                                        vagonSeleccionado = {vagon}
                                                         rango = {rango_circulaciones}
                                                         setRango = {rangoCirculacionesDispatcher}/>   
                                         </PanelLista> 

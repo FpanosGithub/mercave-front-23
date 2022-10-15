@@ -13,7 +13,7 @@ function SelectorRango ({titulo,rango,setRango}){
                 <SelectorEventos
                         rango={rango}
                         setRango = {setRango}
-                        width = {280}
+                        width = {240}
                         height = {230}/>
         </PanelSelector>
         </Paper>

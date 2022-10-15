@@ -70,21 +70,21 @@ function FiltroVagones ({filtro, filtro_dispatcher, actores})
                         keepers_seleccionados = {keepers_seleccionados}
                         setKeepers = {setKeepers}
                         setColorBoton = {setColorBoton}
-                        minWidth = {300}
+                        minWidth = {150}
                         />
                     <SelectorOperador
                         operadores = {actores.operadores.map((v)=>{return v.organizacion})}
                         operadores_seleccionados = {operadores_seleccionados}
                         setOperadores = {setOperadores}
                         setColorBoton = {setColorBoton}
-                        minWidth = {300}
+                        minWidth = {150}
                         />
                     <SelectorMantenedor
                         mantenedores = {actores.mantenedores.map((v)=>{return v.organizacion})}
                         mantenedores_seleccionados = {mantenedores_seleccionados}
                         setMantenedores = {setMantenedores}
                         setColorBoton = {setColorBoton}
-                        minWidth = {300}
+                        minWidth = {150}
                         />
                     <Button size="medium" variant="outlined" onClick = {onClick} color = {color_boton} sx ={{mt:1.1, ml:1, mb:1, pl:2, pr:2, color:{color_boton}, height:55, width:100}}>Aplicar</Button>
                 </PanelFiltro>

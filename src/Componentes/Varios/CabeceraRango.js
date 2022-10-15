@@ -6,7 +6,7 @@ function CabeceraRango ({titulo, height}) {
     return(
         <Card sx={{height : {height}}}>
             <CardContent>
-                <Typography variant="h5" component="h2" color="text.secondary" sx = {{ml:1, mt:0, }}>
+                <Typography variant="h6" component="h2" color="text.secondary" sx = {{ml:0, mt:0, textAlign:'center'}}>
                     {titulo}
                 </Typography>
             </CardContent>

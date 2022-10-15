@@ -10,11 +10,11 @@ function AlarmasEjes ({alarmas})
         <>
         <PanelAlarmasEjes>
         <Paper elevation = {2} sx={{minWidth:'100%'}}>
-            <Typography sx={{ fontSize: 18, ml:2, mt:1 }} color="text.secondary">
+            <Typography sx={{ fontSize: 18, ml:2, mt:1, mb:0 }} color="text.secondary">
                 Log de Alarmas:
             </Typography>    
         <ListaAlarmas
-            alarmas = {[]}/> 
+            alarmas = {alarmas}/> 
         </Paper>  
         </PanelAlarmasEjes>
         </>

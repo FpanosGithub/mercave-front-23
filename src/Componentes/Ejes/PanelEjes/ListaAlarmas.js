@@ -9,16 +9,16 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
 const columns = [
-  {id: 'id', label: 'ID', minWidth: 45},
+  {id: 'id', label: 'ID', minWidth: 25},
   {id: 'eje',label: 'Eje', minWidth: 45},
-  {id: 'dt', label: 'Dia/Hora',minWidth: 90},
-  {id: 'tipo',label: 'Tipo', minWidth: 60},
-  {id: 'texto',label: 'Texto', minWidth: 200},
+  {id: 'dt', label: 'Dia/Hora',minWidth: 160},
+  {id: 'tipo',label: 'Tipo', minWidth: 50},
+  {id: 'mensaje',label: 'mensaje', minWidth: 200},
 ];
 
 export default function ListaAlarmas({alarmas, onSeleccion}) {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(25);
   const [selected, setSelected] = React.useState([]);
 
   const handleChangePage = (event, newPage) => {
@@ -40,7 +40,7 @@ export default function ListaAlarmas({alarmas, onSeleccion}) {
   return (
     <>
     <Paper sx={{ overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 500 }}>
+      <TableContainer sx={{ maxHeight: 230 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -83,7 +83,7 @@ export default function ListaAlarmas({alarmas, onSeleccion}) {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[]}
         component="div"
         count={alarmas.length}
         rowsPerPage={rowsPerPage}

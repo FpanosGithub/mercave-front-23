@@ -1,6 +1,7 @@
 import * as React from 'react';
 import InfoInicio from './InfoInicio';
 import Fallback from '../Varios/Fallback';
+import BannerMercave from '../Varios/BannerMercave';
 
 // COMPONENTE //
 function Inicio ({ejes, vagones, actores})
@@ -8,6 +9,7 @@ function Inicio ({ejes, vagones, actores})
     //Render
     return (
     <>
+        <BannerMercave height = {180} imagen = 'BannerHomeMercave.jpg'/>
         {actores.cargando ?
             (<Fallback
                 elemento = 'Actores Mercave' 
@@ -33,6 +35,7 @@ function Inicio ({ejes, vagones, actores})
                 imagen = 'actores.jpg'/>)
             )
         }
+        {/*<BannerMercave height = {170} imagen = 'BannerEjesMercave.jpg'/>*/}
         {ejes.cargando ?
             (<Fallback
                 elemento = 'Ejes' 
@@ -52,6 +55,7 @@ function Inicio ({ejes, vagones, actores})
                     imagen = 'eje.png'/>)
             )
         }
+        {/*<BannerMercave height = {160} imagen = 'BannerVagonesMercave.jpg'/>*/}
         {vagones.cargando ?
             (<Fallback
                 elemento = 'Vagones' 

@@ -6,7 +6,7 @@ import SeleccionarEvento from '../../../../Utilidades/SeleccionarEvento';
 import RangoCirculaciones from './RangoCirculaciones';
 import Fallback from '../../../Varios/Fallback';
 import ListaCirculacionesEje from './ListaCirculacionesEje';
-import MapaEje from '../../../Varios/MapaEje';
+import MapaCirculaciones from './MapaCirculaciones';
 import DetalleCirculacion from '../../../Varios/DetalleCirculacion';
 import AceleracionesEvento from '../../../Varios/AceleracionesEvento';
 
@@ -15,6 +15,7 @@ function CirculacionesEje ({eje, url}){
     // Iniciamos variables para eventos de circulación
     const [rango_circulaciones, rangoCirculacionesDispatcher] = useRango (60)
     const [seleccion_circulacion, setSeleccionCirculacion] = React.useState (0)
+    const [hover_circulaciones, setHoverCirculaciones] = React.useState(-1)
     const [circulaciones, circulacionesDispatcher] = useEventos()
 
     // Lanzamos el side effect para cragar la info de los eventos de circulación del eje seleccionado
@@ -68,7 +69,12 @@ function CirculacionesEje ({eje, url}){
                             seleccion = {seleccion_circulacion}
                             onSeleccion = {setSeleccionCirculacion}/>
                 <PanelMapaEventos>
-                    <MapaEje mapa = {circulaciones.mapa}/>
+                    <MapaCirculaciones 
+                        hoverCirculaciones = {hover_circulaciones}
+                        onHoverCirculaciones = {setHoverCirculaciones}
+                        circulaciones = {circulaciones.lista}  
+                        ejeSeleccionado = {eje}
+                        />
                     <PanelDetalle>
                         <DetalleCirculacion evento = {circulacion}/>
                         <AceleracionesEvento 
@@ -97,7 +103,7 @@ const PanelLista = styled.div`
 const PanelMapaEventos = styled.div`
 display:grid;
 gap:1px;
-grid-template-rows: 0fr 0fr;
+grid-template-rows: 30rem 1fr;
 `
 const PanelDetalle = styled.div`
 display:grid;

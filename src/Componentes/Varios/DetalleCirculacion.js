@@ -15,28 +15,28 @@ export default function DetalleCirculacion({evento}) {
                 <Tarjeta10
                                 texto1 = 'Num.:'
                                 valor1 = {evento.id}
-                                minWidth= {60}/>
+                                minWidth= {30}/>
                 <Tarjeta10
                                 texto1 = 'Fecha:'
                                 valor1 = {fecha_corta}
-                                minWidth= {80}/>
+                                minWidth= {60}/>
                 <Tarjeta10
                                 texto1 = 'Hora:'
                                 valor1 = {hora}
-                                minWidth= {80}/>
+                                minWidth= {60}/>
                 <Tarjeta10
                                 texto1 = 'Tipo:'
                                 valor1 = {evento.evento}
-                                minWidth= {80}/>
+                                minWidth= {60}/>
                 <Tarjeta10
                                 texto1 = 'Velocidad:'
                                 valor1 = {evento.vel}
                                 unidades = 'm/s'
-                                minWidth= {80}/>
+                                minWidth= {60}/>
                 <Tarjeta10
                                 texto1 = 'Vagon:'
                                 valor1 = {evento.en_vagon}
-                                minWidth= {80}/>
+                                minWidth= {60}/>
                 <Alarmasb tipo= '' activa = {evento.alarma}/>
         </PanelDetalle>
     </>

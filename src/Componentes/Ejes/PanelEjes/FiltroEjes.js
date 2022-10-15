@@ -89,40 +89,40 @@ function FiltroEjes ({filtro, filtro_dispatcher, actores})
                     <Typography variant="h6" component="h2" sx = {{ml:2, mr:2, mt:2.5,}}>
                         Filtro:
                     </Typography>
-                    <SelectorKeeper
+                {/* <SelectorKeeper
                         keepers = {actores.keepers.map((v)=>{return v.organizacion})}
                         keepers_seleccionados = {keepers_seleccionados}
                         setKeepers = {setKeepers}
                         setColorBoton = {setColorBoton}
-                        minWidth = {110}
-                        />
+                        minWidth = {120}
+                        /> */}
                     <SelectorOperador
                         operadores = {actores.operadores.map((v)=>{return v.organizacion})}
                         operadores_seleccionados = {operadores_seleccionados}
                         setOperadores = {setOperadores}
                         setColorBoton = {setColorBoton}
-                        minWidth = {110}
+                        minWidth = {160}
                         />
                     <SelectorFabricante
                         fabricantes = {actores.fabricantes.map((v)=>{return v.organizacion})}
                         fabricantes_seleccionados = {fabricantes_seleccionados}
                         setOperadores = {setFabricantes}
                         setColorBoton = {setColorBoton}
-                        minWidth = {110}
+                        minWidth = {160}
                         />
-                    <SelectorMantenedor
+                {/* <SelectorMantenedor
                         mantenedores = {actores.mantenedores.map((v)=>{return v.organizacion})}
                         mantenedores_seleccionados = {mantenedores_seleccionados}
                         setMantenedores = {setMantenedores}
                         setColorBoton = {setColorBoton}
-                        minWidth = {110}
-                        />
+                        minWidth = {120}
+                        /> */}
                     <SelectorVersionEjes
                         versiones_ejes = {actores.versiones_ejes.map((v)=>{return v.codigo})}
                         versiones_ejes_seleccionados = {versiones_ejes_seleccionados}
                         setVersionesEjes = {setVersionesEjes}
                         setColorBoton = {setColorBoton}
-                        minWidth = {120}
+                        minWidth = {160}
                         />
                     <Button size="medium" variant="outlined" onClick = {onClick} color = {color_boton} sx ={{ml:1, mb:1, mt:1.1, height:55, width:100, color:{color_boton}}}>Aplicar</Button>
                 </PanelFiltro>

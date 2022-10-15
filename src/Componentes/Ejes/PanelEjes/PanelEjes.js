@@ -7,8 +7,24 @@ import AlarmasEjes from './AlarmasEjes';
 import MapaEjes from './MapaEjes';
 
 
-export default function PanelEjes ({filtro, filtro_dispatcher, actores, onSeleccion, ejes})
-        {
+export default function PanelEjes ({filtro, filtro_dispatcher, actores, onSeleccion, ejes, url}) {
+
+        const [alarmas, setAlarmas] = React.useState([])
+        const [hover, setHover] = React.useState(-1)
+
+        // Efecto para cargar las alarmas de ejes
+        React.useEffect(() => {
+                const getDataBD = async () => {
+                    try {
+                        const response_actores = await fetch(url.servidor_backend + url.alarmas_ejes);
+                        let actual_data_alarmas = await response_actores.json();
+                        setAlarmas (actual_data_alarmas);
+                        }
+                    catch(err) {setAlarmas ('error')}  
+                    };
+                    getDataBD();
+                }, [url.alarmas_ejes, url.servidor_backend]);
+        
         return (
                 <>
                 {(ejes.cargando) ?
@@ -31,11 +47,16 @@ export default function PanelEjes ({filtro, filtro_dispatcher, actores, onSelecc
                                 <PanelLista>
                                         <ListaEjes 
                                                 onSeleccion = {onSeleccion}
+                                                onHover = {setHover} 
                                                 ejes = {ejes.lista}/>
                                         <PanelMapa>
                                                 <MapaEjes
-                                                        ejes = {ejes.lista} />    
-                                                <AlarmasEjes ejes = {ejes} />
+                                                        ejes = {ejes.lista} 
+                                                        hover = {hover}
+                                                        onHover = {setHover}
+                                                        onSeleccion = {onSeleccion}/>    
+                                                <AlarmasEjes 
+                                                        alarmas = {alarmas} />
                                         </PanelMapa>
                                         
                                 </PanelLista> 
@@ -58,7 +79,7 @@ width:100%;
 `
 const PanelMapa = styled.div`
 display:grid;
-grid-template-rows: 1fr 1fr;
+grid-template-rows: 1fr 0.6fr;
 gap:2px;
 width:100%;
 `

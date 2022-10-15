@@ -17,9 +17,9 @@ function BannerEjes ({eje, ejes_mismo_vagon, onVolver}){
                         texto2 = 'Versión:'
                         valor2 = {eje.version}
                         minWidth= {150}/>
-                <Alarma tipo= 'Temp.' activa = {eje.alarma_temp}/>
-                <Alarma tipo= 'Acelerac.' activa = {eje.alarma_acel}/>
-                <Alarma tipo= 'Cambio' activa = {eje.alarma_temp}/>
+               {/*  <Alarma tipo= 'Temp.' activa = {eje.alarma_temp}/>
+                <Alarma tipo= 'Acelerac.' activa = {eje.alarma_acel}/> */}
+                <Alarma tipo= '' activa = {eje.alarma_temp}/>
                 <Tarjeta12
                         texto1 = 'Vagón:'
                         valor1 = {eje.vagon}
@@ -37,11 +37,11 @@ function BannerEjes ({eje, ejes_mismo_vagon, onVolver}){
                         valor2 = {eje.operador}
                         minWidth= {120}/>
                 <Tarjeta12
-                                texto1 = 'Fabricante:'
-                                valor1 = {eje.fabricante}
-                                texto2 = 'Fecha Fab.:'
-                                valor2 = {eje.fecha_fab}
-                                minWidth= {120}/>              
+                        texto1 = 'Fabricante:'
+                        valor1 = {eje.fabricante}
+                        texto2 = 'Fecha Fab.:'
+                        valor2 = {eje.fecha_fab}
+                        minWidth= {120}/>              
                 <Tarjeta12
                         texto1 = 'Mantenedor:'
                         valor1 = {eje.mantenedor}
@@ -60,7 +60,7 @@ function BannerEjes ({eje, ejes_mismo_vagon, onVolver}){
 
 const PanelBanner = styled.div`
     display:grid;
-    grid-template-columns: 0fr 0fr 0fr 0fr 0fr 0fr 0fr 1fr 1fr 1fr 0.6fr 0fr;
+    grid-template-columns: 0fr 0.5fr 0fr 0.5fr 0fr 1fr 1fr 1fr 0.6fr;
     gap:3px;
     width:100%;
     height:9.9rem;

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import LeyendaMapa from './LeyendaMapa';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -10,90 +9,12 @@ import { stamenToner } from 'pigeon-maps/providers';
 //------------//
 // COMPONENTE //
 //------------//
-function MapaVagones ({ hoverVagones, 
-                        onHoverVagones, 
-                        vagones, 
-                        onSeleccionVagon, 
+function MapaCirculaciones ({ 
                         hoverCirculaciones, 
                         onHoverCirculaciones,
-                        circulaciones, 
-                        ver_todos, 
-                        setVerTodos, 
-                        vagonSeleccionado, 
-                        rango, 
-                        setRango}){
+                        circulaciones,  
+                        ejeSeleccionado}){
 
-    // Si está seleccionada la opción ver_todos => mostramos la situación de todos los vagones
-    if (ver_todos) {
-        let punto_rojo = [0, 0]
-        let texto_rojo = ''
-        let id_vagon_rojo = -1
-        if (hoverVagones !== -1)
-        {
-        vagones.forEach((vagon)=> {
-            if (hoverVagones === vagon.id) {
-                punto_rojo = [vagon.lat, vagon.lng]
-                texto_rojo = vagon.codigo
-                id_vagon_rojo = vagon.id
-            }
-            })
-        }
-        return(
-            <>
-            <PanelMapa>
-            <Map 
-                provider={stamenToner}
-                dprs={[1, 2]} 
-                defaultHeight={400} 
-                defaultCenter={[40.4200, -3.5800]} 
-                defaultZoom={6} 
-                attribution = {false}
-                metaWheelZoom = {true}>
-                <ZoomControl />
-                {vagones.map((vagon)=>(
-                    (hoverVagones !== vagon.id)?
-                    (<Marker 
-                        key = {vagon.id}
-                        width={40} 
-                        color = '#087314'
-                        anchor={[vagon.lat, vagon.lng]} 
-                        onMouseOver={() => onHoverVagones(vagon.id)}
-                        />)
-                    :
-                    ('')
-                    ))}
-                    <Marker 
-                            width={50} 
-                            color = {'#de071c'}
-                            anchor={punto_rojo} 
-                            onClick={()=> onSeleccionVagon(id_vagon_rojo)}
-                            />
-                    <Overlay anchor={punto_rojo}>
-                        <Card sx={{ width:100, height:40}}>
-                            <CardContent>
-                            <Typography sx={{ fontSize: 14, mt:-0.7, ml:-0.6 }} color="red" gutterBottom>
-                                {texto_rojo}
-                            </Typography>
-                            </CardContent>
-                        </Card>
-                    </Overlay>    
-            </Map>
-            <LeyendaMapa
-                    ver_todos = {ver_todos}
-                    onSeleccion = {setVerTodos}
-                    onHoverCirculaciones = {onHoverCirculaciones}
-                    codigo_vagon = {vagonSeleccionado.codigo}
-                    loading = {circulaciones.loading}
-                    error = {circulaciones.error}
-                    rango = {rango}
-                    setRango ={setRango}
-                    />
-            </PanelMapa>
-            </>
-        );
-    }
-    // Si NO está seleccionada la opción ver_todos => mostramos las circulaciones del vagón seleccionado
-    else {
         let punto_violeta = [0, 0]
         let evento_violeta = ''
         let dt_violeta = ''
@@ -144,7 +65,7 @@ function MapaVagones ({ hoverVagones,
                 provider={stamenToner}
                 dprs={[1, 2]} 
                 defaultHeight={400} 
-                defaultCenter={[vagonSeleccionado.lat, vagonSeleccionado.lng]} 
+                defaultCenter={[ejeSeleccionado.lat, ejeSeleccionado.lng]} 
                 defaultZoom={6} 
                 attribution = {false}
                 metaWheelZoom = {true}>
@@ -152,7 +73,7 @@ function MapaVagones ({ hoverVagones,
                 <Marker 
                     width={40} 
                     color = 'red'
-                    anchor={[vagonSeleccionado.lat, vagonSeleccionado.lng]} 
+                    anchor={[ejeSeleccionado.lat, ejeSeleccionado.lng]} 
                     />)
                 {circulaciones.map((circulacion)=>(
                     (hoverCirculaciones !== circulacion.id)?
@@ -184,28 +105,15 @@ function MapaVagones ({ hoverVagones,
                         </Card>
                     </Overlay>          
             </Map>
-            <LeyendaMapa
-                ver_todos = {ver_todos}
-                onSeleccion = {setVerTodos}
-                onHoverCirculaciones = {onHoverCirculaciones}
-                codigo_vagon = {vagonSeleccionado.codigo}
-                loading = {circulaciones.loading}
-                error = {circulaciones.error}
-                rango = {rango}
-                setRango ={setRango}
-                />
         </PanelMapa>
         </>
     );
-    }
 }
 
 const PanelMapa = styled.div`
     display:grid;
-    grid-template-columns: 1fr 0fr;
-    background-color: black;
-    gap:2px;
     align-items: center;
+    background-color: black;
 `
 
-export default MapaVagones
+export default MapaCirculaciones

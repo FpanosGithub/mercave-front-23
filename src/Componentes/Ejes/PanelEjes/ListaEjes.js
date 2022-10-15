@@ -20,9 +20,9 @@ const columns = [
   {id: 'vagon',label: 'Vagón', minWidth: 70},
 ];
 
-export default function ListaEjes({ejes, onSeleccion}) {
+export default function ListaEjes({ejes, onSeleccion, onHover}) {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(15);
   const [selected, setSelected] = React.useState([]);
 
   const handleChangePage = (event, newPage) => {
@@ -37,6 +37,11 @@ export default function ListaEjes({ejes, onSeleccion}) {
   const handleClick = (event, id) => {
     setSelected(id)
     onSeleccion ({type:'SELECCIONAR_EJE', payload:id})
+  };
+
+  const handleHover = (id) => {
+    onHover(id)
+    setSelected(id)
   };
 
   const isSelected = (id) => selected === id;
@@ -69,6 +74,7 @@ export default function ListaEjes({ejes, onSeleccion}) {
                       tabIndex={-1} 
                       key={eje.id}
                       onClick={(event) => handleClick(event,eje.id)}
+                      onMouseOver={() => handleHover(eje.id)}
                       selected={isItemSelected}>
                     {columns.map((column) => {
                       const value = eje[column.id];

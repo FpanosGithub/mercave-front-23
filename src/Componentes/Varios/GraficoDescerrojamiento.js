@@ -20,7 +20,7 @@ function GraficoDescerrojamiento ({datos}){
               rueda = 'A'
               textoA = 'Media'
               valorA = {`${datos.fda_med} kN`}
-              textoB = 'Máxima'
+              textoB = 'Máx.'
               valorB = {`${datos.fdaM} kN`} />
             <DatosCambioRueda
               rueda = 'B'
@@ -38,7 +38,6 @@ const PanelDescerrojamiento = styled.div`
         display:grid;
         grid-template-rows: 0fr 0fr 0fr;
         gap:1px;
-        min-width:300px;
         height:24rem;
 `
 const Resumen = styled.div`
