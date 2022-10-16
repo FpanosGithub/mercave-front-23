@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
-import Tarjeta22 from './Tarjeta22';
-import Alarmasb from './Alarmasb'
+import Tarjeta22 from '../../../Varios/Tarjeta22';
+import Alarmasb from '../../../Varios/Alarmasb'
 
 function DetalleCambio ({evento}){
         const fecha_larga = evento.inicio
@@ -14,7 +14,7 @@ function DetalleCambio ({evento}){
         // Render JSX
         return (
                 <> 
-                <Paper elevation = {3} sx={{height:175, pt:1, pl:1, pb:0, pr:1, mt:0.3, mb:-2}}>
+                <Paper elevation = {3} sx={{height:185, pt:3, pl:1, pb:0, pr:1, mt:0.3, mb:0}}>
                         <Stack direction="row" spacing={1}>
                         <Tarjeta22
                                 texto1 = 'Cambio:'
@@ -37,7 +37,7 @@ function DetalleCambio ({evento}){
                                 valor2 = {`${evento.V} m/s`}
                                 texto1= 'Peso:'
                                 valor1 = {`${evento.FV} kN`}
-                                minWidth= {100}/>
+                                minWidth= {150}/>
                         <Alarmasb tipo= '' activa = {evento.alarma}/>
                         </Stack>
                 </Paper>

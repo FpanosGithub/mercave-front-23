@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Tarjeta10 from './Tarjeta10';
-import Alarmasb from './Alarmasb';
+import Tarjeta10 from '../../../Varios/Tarjeta10';
+import Alarmasb from '../../../Varios/Alarmasb';
 
 export default function DetalleCirculacion({evento}) {
         const fecha_larga = evento.dt
@@ -15,28 +15,28 @@ export default function DetalleCirculacion({evento}) {
                 <Tarjeta10
                                 texto1 = 'Num.:'
                                 valor1 = {evento.id}
-                                minWidth= {30}/>
+                                minWidth= {70}/>
                 <Tarjeta10
                                 texto1 = 'Fecha:'
                                 valor1 = {fecha_corta}
-                                minWidth= {60}/>
+                                minWidth= {150}/>
                 <Tarjeta10
                                 texto1 = 'Hora:'
                                 valor1 = {hora}
-                                minWidth= {60}/>
+                                minWidth= {100}/>
                 <Tarjeta10
                                 texto1 = 'Tipo:'
                                 valor1 = {evento.evento}
-                                minWidth= {60}/>
+                                minWidth= {100}/>
                 <Tarjeta10
                                 texto1 = 'Velocidad:'
                                 valor1 = {evento.vel}
                                 unidades = 'm/s'
-                                minWidth= {60}/>
+                                minWidth= {100}/>
                 <Tarjeta10
                                 texto1 = 'Vagon:'
                                 valor1 = {evento.en_vagon}
-                                minWidth= {60}/>
+                                minWidth= {140}/>
                 <Alarmasb tipo= '' activa = {evento.alarma}/>
         </PanelDetalle>
     </>

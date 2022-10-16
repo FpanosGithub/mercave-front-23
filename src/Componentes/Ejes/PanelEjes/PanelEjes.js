@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import FiltroEjes from './FiltroEjes';
 import Fallback from '../../Varios/Fallback';
+import BannerMercave from '../../Varios/BannerMercave';
 import ListaEjes from './ListaEjes';
 import AlarmasEjes from './AlarmasEjes';
 import MapaEjes from './MapaEjes';
@@ -29,6 +30,7 @@ export default function PanelEjes ({filtro, filtro_dispatcher, actores, onSelecc
                 <>
                 {(ejes.cargando) ?
                         (<PanelContenido>
+                                <BannerMercave height = {180} imagen = 'BannerEjesMercave.jpg'/>
                                 <FiltroEjes
                                         filtro = {filtro} 
                                         filtro_dispatcher = {filtro_dispatcher}
@@ -40,6 +42,7 @@ export default function PanelEjes ({filtro, filtro_dispatcher, actores, onSelecc
                         </PanelContenido>)
                         :
                         (<PanelContenido>
+                                <BannerMercave height = {180} imagen = 'BannerEjesMercave.jpg'/>
                                 <FiltroEjes
                                         filtro = {filtro} 
                                         filtro_dispatcher = {filtro_dispatcher}
@@ -68,7 +71,7 @@ export default function PanelEjes ({filtro, filtro_dispatcher, actores, onSelecc
 
 const PanelContenido = styled.div`
 display:grid;
-grid-template-rows: 5rem 1fr;
+grid-template-rows: 0fr 5rem 1fr;
 gap:2px;
 `
 const PanelLista = styled.div`

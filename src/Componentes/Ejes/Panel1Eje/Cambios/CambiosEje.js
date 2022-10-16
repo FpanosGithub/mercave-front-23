@@ -6,7 +6,7 @@ import Fallback from '../../../Varios/Fallback';
 import SeleccionarEvento from '../../../../Utilidades/SeleccionarEvento';
 import RangoCambios from './RangoCambios';
 import ListaCambiosEje from './ListaCambiosEje';
-import DetalleCambioEje from '../../../Varios/DetalleCambio';
+import DetalleCambioEje from './DetalleCambio';
 import MapaCambios from './MapaCambios';
 
 
@@ -97,6 +97,6 @@ const PanelLista = styled.div`
 const PanelMapaEventos = styled.div`
         display:grid;
         gap:1px;
-        grid-template-rows: 30rem 13rem;
+        grid-template-rows: 35rem 1rem;
     `
 export default CambiosEje;

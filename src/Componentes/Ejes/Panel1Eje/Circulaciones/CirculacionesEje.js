@@ -7,7 +7,7 @@ import RangoCirculaciones from './RangoCirculaciones';
 import Fallback from '../../../Varios/Fallback';
 import ListaCirculacionesEje from './ListaCirculacionesEje';
 import MapaCirculaciones from './MapaCirculaciones';
-import DetalleCirculacion from '../../../Varios/DetalleCirculacion';
+import DetalleCirculacion from './DetalleCirculacion';
 import AceleracionesEvento from '../../../Varios/AceleracionesEvento';
 
 function CirculacionesEje ({eje, url}){
@@ -103,7 +103,7 @@ const PanelLista = styled.div`
 const PanelMapaEventos = styled.div`
 display:grid;
 gap:1px;
-grid-template-rows: 30rem 1fr;
+grid-template-rows: 35rem 1fr;
 `
 const PanelDetalle = styled.div`
 display:grid;

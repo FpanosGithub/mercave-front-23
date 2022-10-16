@@ -106,6 +106,7 @@ const PanelContenido = styled.div`
   margin-top:2px;
   padding: 1px -3px 3px 1px;
   border: 1px solid;
+  overflow-x: hidden;
 `
 const PanelFooter = styled.div`
   padding:10px 10px;

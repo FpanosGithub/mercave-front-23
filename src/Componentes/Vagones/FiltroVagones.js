@@ -55,11 +55,11 @@ function FiltroVagones ({filtro, filtro_dispatcher, actores})
     return (
         <>
         <Panel>
-            <Paper elevation = {3}>
+            {/*<Paper elevation = {3}>
                 <Typography variant="h5" component="h2" sx = {{ml:2, mr:4, mt:2.5}}>
                     Vagones
                 </Typography>
-            </Paper>
+            </Paper>*/}
             <Paper elevation = {1} sx = {{ml:0.1, mt:0, mr:0.1, mb:0}}>
                 <PanelFiltro>
                     <Typography variant="h6" component="h2" sx = {{ml:2, mr:2, mt:2.5,}}>
@@ -96,7 +96,7 @@ function FiltroVagones ({filtro, filtro_dispatcher, actores})
 
 const Panel = styled.div`
     display:grid;
-    grid-template-columns: 0fr 1fr;
+    grid-template-columns: 1fr;
     gap:1px;
     padding-left:1px;
 `

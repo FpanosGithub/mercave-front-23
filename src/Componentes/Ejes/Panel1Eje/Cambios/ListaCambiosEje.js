@@ -55,11 +55,11 @@ export default function ListaCambiosEje({error, cambios, seleccion, onSeleccion}
 
   return (
     <>
-      <Paper sx={{ width: 650, height: 670, overflow: 'hidden', mt:0 }}>
+      <Paper sx={{ width: 650, overflow: 'hidden', mt:0 }}>
       <Typography variant="h5" component="h2" color="text.secondary" sx = {{ml:1, mt:1, }}>
         Lista de Cambios
       </Typography>
-      <TableContainer>
+      <TableContainer sx={{ height: 680 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -110,7 +110,7 @@ export default function ListaCambiosEje({error, cambios, seleccion, onSeleccion}
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[]}
         component="div"
         count={cambios.length}
         rowsPerPage={rowsPerPage}

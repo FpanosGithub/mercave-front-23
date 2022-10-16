@@ -27,7 +27,7 @@ const ResponsiveAppBar = ({onClick}) => {
   const handleCloseNavMenu = (event) => {
     setAnchorElNav(null);
     if (event.target.id) {onClick ({type:'SELECCIONAR_MENU', payload:event.target.id})}
-    else {onClick ({type:'SELECCIONAR_MENU', payload:event.target.innerHTML})}
+    else {onClick ({type:'SELECCIONAR_MENU', payload:'Inicio'})}
   };
 
   const handleOpenUserMenu = (event) => {
@@ -42,7 +42,9 @@ const ResponsiveAppBar = ({onClick}) => {
       <Container maxWidth="xxl" >
         <Toolbar disableGutters>
           {/*  icono tren + mercave: DESAPARECEN en xs  / APARECEN en md */}
-          <DirectionsRailwayFilledIcon fontSize='large' sx={{ display: { xs: 'none', md: 'flex' }, mr: 2}} />  
+          <MenuItem id={'Inicio'} key={'Inicio'} onClick={handleCloseNavMenu}>
+            <DirectionsRailwayFilledIcon fontSize='large' sx={{ display: { xs: 'none', md: 'flex' }, mr: 2}} />  
+          </MenuItem>
           <Typography
             variant="h6"
             noWrap

@@ -17,12 +17,12 @@ const columns = [
   {id: 'operador',label: 'Operador', minWidth: 60},
   {id: 'fabricante',label: 'Fabricante', minWidth: 60},
   {id: 'mantenedor',label: 'Mantenedor', minWidth: 60},
-  {id: 'vagon',label: 'Vagón', minWidth: 70},
+  {id: 'vagon',label: 'Vagón', minWidth: 90},
 ];
 
 export default function ListaEjes({ejes, onSeleccion, onHover}) {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(15);
+  const [rowsPerPage, setRowsPerPage] = React.useState(12);
   const [selected, setSelected] = React.useState([]);
 
   const handleChangePage = (event, newPage) => {
@@ -49,7 +49,7 @@ export default function ListaEjes({ejes, onSeleccion, onHover}) {
   return (
     <>
     <Paper sx={{ width: 890, overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 1050 }}>
+      <TableContainer sx={{ height: 700 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -93,7 +93,7 @@ export default function ListaEjes({ejes, onSeleccion, onHover}) {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 15, 100]}
+        rowsPerPageOptions={[]}
         component="div"
         count={ejes.length}
         rowsPerPage={rowsPerPage}

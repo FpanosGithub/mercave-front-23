@@ -9,16 +9,16 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
 const columns = [
-  {id: 'id', label: 'ID', minWidth: 25},
-  {id: 'eje',label: 'Eje', minWidth: 45},
-  {id: 'dt', label: 'Dia/Hora',minWidth: 160},
+  {id: 'id', label: 'ID', minWidth: 20},
+  {id: 'eje',label: 'Eje', minWidth: 45, align:'center'},
+  {id: 'dt', label: 'Dia/Hora',minWidth: 90},
   {id: 'tipo',label: 'Tipo', minWidth: 50},
-  {id: 'mensaje',label: 'mensaje', minWidth: 200},
+  {id: 'mensaje',label: 'mensaje', minWidth: 100},
 ];
 
 export default function ListaAlarmas({alarmas, onSeleccion}) {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(25);
+  const [rowsPerPage, setRowsPerPage] = React.useState(2);
   const [selected, setSelected] = React.useState([]);
 
   const handleChangePage = (event, newPage) => {
@@ -40,7 +40,7 @@ export default function ListaAlarmas({alarmas, onSeleccion}) {
   return (
     <>
     <Paper sx={{ overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 230 }}>
+      <TableContainer sx={{ height: 205 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>

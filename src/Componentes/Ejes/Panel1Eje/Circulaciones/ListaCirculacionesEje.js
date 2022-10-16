@@ -23,7 +23,7 @@ const columns = [
 
 export default function ListaCirculacionesEje({error, seleccion, onSeleccion, circulaciones}) {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(30);
+  const [rowsPerPage, setRowsPerPage] = React.useState(15);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -47,7 +47,7 @@ export default function ListaCirculacionesEje({error, seleccion, onSeleccion, ci
       <Typography variant="h5" component="h2" color="text.secondary" sx = {{ml:1, mt:1, }}>
         Lista de Circulaciones
       </Typography>
-      <TableContainer >
+      <TableContainer sx={{ height: 1160 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>

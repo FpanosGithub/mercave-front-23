@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Fallback from '../Varios/Fallback';
+import BannerMercave from '../Varios/BannerMercave';
 import FiltroVagones from './FiltroVagones';
 import ListaVagones from './ListaVagones';
 import MapaVagones from './MapaVagones';
@@ -72,6 +73,7 @@ function ContainerVagones ({vagones, filtro, filtroDispatcher, actores, seleccio
                 <>
                 {vagones.cargando ?
                         (<PanelContenido>
+                                <BannerMercave height = {160} imagen = 'BannerVagonesMercave.jpg'/>
                                 <FiltroVagones
                                         filtro = {filtro} 
                                         filtro_dispatcher = {filtroDispatcher}
@@ -84,6 +86,7 @@ function ContainerVagones ({vagones, filtro, filtroDispatcher, actores, seleccio
                         :
                         (vagones.error ?
                                 (<PanelContenido>
+                                <BannerMercave height = {160} imagen = 'BannerVagonesMercave.jpg'/>
                                 <FiltroVagones
                                         filtro = {filtro} 
                                         filtro_dispatcher = {filtroDispatcher}
@@ -95,6 +98,7 @@ function ContainerVagones ({vagones, filtro, filtroDispatcher, actores, seleccio
                                 </PanelContenido>)
                                 :
                                 (<PanelContenido>
+                                        <BannerMercave height = {180} imagen = 'BannerVagonesMercave.jpg'/>
                                         <FiltroVagones
                                                 filtro = {filtro} 
                                                 filtro_dispatcher = {filtroDispatcher}
@@ -129,7 +133,7 @@ function ContainerVagones ({vagones, filtro, filtroDispatcher, actores, seleccio
         }
 const PanelContenido = styled.div`
 display:grid;
-grid-template-rows: 5rem 1fr 0fr;
+grid-template-rows: 0fr 5rem 1fr 0fr;
 gap:2px;
 `
 const PanelLista = styled.div`

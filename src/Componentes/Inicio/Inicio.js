@@ -1,5 +1,7 @@
 import * as React from 'react';
-import InfoInicio from './InfoInicio';
+import InicioActores from './InicioActores';
+import InicioEjes from './InicioEjes';
+import InicioVagones from './InicioVagones';
 import Fallback from '../Varios/Fallback';
 import BannerMercave from '../Varios/BannerMercave';
 
@@ -22,17 +24,9 @@ function Inicio ({ejes, vagones, actores})
                 modo = 'ERROR'
                 imagen = 'actores.jpg'/>)
                 :
-                (<InfoInicio
-                elemento = 'Actores' 
-                sub_elemento_1 = 'Número de Operadores:' 
-                num_sub1 = {actores.operadores.length}
-                sub_elemento_2 = 'Número de Keepers:' 
-                num_sub2 = {actores.keepers.length}
-                sub_elemento_3 = 'Número de Fabricantes:' 
-                num_sub3 = {actores.fabricantes.length}
-                sub_elemento_4 = 'Número de Mantened:' 
-                num_sub4 = {actores.mantenedores.length}
-                imagen = 'actores.jpg'/>)
+                (<InicioActores
+                    actores = {actores}
+                    imagen = 'actores.jpg'/>)
             )
         }
         {/*<BannerMercave height = {170} imagen = 'BannerEjesMercave.jpg'/>*/}
@@ -48,10 +42,9 @@ function Inicio ({ejes, vagones, actores})
                     modo = 'ERROR'
                     imagen = 'eje.png'/> )
                 :
-                (<InfoInicio
-                    elemento = 'Ejes' 
-                    sub_elemento_1 = 'Número de Ejes:' 
-                    num_sub1 = {ejes.lista.length}
+                (<InicioEjes
+                    ejes = {ejes.lista} 
+                    versiones = {actores.versiones_ejes}
                     imagen = 'eje.png'/>)
             )
         }
@@ -68,10 +61,9 @@ function Inicio ({ejes, vagones, actores})
                     modo = 'ERROR'
                     imagen = 'vagones.jpg'/>)
                 :
-                (<InfoInicio
-                    elemento = 'Vagones' 
-                    sub_elemento_1 = 'Número de Vagones:' 
-                    num_sub1 = {vagones.lista.length}
+                (<InicioVagones
+                    vagones = {vagones.lista} 
+                    tipos = {[]}
                     imagen = 'vagones.jpg'/>)
             )
         }

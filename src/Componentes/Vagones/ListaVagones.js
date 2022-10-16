@@ -19,7 +19,7 @@ const columns = [
 
 export default function ListaVagones({vagones, onSeleccion, onHover, setVerTodos}) {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(6);
+  const [rowsPerPage, setRowsPerPage] = React.useState(9);
   const [selected, setSelected] = React.useState([]);
   
   const handleChangePage = (event, newPage) => {
@@ -44,7 +44,7 @@ export default function ListaVagones({vagones, onSeleccion, onHover, setVerTodos
   return (
     <>
     <Paper sx={{ minWidth: 610, overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 470 }}>
+      <TableContainer sx={{ height: 520 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -87,7 +87,7 @@ export default function ListaVagones({vagones, onSeleccion, onHover, setVerTodos
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[6, 12, 24]}
+        rowsPerPageOptions={[]}
         component="div"
         count={vagones.length}
         rowsPerPage={rowsPerPage}
