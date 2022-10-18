@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import DirectionsRailwayFilledIcon from '@mui/icons-material/DirectionsRailwayFilled';
-
+import logoMercave from '../../Static/arte/logoMercave.jpg'
 
 const pages = ['Vagones','Ejes','Cambiadores', 'ADIF', 'Ingeniería'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -43,7 +43,9 @@ const ResponsiveAppBar = ({onClick}) => {
         <Toolbar disableGutters>
           {/*  icono tren + mercave: DESAPARECEN en xs  / APARECEN en md */}
           <MenuItem id={'Inicio'} key={'Inicio'} onClick={handleCloseNavMenu}>
-            <DirectionsRailwayFilledIcon fontSize='large' sx={{ display: { xs: 'none', md: 'flex' }, mr: 2}} />  
+          <img src={logoMercave} alt = 'logo' height = {40} width = {60}/> 
+          {/*   <DirectionsRailwayFilledIcon fontSize='large' sx={{ display: { xs: 'none', md: 'flex' }, mr: 2}} />  */}
+          
           </MenuItem>
           <Typography
             variant="h6"

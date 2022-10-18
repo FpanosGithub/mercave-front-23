@@ -30,7 +30,7 @@ export default function PanelEjes ({filtro, filtro_dispatcher, actores, onSelecc
                 <>
                 {(ejes.cargando) ?
                         (<PanelContenido>
-                                <BannerMercave height = {180} imagen = 'CABECERAEJES.jpg'/>
+                                <BannerMercave height = {180} imagen = 'arte/ejesCabecera.jpg'/>
                                 <FiltroEjes
                                         filtro = {filtro} 
                                         filtro_dispatcher = {filtro_dispatcher}
@@ -42,7 +42,7 @@ export default function PanelEjes ({filtro, filtro_dispatcher, actores, onSelecc
                         </PanelContenido>)
                         :
                         (<PanelContenido>
-                                <BannerMercave height = {180} imagen = 'CABECERAEJES.jpg'/>
+                                <BannerMercave height = {180} imagen = 'arte/ejesCabecera.jpg'/>
                                 <FiltroEjes
                                         filtro = {filtro} 
                                         filtro_dispatcher = {filtro_dispatcher}

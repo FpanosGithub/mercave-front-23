@@ -2,6 +2,8 @@ import * as React from 'react';
 import InicioActores from './InicioActores';
 import InicioEjes from './InicioEjes';
 import InicioVagones from './InicioVagones';
+import InicioCambiadores from './InicioCambiadores';
+import InicioAlarmas from './InicioAlarmas';
 import Fallback from '../Varios/Fallback';
 import BannerMercave from '../Varios/BannerMercave';
 
@@ -11,60 +13,89 @@ function Inicio ({ejes, vagones, actores})
     //Render
     return (
     <>
-        <BannerMercave height = {180} imagen = 'CABECERAHOME.jpg'/>
+        <BannerMercave height = {180} imagen = 'arte/homeCabecera.jpg'/>
         {actores.cargando ?
             (<Fallback
                 elemento = 'Actores Mercave' 
                 modo = 'CARGANDO'
-                imagen = 'actores.jpg'/> )
+                imagen = 'arte/actoresImagen.jpg'/> )
             :                                       
             (actores.error ?
                 (<Fallback
                 elemento = 'Actores Mercave' 
                 modo = 'ERROR'
-                imagen = 'actores.jpg'/>)
+                imagen = 'arte/actoresImagen.jpg'/>)
                 :
                 (<InicioActores
-                    actores = {actores}
-                    imagen = 'actores.jpg'/>)
+                    actores = {actores} />)
             )
         }
-        {/*<BannerMercave height = {170} imagen = 'BannerEjesMercave.jpg'/>*/}
         {ejes.cargando ?
             (<Fallback
                 elemento = 'Ejes' 
                 modo = 'CARGANDO'
-                imagen = 'eje.png'/> )
+                imagen = 'arte/ejesImagen.jpg'/> )
             :                                       
             (ejes.error ?
                 (<Fallback
                     elemento = 'Ejes' 
                     modo = 'ERROR'
-                    imagen = 'eje.png'/> )
+                    imagen = 'arte/ejesImagen.jpg'/> )
                 :
                 (<InicioEjes
                     ejes = {ejes.lista} 
                     versiones = {actores.versiones_ejes}
-                    imagen = 'eje.png'/>)
+                    imagen = 'arte/ejesImagen.jpg'/>)
             )
         }
-        {/*<BannerMercave height = {160} imagen = 'BannerVagonesMercave.jpg'/>*/}
         {vagones.cargando ?
             (<Fallback
                 elemento = 'Vagones' 
                 modo = 'CARGANDO'
-                imagen = 'vagones.jpg'/> )
+                imagen = 'arte/vagonesImagen.jpg'/> )
             :                                       
             (vagones.error ?
                 (<Fallback
                     elemento = 'Vagones' 
                     modo = 'ERROR'
-                    imagen = 'vagones.jpg'/>)
+                    imagen = 'arte/vagonesImagen.jpg'/>)
                 :
                 (<InicioVagones
                     vagones = {vagones.lista} 
                     tipos = {actores.tipos_vagones}
-                    imagen = 'vagones.jpg'/>)
+                    imagen = 'arte/vagonesImagen.jpg'/>)
+            )
+        }
+        {vagones.cargando ?
+            (<Fallback
+                elemento = 'Cambiadores' 
+                modo = 'CARGANDO'
+                imagen = 'arte/logoMercaveInverso.jpg'/> )
+            :                                       
+            (vagones.error ?
+                (<Fallback
+                    elemento = 'Cambiadores' 
+                    modo = 'ERROR'
+                    imagen = 'arte/logoMercaveInverso.jpg'/>)
+                :
+                (<InicioCambiadores
+                    cambiadores = {[]} />)
+            )
+        }
+        {vagones.cargando ?
+            (<Fallback
+                elemento = 'Alarmas' 
+                modo = 'CARGANDO'
+                imagen = 'arte/logoMercaveInverso.jpg'/> )
+            :                                       
+            (vagones.error ?
+                (<Fallback
+                    elemento = 'Alarmas' 
+                    modo = 'ERROR'
+                    imagen = 'arte/logoMercaveInverso.jpg'/>)
+                :
+                (<InicioAlarmas
+                    alarmas = {[]} />)
             )
         }
     </>

@@ -7,20 +7,18 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
-function InicioActores ({actores, imagen}) {
+function InicioActores ({actores}) {
     return(
         <PanelBanner>
-        <Card sx={{ minWidth: 130 }}>
-            <CardContent>
-                
-                <Typography sx={{ fontSize: 26, mt:7, textAlign:'center' }} color="text.primary" gutterBottom>
-                    Actores
-                </Typography>
-            </CardContent>
-        </Card>
+        <TarjetaImagen
+                nombre = 'arte/actoresTexto.jpg'
+                alt = ''
+                height = {180}
+                width = {300}/>
+        
         <Card sx={{ minWidth: 125, overflowY:'auto'  }}>
             <CardContent>
-                <Typography sx={{ fontSize: 16 }} color="text.secondary" gutterBottom>
+                <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
                     Operadores:
                 </Typography>
                 <List dense={false}>
@@ -38,13 +36,13 @@ function InicioActores ({actores, imagen}) {
                     </ListItem>
                     )
                 )}
-                </List>
-                
+                </List>   
             </CardContent>
         </Card>
+
         <Card sx={{ minWidth: 125, overflowY:'auto' }}>
             <CardContent>
-                <Typography sx={{ fontSize: 16 }} color="text.secondary" gutterBottom>
+                <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
                     keepers:
                 </Typography>
                 <List dense={false}>
@@ -65,9 +63,10 @@ function InicioActores ({actores, imagen}) {
                 </List>
             </CardContent>
         </Card>
+
         <Card sx={{ minWidth: 125, overflowY:'auto' }}>
             <CardContent>
-                <Typography sx={{ fontSize: 16 }} color="text.secondary" gutterBottom>
+                <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
                     Fabricantes:
                 </Typography>
                 <List dense={false}>
@@ -88,9 +87,10 @@ function InicioActores ({actores, imagen}) {
                 </List>
             </CardContent>
         </Card>
-        <Card sx={{ minWidth: 125, overflowY:'auto' }}>
+
+        <Card sx={{ minWidth: 140, overflowY:'auto' }}>
             <CardContent>
-                <Typography sx={{ fontSize: 16 }} color="text.secondary" gutterBottom>
+                <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
                     Mantenedores:
                 </Typography>
                 <List dense={false}>
@@ -111,8 +111,9 @@ function InicioActores ({actores, imagen}) {
                 </List>
             </CardContent>
         </Card>
+
         <TarjetaImagen
-                nombre = {imagen}
+                nombre = 'arte/actoresImagen.jpg'
                 alt = ''
                 height = {180}
                 width = {300}/>
@@ -122,7 +123,7 @@ function InicioActores ({actores, imagen}) {
 
 const PanelBanner = styled.div`
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0fr;
+    grid-template-columns: 0fr 1fr 1fr 1fr 1fr 0fr;
     gap:1px;
     width:100%;
     height:11.5rem;

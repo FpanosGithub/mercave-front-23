@@ -27,7 +27,7 @@ function FichaVagon ({vagon, onSeleccion}){
                         onSeleccion = {onSeleccion}
                         minWidth= {120}/>
                 <TarjetaImagen
-                        nombre = {vagon.imagen}
+                        nombre = {`vagones/${vagon.imagen}`}
                         alt = ''
                         height = {180}
                         width = {300}/>

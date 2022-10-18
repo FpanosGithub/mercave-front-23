@@ -7,12 +7,12 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
-function InicioVagones ({vagones, tipos}) {
+function InicioCambiadores ({cambiadores}) {
     return(
         <PanelBanner>
         
         <TarjetaImagen
-                nombre = 'arte/vagonesTexto.jpg'
+                nombre = 'arte/logoMercaveInverso.jpg'
                 alt = ''
                 height = {180}
                 width = {300}/>
@@ -20,10 +20,10 @@ function InicioVagones ({vagones, tipos}) {
         <Card sx={{ minWidth: 125}}>
             <CardContent>
                 <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
-                    Número:
+                    Número Cambiadores:
                 </Typography>
                 <Typography sx={{ fontSize: 26, mt:4, textAlign:'center' }} color="text.primary" gutterBottom>
-                    {vagones.length}
+                    2
                 </Typography>               
             </CardContent>
         </Card>
@@ -31,14 +31,14 @@ function InicioVagones ({vagones, tipos}) {
         <Card sx={{ minWidth: 125, overflowY:'auto' }}>
             <CardContent>
                 <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
-                    Tipos:
+                    Códigos:
                 </Typography>
                 <List dense={false}>
-                {tipos.map((tipo, id)=>
+                {cambiadores.map((cambiador, id)=>
                     (
                     <ListItem disablePadding sx= {{ml:0}} key={id}>
                         <ListItemText 
-                            primary={tipo.codigo} 
+                            primary={cambiador.codigo} 
                             primaryTypographyProps={{
                                 fontSize: 16,
                                 fontWeight: 'light',
@@ -55,7 +55,7 @@ function InicioVagones ({vagones, tipos}) {
         <Card sx={{ minWidth: 125}}>
             <CardContent>
                 <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
-                    Km semana:
+                    Cambios semana:
                 </Typography>
                 <Typography sx={{ fontSize: 26, mt:4, textAlign:'center' }} color="text.primary" gutterBottom>
                     235
@@ -66,16 +66,16 @@ function InicioVagones ({vagones, tipos}) {
         <Card sx={{ minWidth: 140}}>
             <CardContent>
                 <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
-                    Cambios sem:
+                    Cambios total:
                 </Typography>
                 <Typography sx={{ fontSize: 26, mt:4, textAlign:'center' }} color="text.primary" gutterBottom>
-                    25
+                    25543
                 </Typography>
             </CardContent>
         </Card>
         
         <TarjetaImagen
-                nombre = 'arte/vagonesImagen.jpg'
+                nombre = 'arte/logoMercaveInverso.jpg'
                 alt = ''
                 height = {180}
                 width = {300}/>
@@ -91,4 +91,4 @@ const PanelBanner = styled.div`
     width:100%;
     height:11.5rem;
 `
-export default InicioVagones
+export default InicioCambiadores
