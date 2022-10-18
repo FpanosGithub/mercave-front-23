@@ -11,7 +11,7 @@ function Inicio ({ejes, vagones, actores})
     //Render
     return (
     <>
-        <BannerMercave height = {180} imagen = 'BannerHomeMercave.jpg'/>
+        <BannerMercave height = {180} imagen = 'CABECERAHOME.jpg'/>
         {actores.cargando ?
             (<Fallback
                 elemento = 'Actores Mercave' 
@@ -63,7 +63,7 @@ function Inicio ({ejes, vagones, actores})
                 :
                 (<InicioVagones
                     vagones = {vagones.lista} 
-                    tipos = {[]}
+                    tipos = {actores.tipos_vagones}
                     imagen = 'vagones.jpg'/>)
             )
         }

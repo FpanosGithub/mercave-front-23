@@ -16,7 +16,7 @@ function actoresReducer(state, action) {
                     fabricantes:action.data.fabricantes, 
                     mantenedores:action.data.mantenedores, 
                     versiones_ejes:action.data.versiones_ejes, 
-                    tipos_vagones:action.data.tipos_vagones
+                    tipos_vagones:action.data.modelos_vagones
                   }
         case 'ERROR':
             return {

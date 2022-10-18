@@ -73,7 +73,7 @@ function ContainerVagones ({vagones, filtro, filtroDispatcher, actores, seleccio
                 <>
                 {vagones.cargando ?
                         (<PanelContenido>
-                                <BannerMercave height = {160} imagen = 'BannerVagonesMercave.jpg'/>
+                                <BannerMercave height = {160} imagen = 'CABECERAVAGONES.jpg'/>
                                 <FiltroVagones
                                         filtro = {filtro} 
                                         filtro_dispatcher = {filtroDispatcher}
@@ -86,7 +86,7 @@ function ContainerVagones ({vagones, filtro, filtroDispatcher, actores, seleccio
                         :
                         (vagones.error ?
                                 (<PanelContenido>
-                                <BannerMercave height = {160} imagen = 'BannerVagonesMercave.jpg'/>
+                                <BannerMercave height = {160} imagen = 'CABECERAVAGONES.jpg'/>
                                 <FiltroVagones
                                         filtro = {filtro} 
                                         filtro_dispatcher = {filtroDispatcher}
@@ -98,7 +98,7 @@ function ContainerVagones ({vagones, filtro, filtroDispatcher, actores, seleccio
                                 </PanelContenido>)
                                 :
                                 (<PanelContenido>
-                                        <BannerMercave height = {180} imagen = 'BannerVagonesMercave.jpg'/>
+                                        <BannerMercave height = {180} imagen = 'CABECERAVAGONES.jpg'/>
                                         <FiltroVagones
                                                 filtro = {filtro} 
                                                 filtro_dispatcher = {filtroDispatcher}
