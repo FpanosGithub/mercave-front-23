@@ -11,8 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import DirectionsRailwayFilledIcon from '@mui/icons-material/DirectionsRailwayFilled';
-import logoMercave from '../../Static/arte/logoMercave.jpg'
+import adif from '../../Static/arte/adif3.jpg'
 
 const pages = ['Vagones','Ejes','Cambiadores', 'ADIF', 'Ingeniería'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -24,10 +23,11 @@ const ResponsiveAppBar = ({onClick}) => {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);  
   };
-  const handleCloseNavMenu = (event) => {
+  const handleCloseNavMenu = ({page}) => {
+    console.log(page)
     setAnchorElNav(null);
-    if (event.target.id) {onClick ({type:'SELECCIONAR_MENU', payload:event.target.id})}
-    else {onClick ({type:'SELECCIONAR_MENU', payload:'Inicio'})}
+    if (page) {onClick ({type:'SELECCIONAR_MENU', payload: page})}
+  //  else if(event.target.innerHTML){onClick ({type:'SELECCIONAR_MENU', payload:'Inicio'})}
   };
 
   const handleOpenUserMenu = (event) => {
@@ -41,105 +41,57 @@ const ResponsiveAppBar = ({onClick}) => {
     <AppBar position="sticky" style = {{backgroundColor:'#164b24'}}>
       <Container maxWidth="xxl" >
         <Toolbar disableGutters>
-          {/*  icono tren + mercave: DESAPARECEN en xs  / APARECEN en md */}
-          <MenuItem id={'Inicio'} key={'Inicio'} onClick={handleCloseNavMenu}>
-          <img src={logoMercave} alt = 'logo' height = {40} width = {60}/> 
-          {/*   <DirectionsRailwayFilledIcon fontSize='large' sx={{ display: { xs: 'none', md: 'flex' }, mr: 2}} />  */}
-          
+          {/*  LOGO */}
+          <MenuItem id={'Inicio'} key={'Inicio'} onClick={()=>handleCloseNavMenu({page:'Inicio'})}>
+                <img src={adif} alt = 'logo' height = {36} width = {110}/> 
           </MenuItem>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            id={'Inicio'} 
-            href = ""
-            onClick={handleCloseNavMenu}
-            sx={{
-              mr: 8,
-              display: { xs: 'none', md: 'flex' },
-              flexGrow: 0,
-              fontFamily: 'monospace',
-              fontWeight: 600,
-              fontSize: 26,
-              letterSpacing: '.2rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-          {/* Trams-Mercave */}
-          </Typography>
 
-          {/*  Hamburger (+ menú escamoteable) + icono tren + mercave: APARECEN en xs  DESAPARECEN en md */}
+          {/*  Hamburger (+ menú escamoteable): APARECE en xs  DESAPARECE en md */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            {/*   Hamburger icon   */}
             <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-            <MenuIcon />   {/*   Hamburger icon   */}
+              color="inherit">
+                  <MenuIcon />   
             </IconButton>
+            {/*   Menú escamoteable del Hamburger Icon  */}
             <Menu              
               id="menu-appbar"
               anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
+              anchorOrigin={{vertical: 'bottom', horizontal: 'left',}}
               keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
+              transformOrigin={{vertical: 'top', horizontal: 'left',}}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >     
+              sx={{display: { xs: 'block', md: 'none' },}}>    
+
               {pages.map((page) => (
-                <MenuItem id={page} key={page} onClick={handleCloseNavMenu}>
+                <MenuItem id={page} key={page} onClick={()=>handleCloseNavMenu({page})}>
                   <Typography textAlign="center" sx={{fontSize: 16}}>{page}</Typography>
                 </MenuItem>
               ))}
-            </Menu> {/*   Menú del Hamburger Icon  */}
+            </Menu> 
           </Box>
-          <DirectionsRailwayFilledIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 600,
-              fontSize: 26,
-              letterSpacing: '.2rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-          {/* Trams-Mercave */}
-          </Typography>
-          {/*   Artículos del menú: DESAPARECE xs. APARECE md  */}
+          
+          {/* Menú de la appbar */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 id = {page}
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={()=>handleCloseNavMenu({page})}
                 sx={{ my: 2, color: 'white', display: 'block', fontSize: 16 }}
               >
                 {page}
               </Button>
             ))}
           </Box>
-          {/*   Menú usuario SIEMPRE VISIBLE  */}
+
+          {/*  Icono Usuario + Menú escamoteable */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
