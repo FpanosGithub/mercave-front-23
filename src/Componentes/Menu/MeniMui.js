@@ -11,9 +11,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import adif from '../../Static/arte/adif3.jpg'
+import adif from '../../Static/arte/logoMercave.jpg'
 
-const pages = ['Vagones','Ejes','Cambiadores', 'ADIF', 'Ingeniería'];
+const pages = ['Vagones','Ejes','Cambiadores',];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const ResponsiveAppBar = ({onClick}) => {
@@ -42,8 +42,8 @@ const ResponsiveAppBar = ({onClick}) => {
       <Container maxWidth="xxl" >
         <Toolbar disableGutters>
           {/*  LOGO */}
-          <MenuItem id={'Inicio'} key={'Inicio'} onClick={()=>handleCloseNavMenu({page:'Inicio'})}>
-                <img src={adif} alt = 'logo' height = {36} width = {110}/> 
+          <MenuItem id={'Inicio'} key={'Inicio'} sx = {{pr:7, pl:0}} onClick={()=>handleCloseNavMenu({page:'Inicio'})}>
+              <img src={adif} alt = 'logo' height = {60} width = {90}/>
           </MenuItem>
 
           {/*  Hamburger (+ menú escamoteable): APARECE en xs  DESAPARECE en md */}

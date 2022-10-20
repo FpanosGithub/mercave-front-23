@@ -2,9 +2,8 @@ import * as React from 'react';
 
 function useUrls() {
     const urls_sistema = {
-        //servidor_backend: 'http://localhost:8000/',
-        //servidor_backend: 'https://mercave-main.azurewebsites.net/',
-        servidor_backend: 'https://mercave-back-23.azurewebsites.net/',
+        servidor_backend: 'http://localhost:8000/',
+        //servidor_backend: 'https://mercave-back-23.azurewebsites.net/',
         ejes: 'api/ejes',
         vagones: 'api/vagones',
         eventos_vagon: 'api/circulaciones_vagon',

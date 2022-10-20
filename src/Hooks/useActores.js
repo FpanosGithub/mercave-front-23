@@ -9,7 +9,9 @@ const actores_inicial = {
     fabricantes:[], 
     mantenedores:[], 
     versiones_ejes:[], 
-    tipos_vagones:[]
+    tipos_vagones:[],
+    versiones_cambiadores:[],
+    cambiadores:[],
 };
 function useActores(url) {
     const [actores, actoresDispatcher] = React.useReducer(actoresReducer, actores_inicial);

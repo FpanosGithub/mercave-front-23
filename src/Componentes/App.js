@@ -18,6 +18,7 @@ function App() {
   const [filtro_vagones, filtroVagonesDispatcher] = useFiltro()
   const [ejes, ejesDispatcher] = useActivosMercave()
   const [vagones, vagonesDispatcher] = useActivosMercave()
+  const [alarmas_ejes, setAlarmas] = React.useState([])
 
   // Efecto para cargar los ejes con el filtro de ejes que haya activo
   React.useEffect(() => {
@@ -58,12 +59,27 @@ function App() {
     }, [filtro_vagones, vagonesDispatcher, url.vagones, url.servidor_backend]);
 
 
+  // Efecto para cargar las alarmas de ejes
+  React.useEffect(() => {
+    const getDataBD = async () => {
+        try {
+            const response_actores = await fetch(url.servidor_backend + url.alarmas_ejes);
+            let actual_data_alarmas = await response_actores.json();
+            setAlarmas (actual_data_alarmas);
+            }
+        catch(err) {setAlarmas ('error')}  
+        };
+        getDataBD();
+    }, [url.alarmas_ejes, url.servidor_backend]);
+
+
   const MuestraComponente = () => {
     if (seleccion.menu === 'Inicio') 
       {return <Inicio 
         ejes = {ejes} 
         vagones = {vagones}
-        actores = {actores}/>
+        actores = {actores}
+        alarmas_ejes = {alarmas_ejes}/>
         }
     if (seleccion.menu === 'Ejes') 
       {return <ContainerEjes 
@@ -71,6 +87,7 @@ function App() {
         ejesDispatcher = {ejesDispatcher}
         filtro = {filtro_ejes}
         filtroDispatcher = {filtroEjesDispatcher}
+        alarmas_ejes = {alarmas_ejes}
         actores = {actores}
         seleccion = {seleccion}
         seleccionDispatcher = {seleccionDispatcher}

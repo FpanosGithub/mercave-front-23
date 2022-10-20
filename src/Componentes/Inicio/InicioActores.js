@@ -124,6 +124,7 @@ function InicioActores ({actores}) {
 const PanelBanner = styled.div`
     display:grid;
     grid-template-columns: 0fr 1fr 1fr 1fr 1fr 0fr;
+
     gap:1px;
     width:100%;
     height:11.5rem;

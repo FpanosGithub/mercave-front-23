@@ -17,21 +17,10 @@ function InicioVagones ({vagones, tipos}) {
                 height = {180}
                 width = {300}/>
         
-        <Card sx={{ minWidth: 125}}>
-            <CardContent>
-                <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
-                    Número:
-                </Typography>
-                <Typography sx={{ fontSize: 26, mt:4, textAlign:'center' }} color="text.primary" gutterBottom>
-                    {vagones.length}
-                </Typography>               
-            </CardContent>
-        </Card>
-        
         <Card sx={{ minWidth: 125, overflowY:'auto' }}>
             <CardContent>
                 <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
-                    Tipos:
+                    Tipos Vagones:
                 </Typography>
                 <List dense={false}>
                 {tipos.map((tipo, id)=>
@@ -42,7 +31,7 @@ function InicioVagones ({vagones, tipos}) {
                             primaryTypographyProps={{
                                 fontSize: 16,
                                 fontWeight: 'light',
-                                lineHeight: '12px',
+                                lineHeight: '16px',
                                 mb: '0px'}}
                                 />
                     </ListItem>
@@ -51,14 +40,25 @@ function InicioVagones ({vagones, tipos}) {
                 </List>
             </CardContent>
         </Card>
+
+        <Card sx={{ minWidth: 125}}>
+            <CardContent>
+                <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
+                    Número Vagones:
+                </Typography>
+                <Typography sx={{ fontSize: 26, mt:4, textAlign:'center' }} color="text.primary" gutterBottom>
+                    {vagones.length}
+                </Typography>               
+            </CardContent>
+        </Card>
         
         <Card sx={{ minWidth: 125}}>
             <CardContent>
                 <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
-                    Km semana:
+                    Km totales:
                 </Typography>
                 <Typography sx={{ fontSize: 26, mt:4, textAlign:'center' }} color="text.primary" gutterBottom>
-                    235
+                    ---
                 </Typography>               
             </CardContent>
         </Card>
@@ -66,10 +66,10 @@ function InicioVagones ({vagones, tipos}) {
         <Card sx={{ minWidth: 140}}>
             <CardContent>
                 <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
-                    Cambios sem:
+                    Km semana:
                 </Typography>
                 <Typography sx={{ fontSize: 26, mt:4, textAlign:'center' }} color="text.primary" gutterBottom>
-                    25
+                    ---
                 </Typography>
             </CardContent>
         </Card>
@@ -87,6 +87,7 @@ function InicioVagones ({vagones, tipos}) {
 const PanelBanner = styled.div`
     display:grid;
     grid-template-columns: 0fr 1fr 1fr 1fr 1fr 0fr;
+
     gap:1px;
     width:100%;
     height:11.5rem;

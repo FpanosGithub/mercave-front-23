@@ -8,7 +8,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
 function InicioEjes ({ejes, versiones}) {
-    console.log(ejes)
     return(
         <PanelBanner>
         
@@ -18,21 +17,12 @@ function InicioEjes ({ejes, versiones}) {
                 height = {180}
                 width = {300}/> 
         
-        <Card sx={{ minWidth: 125}}>
-            <CardContent>
-                <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
-                    Número:
-                </Typography>
-                <Typography sx={{ fontSize: 26, mt:4, textAlign:'center' }} color="text.primary" gutterBottom>
-                    {ejes.length}
-                </Typography>               
-            </CardContent>
-        </Card>
+        
         
         <Card sx={{ minWidth: 125, overflowY:'auto' }}>
             <CardContent>
                 <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
-                    Versiones:
+                    Versiones Ejes:
                 </Typography>
                 <List dense={false}>
                 {versiones.map((version, id)=>
@@ -56,10 +46,21 @@ function InicioEjes ({ejes, versiones}) {
         <Card sx={{ minWidth: 125}}>
             <CardContent>
                 <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
-                    Km semana:
+                    Número Ejes:
                 </Typography>
                 <Typography sx={{ fontSize: 26, mt:4, textAlign:'center' }} color="text.primary" gutterBottom>
-                    940
+                    {ejes.length}
+                </Typography>               
+            </CardContent>
+        </Card>
+
+        <Card sx={{ minWidth: 125}}>
+            <CardContent>
+                <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
+                    En Mantenimiento:
+                </Typography>
+                <Typography sx={{ fontSize: 26, mt:4, textAlign:'center' }} color="text.primary" gutterBottom>
+                    ---
                 </Typography>               
             </CardContent>
         </Card>
@@ -67,7 +68,7 @@ function InicioEjes ({ejes, versiones}) {
         <Card sx={{ minWidth: 140}}>
             <CardContent>
                 <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
-                    Cambios sem:
+                    Km semana:
                 </Typography>
                 <Typography sx={{ fontSize: 26, mt:4, textAlign:'center' }} color="text.primary" gutterBottom>
                     100
@@ -87,6 +88,7 @@ function InicioEjes ({ejes, versiones}) {
 const PanelBanner = styled.div`
     display:grid;
     grid-template-columns: 0fr 1fr 1fr 1fr 1fr 0fr;
+
     gap:1px;
     width:100%;
     height:11.5rem;

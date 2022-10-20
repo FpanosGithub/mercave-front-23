@@ -8,7 +8,7 @@ import Fallback from '../Varios/Fallback';
 import BannerMercave from '../Varios/BannerMercave';
 
 // COMPONENTE //
-function Inicio ({ejes, vagones, actores})
+function Inicio ({ejes, vagones, actores, alarmas_ejes})
     {
     //Render
     return (
@@ -70,32 +70,33 @@ function Inicio ({ejes, vagones, actores})
             (<Fallback
                 elemento = 'Cambiadores' 
                 modo = 'CARGANDO'
-                imagen = 'arte/logoMercaveInverso.jpg'/> )
+                imagen = 'arte/cambiadoresImagen.jpg'/> )
             :                                       
             (vagones.error ?
                 (<Fallback
                     elemento = 'Cambiadores' 
                     modo = 'ERROR'
-                    imagen = 'arte/logoMercaveInverso.jpg'/>)
+                    imagen = 'arte/cambiadoresImagen.jpg'/>)
                 :
                 (<InicioCambiadores
-                    cambiadores = {[]} />)
+                    cambiadores = {actores.cambiadores} 
+                    versiones = {actores.versiones_cambiadores}/>)
             )
         }
         {vagones.cargando ?
             (<Fallback
                 elemento = 'Alarmas' 
                 modo = 'CARGANDO'
-                imagen = 'arte/logoMercaveInverso.jpg'/> )
+                imagen = 'arte/alarmasImagen.jpg'/> )
             :                                       
             (vagones.error ?
                 (<Fallback
                     elemento = 'Alarmas' 
                     modo = 'ERROR'
-                    imagen = 'arte/logoMercaveInverso.jpg'/>)
+                    imagen = 'arte/alarmasImagen.jpg'/>)
                 :
                 (<InicioAlarmas
-                    alarmas = {[]} />)
+                    alarmas = {alarmas_ejes} />)
             )
         }
     </>
