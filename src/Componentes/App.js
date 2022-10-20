@@ -18,7 +18,8 @@ function App() {
   const [filtro_vagones, filtroVagonesDispatcher] = useFiltro()
   const [ejes, ejesDispatcher] = useActivosMercave()
   const [vagones, vagonesDispatcher] = useActivosMercave()
-  const [alarmas_ejes, setAlarmas] = React.useState([])
+  const [alarmas_ejes, setAlarmasEjes] = React.useState([])
+  const [alarmas_vagones, setAlarmasVagones] = React.useState([])
 
   // Efecto para cargar los ejes con el filtro de ejes que haya activo
   React.useEffect(() => {
@@ -65,9 +66,9 @@ function App() {
         try {
             const response_actores = await fetch(url.servidor_backend + url.alarmas_ejes);
             let actual_data_alarmas = await response_actores.json();
-            setAlarmas (actual_data_alarmas);
+            setAlarmasEjes (actual_data_alarmas);
             }
-        catch(err) {setAlarmas ('error')}  
+        catch(err) {setAlarmasEjes ('error')}  
         };
         getDataBD();
     }, [url.alarmas_ejes, url.servidor_backend]);
@@ -79,7 +80,8 @@ function App() {
         ejes = {ejes} 
         vagones = {vagones}
         actores = {actores}
-        alarmas_ejes = {alarmas_ejes}/>
+        alarmas_ejes = {alarmas_ejes}
+        />
         }
     if (seleccion.menu === 'Ejes') 
       {return <ContainerEjes 
