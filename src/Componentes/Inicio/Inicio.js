@@ -8,7 +8,7 @@ import Fallback from '../Varios/Fallback';
 import BannerMercave from '../Varios/BannerMercave';
 
 // COMPONENTE //
-function Inicio ({ejes, vagones, actores, alarmas_ejes, onSeleccion})
+function Inicio ({ejes, vagones, actores, alarmas_ejes})
     {
     //Render
     return (
@@ -96,8 +96,7 @@ function Inicio ({ejes, vagones, actores, alarmas_ejes, onSeleccion})
                     imagen = 'arte/alarmasImagen.jpg'/>)
                 :
                 (<InicioAlarmas
-                    alarmas = {alarmas_ejes} 
-                    onSeleccion = {onSeleccion}/>)
+                    alarmas = {alarmas_ejes} />)
             )
         }
     </>

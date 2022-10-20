@@ -7,7 +7,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
-function InicioAlarmas ({alarmas, onSeleccion}) {
+function InicioAlarmas ({alarmas}) {
     const colorAlarma = (activa)=> {
         if (activa === true) {return 'darkred'}
         else {return 'grey'}

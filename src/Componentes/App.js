@@ -19,7 +19,6 @@ function App() {
   const [ejes, ejesDispatcher] = useActivosMercave()
   const [vagones, vagonesDispatcher] = useActivosMercave()
   const [alarmas_ejes, setAlarmasEjes] = React.useState([])
-  const [alarmas_vagones, setAlarmasVagones] = React.useState([])
 
   // Efecto para cargar los ejes con el filtro de ejes que haya activo
   React.useEffect(() => {
