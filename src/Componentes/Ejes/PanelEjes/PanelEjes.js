@@ -45,7 +45,7 @@ export default function PanelEjes ({filtro, filtro_dispatcher, actores, onSelecc
                                                         onHover = {setHover}
                                                         onSeleccion = {onSeleccion}/>    
                                                 <AlarmasEjes 
-                                                        alarmas = {alarmas} />
+                                                        alarmas = {alarmas.activas} />
                                         </PanelMapa>
                                         
                                 </PanelLista> 

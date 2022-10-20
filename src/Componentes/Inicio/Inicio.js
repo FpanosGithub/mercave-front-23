@@ -3,12 +3,12 @@ import InicioActores from './InicioActores';
 import InicioEjes from './InicioEjes';
 import InicioVagones from './InicioVagones';
 import InicioCambiadores from './InicioCambiadores';
-import InicioAlarmas from './InicioAlarmas';
+import InicioAlarmas from './InicioAlarmas V2';
 import Fallback from '../Varios/Fallback';
 import BannerMercave from '../Varios/BannerMercave';
 
 // COMPONENTE //
-function Inicio ({ejes, vagones, actores, alarmas_ejes})
+function Inicio ({ejes, vagones, actores, alarmas})
     {
     //Render
     return (
@@ -83,20 +83,20 @@ function Inicio ({ejes, vagones, actores, alarmas_ejes})
                     versiones = {actores.versiones_cambiadores}/>)
             )
         }
-        {vagones.cargando ?
+        {alarmas.cargando ?
             (<Fallback
                 elemento = 'Alarmas' 
                 modo = 'CARGANDO'
                 imagen = 'arte/alarmasImagen.jpg'/> )
             :                                       
-            (vagones.error ?
+            (alarmas.error ?
                 (<Fallback
                     elemento = 'Alarmas' 
                     modo = 'ERROR'
                     imagen = 'arte/alarmasImagen.jpg'/>)
                 :
                 (<InicioAlarmas
-                    alarmas = {alarmas_ejes} />)
+                    alarmas = {alarmas} />)
             )
         }
     </>

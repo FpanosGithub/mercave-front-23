@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import useActores from '../Hooks/useActores';
+import useAlarmas from '../Hooks/useAlarmas';
 import useFiltro from '../Hooks/useFiltro';
 import useSeleccion from '../Hooks/useSeleccion';
 import useUrls from '../Hooks/useUrls';
@@ -13,12 +14,13 @@ import useActivosMercave from '../Hooks/useActivosMercave';
 function App() {
   const url = useUrls()
   const actores = useActores(url)
+  const alarmas = useAlarmas(url)
   const [seleccion, seleccionDispatcher] = useSeleccion()
   const [filtro_ejes, filtroEjesDispatcher] = useFiltro()
   const [filtro_vagones, filtroVagonesDispatcher] = useFiltro()
   const [ejes, ejesDispatcher] = useActivosMercave()
   const [vagones, vagonesDispatcher] = useActivosMercave()
-  const [alarmas_ejes, setAlarmasEjes] = React.useState([])
+
 
   // Efecto para cargar los ejes con el filtro de ejes que haya activo
   React.useEffect(() => {
@@ -59,27 +61,13 @@ function App() {
     }, [filtro_vagones, vagonesDispatcher, url.vagones, url.servidor_backend]);
 
 
-  // Efecto para cargar las alarmas de ejes
-  React.useEffect(() => {
-    const getDataBD = async () => {
-        try {
-            const response_actores = await fetch(url.servidor_backend + url.alarmas_ejes);
-            let actual_data_alarmas = await response_actores.json();
-            setAlarmasEjes (actual_data_alarmas);
-            }
-        catch(err) {setAlarmasEjes ('error')}  
-        };
-        getDataBD();
-    }, [url.alarmas_ejes, url.servidor_backend]);
-
-
   const MuestraComponente = () => {
     if (seleccion.menu === 'Inicio') 
       {return <Inicio 
         ejes = {ejes} 
         vagones = {vagones}
         actores = {actores}
-        alarmas_ejes = {alarmas_ejes}
+        alarmas = {alarmas}
         />
         }
     if (seleccion.menu === 'Ejes') 
@@ -88,7 +76,7 @@ function App() {
         ejesDispatcher = {ejesDispatcher}
         filtro = {filtro_ejes}
         filtroDispatcher = {filtroEjesDispatcher}
-        alarmas_ejes = {alarmas_ejes}
+        alarmas = {alarmas.ejes}
         actores = {actores}
         seleccion = {seleccion}
         seleccionDispatcher = {seleccionDispatcher}
