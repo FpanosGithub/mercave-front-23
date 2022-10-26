@@ -2,16 +2,23 @@ import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import GraficoAceleraciones from './GraficoAceleraciones';
 
-
 function AceleracionesEvento ({evento, url}){
+        let id_evento = -1
+        let eje = 1
+        let dt = new Date()
+        if(evento) {
+                id_evento = evento.id
+                eje = evento.eje
+                dt = evento.dt
+        }
         // Cargamos Datos detallados de circulación del eje para gráficas
         const [detalle_evento, setDetalle] = React.useState(null)
-        const url_detalle = `${url.servidor_backend}${url.detalle_evento}${evento.id}/`;
+        const url_detalle = `${url.servidor_backend}${url.detalle_evento}${id_evento}/`;
         const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({  "eje": evento.eje,
-                                        "dt":evento.dt})
+                body: JSON.stringify({  "eje": eje,
+                                        "dt":dt})
         };
         React.useEffect(() => {
                 const getDetalleEvento = async () => {
@@ -23,11 +30,11 @@ function AceleracionesEvento ({evento, url}){
                 catch(err) {console.log(`Error cargando detalles de Mongo DB: ${err.message}`)} 
                 }
                 // Solo ejecutamos la consulta si hay evento seleccionado
-                if (evento.id) {
+                if (id_evento!==-1) {
                         getDetalleEvento()
                 }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, [evento.id]);
+        }, [id_evento]);
         // Render JSX
         return (
         <> 

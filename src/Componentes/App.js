@@ -9,6 +9,7 @@ import ResponsiveAppBar from './Menu/MeniMui';
 import Inicio from './Inicio/Inicio';
 import ContainerEjes from './Ejes';
 import ContainerVagones from './Vagones';
+import ContainerCambiadores from './Cambiadores';
 import useActivosMercave from '../Hooks/useActivosMercave';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   const [seleccion, seleccionDispatcher] = useSeleccion()
   const [filtro_ejes, filtroEjesDispatcher] = useFiltro()
   const [filtro_vagones, filtroVagonesDispatcher] = useFiltro()
+  const [filtro_cambiadores, filtroCambiadoresDispatcher] = useFiltro()
   const [ejes, ejesDispatcher] = useActivosMercave()
   const [vagones, vagonesDispatcher] = useActivosMercave()
 
@@ -73,7 +75,6 @@ function App() {
     if (seleccion.menu === 'Ejes') 
       {return <ContainerEjes 
         ejes = {ejes}
-        ejesDispatcher = {ejesDispatcher}
         filtro = {filtro_ejes}
         filtroDispatcher = {filtroEjesDispatcher}
         alarmas = {alarmas.ejes}
@@ -85,9 +86,18 @@ function App() {
     if (seleccion.menu === 'Vagones') 
       { return <ContainerVagones 
         vagones = {vagones}
-        vagonesDispatcher = {vagonesDispatcher}
         filtro = {filtro_vagones}
         filtroDispatcher = {filtroVagonesDispatcher}
+        actores = {actores}
+        seleccionDispatcher = {seleccionDispatcher}
+        url = {url}
+        />
+          }
+    if (seleccion.menu === 'Cambios') 
+      { return <ContainerCambiadores 
+        //!!!!//
+        filtro = {filtro_cambiadores}
+        filtroDispatcher = {filtroCambiadoresDispatcher}
         actores = {actores}
         seleccionDispatcher = {seleccionDispatcher}
         url = {url}

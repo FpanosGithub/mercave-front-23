@@ -17,9 +17,10 @@ function BannerEjes ({eje, ejes_mismo_vagon, onVolver}){
                         texto2 = 'Versión:'
                         valor2 = {eje.version}
                         minWidth= {150}/>
-               {/*  <Alarma tipo= 'Temp.' activa = {eje.alarma_temp}/>
-                <Alarma tipo= 'Acelerac.' activa = {eje.alarma_acel}/> */}
-                <Alarma tipo= '' activa = {eje.alarma_temp}/>
+                <Alarma tipo= 'Temp.' activa = {eje.alarma_temp}/>
+                <Alarma tipo= 'Aceler.' activa = {eje.alarma_acel}/>
+                <Alarma tipo= 'Cambio' activa = {eje.alarma_cambio}/>
+                <Alarma tipo= 'Mnto.' activa = {eje.alarma_mantenimiento}/>
                 <Tarjeta12
                         texto1 = 'Vagón:'
                         valor1 = {eje.vagon}
@@ -31,10 +32,10 @@ function BannerEjes ({eje, ejes_mismo_vagon, onVolver}){
                         vagon = {eje.vagon}
                         onVolver = {onVolver}/>
                 <Tarjeta11
-                        texto1 = 'Propietario:'
-                        valor1 = {eje.keeper}
-                        texto2 = 'Operador:'
-                        valor2 = {eje.operador}
+                        texto1 = 'Owner:'
+                        valor1 = {eje.owner}
+                        texto2 = 'Keeper:'
+                        valor2 = {eje.keeper}
                         minWidth= {120}/>
                 <Tarjeta12
                         texto1 = 'Fabricante:'
@@ -43,8 +44,8 @@ function BannerEjes ({eje, ejes_mismo_vagon, onVolver}){
                         valor2 = {eje.fecha_fab}
                         minWidth= {120}/>              
                 <Tarjeta12
-                        texto1 = 'Mantenedor:'
-                        valor1 = {eje.mantenedor}
+                        texto1 = 'E.E.M.:'
+                        valor1 = {eje.EEM}
                         texto2 = 'Fecha Mant:'
                         valor2 = {eje.ultimo_mant}
                         minWidth= {120}/>
@@ -60,8 +61,8 @@ function BannerEjes ({eje, ejes_mismo_vagon, onVolver}){
 
 const PanelBanner = styled.div`
     display:grid;
-    grid-template-columns: 0fr 0.5fr 0fr 0.5fr 0fr 1fr 1fr 1fr 0.6fr;
-    gap:3px;
+    grid-template-columns: 0fr 0.5fr 0fr 0fr 0fr 0fr 0.5fr 0fr 1fr 1fr 1fr 0.6fr;
+    gap:2px;
     width:100%;
     height:9.9rem;
 `

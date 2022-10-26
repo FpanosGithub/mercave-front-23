@@ -4,9 +4,9 @@ import CabeceraGrafica from './CabeceraGrafica';
 import HistogramaCambios from './HistogramaCambios';
 import DatosCambioRueda from './DatosCambioRueda';
 
-function GraficoDescerrojamiento ({datos}){
+function GraficoDescerrojamiento ({datos, minWidth}){
   return(
-    <Paper elevation = {2}>
+    <Paper elevation = {2} sx={{minWidth:{minWidth}}}>
         <PanelDescerrojamiento>
             <CabeceraGrafica
               titulo = 'Descerrojamiento.'
@@ -38,7 +38,7 @@ const PanelDescerrojamiento = styled.div`
         display:grid;
         grid-template-rows: 0fr 0fr 0fr;
         gap:1px;
-        height:24rem;
+        height:100%;
 `
 const Resumen = styled.div`
         display:grid;

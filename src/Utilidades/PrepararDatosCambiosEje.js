@@ -1,5 +1,7 @@
 function PrepararDatosCambios (cambios)
 {
+  console.log('!!!!!!!PrepararDatosCambios!!!!!!')
+  console.log(cambios)
     let datos = 
             {
               duracion_dias:0,
@@ -59,7 +61,7 @@ function PrepararDatosCambios (cambios)
     let sum_fca = 0
     let sum_fcb = 0
   
-    if (cambios.length>0)
+    if (cambios && cambios.length>0)
       {
       cambios.forEach ((obj) => 
         {

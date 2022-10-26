@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import adif from '../../Static/arte/logoMercave.jpg'
 
-const pages = ['Vagones','Ejes','Cambiadores',];
+const pages = ['Vagones','Ejes','Cambios',];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const ResponsiveAppBar = ({onClick}) => {
@@ -24,7 +24,6 @@ const ResponsiveAppBar = ({onClick}) => {
     setAnchorElNav(event.currentTarget);  
   };
   const handleCloseNavMenu = ({page}) => {
-    console.log(page)
     setAnchorElNav(null);
     if (page) {onClick ({type:'SELECCIONAR_MENU', payload: page})}
   //  else if(event.target.innerHTML){onClick ({type:'SELECCIONAR_MENU', payload:'Inicio'})}

@@ -1,4 +1,4 @@
-import Paper from '@mui/material/Paper';
+import Card from '@mui/material/Paper';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid,Tooltip, Legend } from 'recharts';
 
 function CustomTooltip({ payload, label, active }) {
@@ -20,7 +20,7 @@ function CustomTooltip({ payload, label, active }) {
 function HistogramaCambios ({datos, height}){
 
   return(
-    <Paper elevation = {1}>
+    <Card>
       <ResponsiveContainer height={height}>
         <BarChart 
                   data={datos} 
@@ -38,7 +38,7 @@ function HistogramaCambios ({datos, height}){
             <Bar dataKey="B" fill="#82ca9d" />
         </BarChart>
       </ResponsiveContainer>
-    </Paper> 
+    </Card>
     );
 }
 export default HistogramaCambios

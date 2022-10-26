@@ -8,8 +8,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
 function InicioAlarmas ({alarmas}) {
-    console.log(alarmas)
-    
+
     const num_activas = alarmas.ejes.activas.length + alarmas.vagones.activas.length
     const num_total = num_activas + alarmas.ejes.resueltas.length + alarmas.vagones.resueltas.length
     

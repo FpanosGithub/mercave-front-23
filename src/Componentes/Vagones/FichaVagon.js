@@ -32,10 +32,10 @@ function FichaVagon ({vagon, onSeleccion}){
                         height = {180}
                         width = {300}/>
                 <Tarjeta22
-                        texto1 = 'Propietario:'
-                        valor1 = {vagon.keeper}
-                        texto2 = 'Operador:'
-                        valor2 = {vagon.operador}
+                        texto1 = 'Owner:'
+                        valor1 = {vagon.owner}
+                        texto2 = 'keeper:'
+                        valor2 = {vagon.keeper}
                         minWidth= {150}/>
                 <Tarjeta22
                         texto1 = 'Fabricante:'
@@ -44,8 +44,8 @@ function FichaVagon ({vagon, onSeleccion}){
                         valor2 = {vagon.fecha_fab}
                         minWidth= {150}/>
                 <Tarjeta22     
-                        texto1 = 'Mantenedor:'
-                        valor1 = {vagon.mantenedor}
+                        texto1 = 'E.E.M.:'
+                        valor1 = {vagon.EEM}
                         texto2 = 'Fecha Mant:'
                         valor2 = {vagon.ultimo_mant}
                         minWidth= {150}/>

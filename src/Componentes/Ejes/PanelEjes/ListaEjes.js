@@ -14,9 +14,9 @@ const columns = [
   {id: 'km', label: 'Kilometros', align: 'right', minWidth: 50},
   {id: 'num_cambios',label: 'Cambios', align: 'right', minWidth: 40},
   {id: 'keeper',label: 'Keeper', minWidth: 60},
-  {id: 'operador',label: 'Operador', minWidth: 60},
+  {id: 'owner',label: 'Owner', minWidth: 60},
   {id: 'fabricante',label: 'Fabricante', minWidth: 60},
-  {id: 'mantenedor',label: 'Mantenedor', minWidth: 60},
+  {id: 'EEM',label: 'E.E.M.', minWidth: 60},
   {id: 'vagon',label: 'Vagón', minWidth: 90},
 ];
 

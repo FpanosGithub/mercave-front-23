@@ -41,7 +41,7 @@ const IdentificarEjesMismoVagon = (eje, ejes) =>{
     }
 
 // COMPONENTE //
-function ContainerEjes ({ejes, filtro, filtroDispatcher, alarmas_ejes, actores, seleccion, seleccionDispatcher, url})
+function ContainerEjes ({ejes, filtro, filtroDispatcher, alarmas, actores, seleccion, seleccionDispatcher, url})
         {
         const eje = seleccionarEje (seleccion.eje, ejes.lista)
         const ejes_mismo_vagon = IdentificarEjesMismoVagon (eje, ejes.lista)
@@ -54,7 +54,7 @@ function ContainerEjes ({ejes, filtro, filtroDispatcher, alarmas_ejes, actores, 
                         filtro = {filtro} 
                         filtro_dispatcher = {filtroDispatcher}
                         actores = {actores}
-                        alarmas = {alarmas_ejes}
+                        alarmas = {alarmas}
                         onSeleccion = {seleccionDispatcher}
                         ejes = {ejes}
                         url = {url}

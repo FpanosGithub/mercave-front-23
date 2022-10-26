@@ -81,7 +81,7 @@ function ContainerVagones ({vagones, filtro, filtroDispatcher, actores, seleccio
                                 <Fallback
                                         elemento = 'Vagones' 
                                         modo = 'CARGANDO'
-                                        imagen = 'vagones.jpg'/>     
+                                        imagen = 'arte/vagonesImagen.jpg'/>     
                         </PanelContenido>)
                         :
                         (vagones.error ?
@@ -94,7 +94,7 @@ function ContainerVagones ({vagones, filtro, filtroDispatcher, actores, seleccio
                                 <Fallback
                                         elemento = 'Vagones' 
                                         modo = 'ERROR'
-                                        imagen = 'vagones.jpg'/>     
+                                        imagen = 'arte/vagonesImagen.jpg'/>     
                                 </PanelContenido>)
                                 :
                                 (<PanelContenido>
@@ -133,7 +133,7 @@ function ContainerVagones ({vagones, filtro, filtroDispatcher, actores, seleccio
         }
 const PanelContenido = styled.div`
 display:grid;
-grid-template-rows: 0fr 5rem 1fr 0fr;
+grid-template-rows: 0fr 5.5rem 1fr 0fr;
 gap:2px;
 `
 const PanelLista = styled.div`

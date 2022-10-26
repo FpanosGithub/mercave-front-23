@@ -4,10 +4,10 @@ import actoresReducer from './actoresReducer'
 const actores_inicial = {
     error: null,
     cargando: true,
-    operadores:[], 
+    owners:[], 
     keepers:[], 
     fabricantes:[], 
-    mantenedores:[], 
+    EEMs:[], 
     versiones_ejes:[], 
     tipos_vagones:[],
     versiones_cambiadores:[],

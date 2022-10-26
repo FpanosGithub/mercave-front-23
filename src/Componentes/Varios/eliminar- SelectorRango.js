@@ -1,20 +1,21 @@
 import styled from 'styled-components';
 import Paper from '@mui/material/Paper';
-import CabeceraRango from './CabeceraRango';
+import CabeceraGrafica from './CabeceraGrafica';
 import SelectorEventos from './SelectorEventos';
 
-function SelectorRango ({titulo,rango,setRango}){ 
+function SelectorRango ({titulo, subtitulo,rango,setRango}){ 
         return (
         <Paper elevation = {2}>
         <PanelSelector>
-                <CabeceraRango
+                <CabeceraGrafica
                         titulo = {titulo} 
+                        subtitulo = {subtitulo}
                         height = {65}/>      
                 <SelectorEventos
                         rango={rango}
                         setRango = {setRango}
-                        width = {240}
-                        height = {230}/>
+                        width = {200}
+                        height = {337}/>
         </PanelSelector>
         </Paper>
         )

@@ -5,9 +5,9 @@ import HistogramaCambios from './HistogramaCambios';
 import DatosCambioRueda from './DatosCambioRueda';
 
 
-function GraficoCambio ({datos}){
+function GraficoCambio ({datos, minWidth}){
   return(
-    <Paper elevation = {2}>
+    <Paper elevation = {2} sx={{minWidth:{minWidth}}}>
     <PanelCambio>
         <CabeceraGrafica
           titulo = 'Cambio.'
@@ -39,7 +39,6 @@ const PanelCambio = styled.div`
     display:grid;
     grid-template-rows: 0fr 0fr 0fr;
     gap:1px;
-    min-width:300px;
     height:24rem;
 `
 const Resumen = styled.div`

@@ -13,8 +13,8 @@ function AlarmasEjes ({alarmas})
             <Typography sx={{ fontSize: 18, ml:2, mt:1, mb:0 }} color="text.secondary">
                 Log de Alarmas:
             </Typography>    
-        <ListaAlarmas
-            alarmas = {alarmas}/> 
+ {/*       <ListaAlarmas
+            alarmas = {alarmas}/> */} 
         </Paper>  
         </PanelAlarmasEjes>
         </>

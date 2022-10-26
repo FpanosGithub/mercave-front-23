@@ -3,18 +3,16 @@ import styled from 'styled-components';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import SelectorKeeper from '../Varios/SelectorKeeper';
-import SelectorOperador from '../Varios/SelectorOperador';
-import SelectorMantenedor from '../Varios/SelectorMantenedor';
+import SelectorElementos from '../Varios/SelectorElementos';
 
-function ids_a_codigos_organizaciones (lista_ids, lista_actores){
+function ids_a_codigos (lista_ids, lista_actores){
     const codigos = lista_ids.map((id_filtro)=> {
         const id = id_filtro
         return lista_actores.find((element)=> {return(element.id === id)})
     })
     return codigos.map((actor)=> {return (actor.organizacion)})  
 }
-function codigos_organizaciones_a_ids (lista_codigos, lista_actores){
+function codigos_a_ids (lista_codigos, lista_actores){
     const lista = lista_codigos.map((codigo)=> {
     return lista_actores.find((element)=> {return(element.organizacion === codigo)})
     })
@@ -24,29 +22,25 @@ function codigos_organizaciones_a_ids (lista_codigos, lista_actores){
 function FiltroVagones ({filtro, filtro_dispatcher, actores})
     {  
     
-    const lista_keepers_filtro = ids_a_codigos_organizaciones (filtro.keepers, actores.keepers)
+    const lista_keepers_filtro = ids_a_codigos (filtro.keepers, actores.keepers)
+    const lista_owners_filtro = ids_a_codigos (filtro.owners, actores.owners)
+    const lista_EEMs_filtro = ids_a_codigos (filtro.EEMs, actores.EEMs)
+
     const [keepers_seleccionados, setKeepers] = React.useState(lista_keepers_filtro)
-    
-    const lista_operadores_filtro = ids_a_codigos_organizaciones (filtro.operadores, actores.operadores)
-    const [operadores_seleccionados, setOperadores] = React.useState(lista_operadores_filtro)
-
-    const lista_mantenedores_filtro = ids_a_codigos_organizaciones (filtro.mantenedores, actores.mantenedores)
-    const [mantenedores_seleccionados, setMantenedores] = React.useState(lista_mantenedores_filtro)
-
-//  const lista_tipos_vagones_filtro = ids_a_codigos_elementos (filtro.tipos_vagones, actores.tipos_vagones)
-//  const [tipos_vagones_seleccionados, setTiposVagones] = React.useState(lista_tipos_vagones_filtro)
+    const [owners_seleccionados, setOwners] = React.useState(lista_owners_filtro)
+    const [EEMs_seleccionados, setEEMs] = React.useState(lista_EEMs_filtro)
 
     const [color_boton, setColorBoton] = React.useState('primary')
 
-    function onClick (event) {
-        const keepers = codigos_organizaciones_a_ids (keepers_seleccionados, actores.keepers)
-        const operadores = codigos_organizaciones_a_ids (operadores_seleccionados, actores.operadores)
-        const mantenedores = codigos_organizaciones_a_ids (mantenedores_seleccionados, actores.mantenedores)
-//      const tipos_vagones = codigos_elementos_a_ids (tipos_vagones_seleccionados, actores.tipos_vagones)
+    function onClick () {
+        const keepers = codigos_a_ids (keepers_seleccionados, actores.keepers)
+        const owners = codigos_a_ids (owners_seleccionados, actores.owners)
+        const EEMs = codigos_a_ids (EEMs_seleccionados, actores.EEMs)
+
         filtro_dispatcher ({
                     keepers: keepers, 
-                    operadores: operadores,  
-                    mantenedores: mantenedores,
+                    owners: owners,  
+                    EEMs: EEMs,
                 
                 })
         setColorBoton('primary')
@@ -55,38 +49,37 @@ function FiltroVagones ({filtro, filtro_dispatcher, actores})
     return (
         <>
         <Panel>
-            {/*<Paper elevation = {3}>
-                <Typography variant="h5" component="h2" sx = {{ml:2, mr:4, mt:2.5}}>
-                    Vagones
-                </Typography>
-            </Paper>*/}
-            <Paper elevation = {1} sx = {{ml:0.1, mt:0, mr:0.1, mb:0}}>
+            <Paper elevation = {1} sx = {{ml:0.1, mt:0, mr:0.1, mb:0, pt:2}}>
                 <PanelFiltro>
-                    <Typography variant="h6" component="h2" sx = {{ml:2, mr:2, mt:2.5,}}>
+                    <Typography variant="h6" component="h2" sx = {{ml:2, mr:3, mt:1.2}}>
                         Filtro:
                     </Typography>
-                    <SelectorKeeper
-                        keepers = {actores.keepers.map((v)=>{return v.organizacion})}
-                        keepers_seleccionados = {keepers_seleccionados}
-                        setKeepers = {setKeepers}
+                    <SelectorElementos
+                        tipo_elementos = 'Owners'
+                        elementos_lista = {actores.owners.map((v)=>{return v.organizacion})}
+                        elementos_seleccionados = {owners_seleccionados}
+                        setElementosSeleccionados = {setOwners}
                         setColorBoton = {setColorBoton}
-                        minWidth = {150}
+                        minWidth = {160}
                         />
-                    <SelectorOperador
-                        operadores = {actores.operadores.map((v)=>{return v.organizacion})}
-                        operadores_seleccionados = {operadores_seleccionados}
-                        setOperadores = {setOperadores}
+                    <SelectorElementos
+                        tipo_elementos = 'Keepers'
+                        elementos_lista = {actores.keepers.map((v)=>{return v.organizacion})}
+                        elementos_seleccionados = {keepers_seleccionados}
+                        setElementosSeleccionados = {setKeepers}
                         setColorBoton = {setColorBoton}
-                        minWidth = {150}
+                        minWidth = {160}
                         />
-                    <SelectorMantenedor
-                        mantenedores = {actores.mantenedores.map((v)=>{return v.organizacion})}
-                        mantenedores_seleccionados = {mantenedores_seleccionados}
-                        setMantenedores = {setMantenedores}
+                    <SelectorElementos
+                        tipo_elementos = 'E.E.M.'
+                        elementos_lista = {actores.EEMs.map((v)=>{return v.organizacion})}
+                        elementos_seleccionados = {EEMs_seleccionados}
+                        setElementosSeleccionados = {setEEMs}
                         setColorBoton = {setColorBoton}
-                        minWidth = {150}
+                        minWidth = {160}
                         />
-                    <Button size="medium" variant="outlined" onClick = {onClick} color = {color_boton} sx ={{mt:1.1, ml:1, mb:1, pl:2, pr:2, color:{color_boton}, height:55, width:100}}>Aplicar</Button>
+
+                    <Button size="medium" variant="outlined" onClick = {onClick} color = {color_boton} sx ={{mt:0, mb:1, pl:2, pr:2, color:{color_boton}, height:55, width:100}}>Aplicar</Button>
                 </PanelFiltro>
             </Paper>
         </Panel>

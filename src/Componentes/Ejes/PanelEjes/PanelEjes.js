@@ -24,7 +24,7 @@ export default function PanelEjes ({filtro, filtro_dispatcher, actores, onSelecc
                                 <Fallback
                                         elemento = 'Ejes' 
                                         modo = 'CARGANDO'
-                                        imagen = 'eje.png'/>
+                                        imagen = 'arte/ejesImagen.jpg'/>
                         </PanelContenido>)
                         :
                         (<PanelContenido>
@@ -57,7 +57,7 @@ export default function PanelEjes ({filtro, filtro_dispatcher, actores, onSelecc
 
 const PanelContenido = styled.div`
 display:grid;
-grid-template-rows: 0fr 5rem 1fr;
+grid-template-rows: 0fr 5.5rem 1fr;
 gap:2px;
 `
 const PanelLista = styled.div`

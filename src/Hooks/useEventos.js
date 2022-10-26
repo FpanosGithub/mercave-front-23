@@ -5,7 +5,6 @@ const eventos_inicio = {
     error: null,
     cargando: false,
     lista:[],
-    mapa:'',
 }
 
 function useEventos() {

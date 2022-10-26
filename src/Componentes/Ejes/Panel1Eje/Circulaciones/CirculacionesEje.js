@@ -1,113 +1,57 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import useEventos from '../../../../Hooks/useEventos';
-import useRango from '../../../../Hooks/useRango';
-import SeleccionarEvento from '../../../../Utilidades/SeleccionarEvento';
-import RangoCirculaciones from './RangoCirculaciones';
 import Fallback from '../../../Varios/Fallback';
-import ListaCirculacionesEje from './ListaCirculacionesEje';
-import MapaCirculaciones from './MapaCirculaciones';
-import DetalleCirculacion from './DetalleCirculacion';
-import AceleracionesEvento from '../../../Varios/AceleracionesEvento';
+import SeleccionarEvento from '../../../../Utilidades/SeleccionarEvento';
+import RangoEventos from '../../../Varios/RangoEventos';
+import ListaCirculaciones from './ListaCirculaciones';
+import FichaCirculacion from './FichaCirculacion';
 
-function CirculacionesEje ({eje, url}){
+function CirculacionesEje ({eje, circulaciones, rango, rangoDispatcher, onMostrar, url}){
 
-    // Iniciamos variables para eventos de circulación
-    const [rango_circulaciones, rangoCirculacionesDispatcher] = useRango (60)
     const [seleccion_circulacion, setSeleccionCirculacion] = React.useState (0)
-    const [hover_circulaciones, setHoverCirculaciones] = React.useState(-1)
-    const [circulaciones, circulacionesDispatcher] = useEventos()
-
-    // Lanzamos el side effect para cragar la info de los eventos de circulación del eje seleccionado
-    React.useEffect(() => {
-        const requestParams = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({"rango": rango_circulaciones, 'id_eje': eje.id})
-        }
-        const getDataCirculaciones = async () => {
-            circulacionesDispatcher({type:'CARGANDO'})
-            try {
-                const response = await fetch(url.servidor_backend + url.eventos_eje, requestParams);
-                if (!response.ok) {throw new Error(`HTTP error: The status is ${response.status}`);}
-                let actual_data = await response.json();
-                circulacionesDispatcher({type:'CARGAR_EVENTOS', data: actual_data})
-                } 
-            catch(err) {circulacionesDispatcher({type:'ERROR', data: err.message})} 
-        }
-        getDataCirculaciones()
-        console.log('FETCH FETCH CIRCULACIONES')
-        },[eje.id, circulacionesDispatcher, rango_circulaciones, url.eventos_eje, url.servidor_backend]);
 
     // Sacamos el evento de circulacion seleccionado de la lista de circulaciones para pasarlo al componente <DetalleCirculacionEje>
     const circulacion = SeleccionarEvento (seleccion_circulacion, setSeleccionCirculacion, circulaciones.lista)
 
     // RENDER CIRCULACIONES DE 1 EJE!!!!!!
     return (
-        <PanelEventos>
-        {(circulaciones.cargando) 
-            ?
-            (<Fallback
-                elemento = {`Circulaciones del eje ${eje.codigo}`}
-                modo = 'CARGANDO'
-                imagen = 'eje.png'/>)
-            :
-            (<>
-            <RangoCirculaciones
-                    codigo_eje = {eje.codigo}
-                    rango={rango_circulaciones}
-                    setRango = {rangoCirculacionesDispatcher}
-                    circulaciones = {circulaciones.lista}
-                    estado_eje = {eje.estado}
-                    vel_eje = {eje.vel}
-                    tempa = {eje.tempa}
-                    tempb = {eje.tempb} />
-            <PanelLista>
-                <ListaCirculacionesEje 
-                            error = {circulaciones.error}
-                            circulaciones={circulaciones.lista}
-                            seleccion = {seleccion_circulacion}
-                            onSeleccion = {setSeleccionCirculacion}/>
-                <PanelMapaEventos>
-                    <MapaCirculaciones 
-                        hoverCirculaciones = {hover_circulaciones}
-                        onHoverCirculaciones = {setHoverCirculaciones}
-                        circulaciones = {circulaciones.lista}  
-                        ejeSeleccionado = {eje}
-                        />
-                    <PanelDetalle>
-                        <DetalleCirculacion evento = {circulacion}/>
-                        <AceleracionesEvento 
-                            evento = {circulacion}
-                            url = {url}/>
-                    </PanelDetalle>
-                </PanelMapaEventos>
-            </PanelLista>
-            </>)}  
-            </PanelEventos>   
+        <PanelLista>
+            <RangoEventos
+                rango = {rango}
+                setRango = {rangoDispatcher}
+                mostrar = 'Circulaciones'
+                onMostrar = {onMostrar}
+                minWidth = {165}/>
+            {circulaciones.cargando ?
+                (<><div></div><Fallback
+                    elemento = {`Circulaciones del eje ${eje.codigo}`}
+                    modo = 'CARGANDO'
+                    imagen = 'arte/ejesImagen.jpg'/></>)
+                :
+                (circulaciones.error ?
+                    (<><div></div><Fallback
+                        elemento = {`Circulaciones del eje ${eje.codigo}`}
+                        modo = 'CARGANDO'
+                        imagen = 'arte/ejesImagen.jpg'/></>)
+                    :
+                    (<>
+                    <ListaCirculaciones
+                        seleccion = {seleccion_circulacion}
+                        onSeleccion = {setSeleccionCirculacion}
+                        circulaciones={circulaciones.lista} />  
+                    <FichaCirculacion
+                        circulacion = {circulacion}
+                        eje = {eje}
+                        url = {url} />
+                    </>))}
+        </PanelLista> 
         )
 }
 
-const PanelEventos = styled.div`
-    display:grid;
-    padding:1px, 1px;
-    gap:2px;
-    grid-template-rows: 0fr 0fr;
-  `
 const PanelLista = styled.div`
-    display:grid;
-    gap:2px;
-    margin-left: 1px;
-    grid-template-columns: 0fr 1fr;
-    `
-const PanelMapaEventos = styled.div`
 display:grid;
-gap:1px;
-grid-template-rows: 35rem 1fr;
-`
-const PanelDetalle = styled.div`
-display:grid;
-gap:1px;
-grid-template-rows: 0fr 1fr;
+grid-template-columns: 0fr 0fr 1fr;
+gap:2px;
+width:100%;
 `
 export default CirculacionesEje;

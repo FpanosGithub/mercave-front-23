@@ -10,7 +10,7 @@ function TarjetaOtrosEjes ({otros_ejes, vagon, onVolver}) {
         };
 
     return(
-        <Card sx={{ minWidth: 110 }}>
+        <Card sx={{ minWidth: 120 }}>
             <CardContent>
                 <Typography sx={{ fontSize: 10 }} gutterBottom>
                         Otros ejes en:

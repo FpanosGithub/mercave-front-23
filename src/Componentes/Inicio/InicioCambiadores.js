@@ -8,7 +8,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
 function InicioCambiadores ({cambiadores, versiones}) {
-    console.log(cambiadores)
     return(
         <PanelBanner>
         

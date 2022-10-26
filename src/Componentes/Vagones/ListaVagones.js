@@ -7,17 +7,20 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import LensBlurOutlinedIcon from '@mui/icons-material/LensBlurOutlined';
+import { red, green } from '@mui/material/colors';
 
 const columns = [
   {id:'codigo',    label:'Vagón',     minWidth: 85},
   {id:'modelo',    label:'Tipo',      minWidth: 60},
+  {id:'owner',  label:'Owner',  minWidth: 70},
   {id:'keeper',    label:'Keeper',    minWidth: 70},
-  {id:'operador',  label:'Operador',  minWidth: 70},
-  {id:'mantenedor',label:'Mantenedor',minWidth: 70},
+  {id:'EEM',label:'E.E.M.',minWidth: 70},
   {id:'alarma',    label:'Alarma',    minWidth: 40},
 ];
 
 export default function ListaVagones({vagones, onSeleccion, onHover, setVerTodos}) {
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(9);
   const [selected, setSelected] = React.useState([]);
@@ -74,8 +77,10 @@ export default function ListaVagones({vagones, onSeleccion, onHover, setVerTodos
                       const value = vagon[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
+                          {typeof value === 'boolean'
+                            ? (value 
+                              ? (<LensBlurOutlinedIcon fontSize='small' sx={{color: red[500]}}/>)
+                              : (<LensBlurOutlinedIcon fontSize='small' sx={{color: green[500]}}/>))
                             : value}
                         </TableCell>
                       );

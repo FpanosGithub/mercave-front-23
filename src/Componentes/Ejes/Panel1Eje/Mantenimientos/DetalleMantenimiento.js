@@ -7,9 +7,7 @@ import Tarjeta33 from '../../../Varios/Tarjeta33';
 import LensBlurOutlinedIcon from '@mui/icons-material/LensBlurOutlined';
 import { pink, green } from '@mui/material/colors';
 
-function DetalleCambio ({cambio}){
-
-        console.log(cambio)
+function DetalleMantenimiento ({mantenimiento}){
 
         let fecha_corta = '2023-01-01'
         let hora = '12:00:00'
@@ -25,34 +23,24 @@ function DetalleCambio ({cambio}){
         let feam = 20
         let febm = 20
 
-        if (cambio) {
-                if (cambio.inicio) {
-                        fecha_corta = cambio.inicio.slice(0,10)
-                        hora = cambio.inicio.slice(11,19)}
-                if (cambio.alarma){alarma = cambio.alarma}
-                if (cambio.cambiador){cambiador = cambio.cambiador.codigo}
-                if (cambio.sentido){sentido = cambio.sentido}
-                if (cambio.V){V = cambio.V}
-                if (cambio.FV){FV = cambio.FV}
-                if (cambio.fdaM){fdaM = cambio.fdaM}
-                if (cambio.fdbM){fdbM = cambio.fdbM}
-                if (cambio.fcaM){fcaM = cambio.fcaM}
-                if (cambio.fcbM){fcbM = cambio.fcbM}
-                if (cambio.feam){feam = cambio.feam}
-                if (cambio.febm){febm = cambio.febm}}
+        if (mantenimiento) {
+                if (mantenimiento.inicio) {
+                        fecha_corta = mantenimiento.inicio.slice(0,10)
+                        hora = mantenimiento.inicio.slice(11,19)}
+                if (mantenimiento.alarma){mantenimiento = mantenimiento.alarma}}
 
         // Render JSX
         return (
         <Paper elevation = {3}>
                 <Paper elevation = {1} sx={{mt:0, p:1.5, mb:1}}>
                         <Typography color={green[800]} sx={{fontSize: 18, ml:2}}>
-                                DETALLE DEL CAMBIO: [ {cambio.id} ]
+                                DETALLE DEL MANTENIMIENTO: [ {mantenimiento.id} ]
                         </Typography>
                 </Paper>
                 <PanelDetalle>
                 <Card sx={{width:80, height:200}}>
                         <CardContent>
-                                <Typography sx={{ fontSize: 18, textAlign:'center', mt:-0.5, mb:1.2 }} color="green" gutterBottom>[ {cambio.id} ]</Typography>
+                                <Typography sx={{ fontSize: 18, textAlign:'center', mt:-0.5, mb:1.2 }} color="green" gutterBottom>[ {mantenimiento.id} ]</Typography>
                                 <Typography sx={{ fontSize: 16, mt:0, textAlign:'center'}} color="text.secondary" gutterBottom>Alarma</Typography>
                                 <Paper elevation = {1} sx={{ display: 'flex', alignContent: 'center', justifyContent: 'center', ml:0.8, mt:2, mb:3, width:40, height:35}}>
                                         {alarma ? 
@@ -118,4 +106,4 @@ display:grid;
 gap:2px;
 grid-template-columns: 0fr 1fr 1fr 1fr 1fr 1fr 1fr;
 `
-export default DetalleCambio;
+export default DetalleMantenimiento;

@@ -18,7 +18,9 @@ function Alarma ({tipo, activa}) {
             {(activa) ? (<LensBlurOutlinedIcon fontSize='large' sx={{ color: pink[500], mt:0.2 }}/>)
                       : (<LensBlurOutlinedIcon fontSize='large' sx={{ color: green[500], mt:0.2  }}/>)}
             </Paper>  
-            <Button size="small" variant="outlined" sx={{ fontSize: 14, textAlign:'center', ml:-1 }}>Reset</Button>
+            {(activa) ? (<Button size="small" variant="outlined" sx={{ fontSize: 14, textAlign:'center', ml:-1 }}>Reset</Button>)
+                      : (<Typography sx={{ fontSize: 16, mt:0, textAlign:'center'}} color="text.secondary" gutterBottom>NO</Typography>)}
+            
             </CardContent>
             </Card>
     )

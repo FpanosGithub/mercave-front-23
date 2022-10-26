@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import SelectorEventosVagon from '../Varios/SelectorEventosVagon';
+import SelectorEventosSlim from '../Varios/SelectorEventosSlim';
 
 
 
@@ -32,7 +32,7 @@ function LeyendaMapa ({ver_todos, onSeleccion, onHoverCirculaciones, codigo_vago
         <PanelGeneral>
         <Paper elevation = {2} sx={{m:0.4, p:1, minHeight:380, width:160}}>
         <PanelLeyenda>
-            <Typography color="text.secondary" sx={{fontSize: 18, textAlign:'center', mt:1, mb:1}}>
+            <Typography color="text.secondary" sx={{fontSize: 18, textAlign:'center', mt:1, mb:0}}>
                     Mapa
             </Typography> 
             <Typography color="text.primary" style={{color:"#255e24"}} sx={{fontSize: 16, textAlign:'center', mt:1, mb:0, mr:2, ml:2}}>
@@ -56,11 +56,10 @@ function LeyendaMapa ({ver_todos, onSeleccion, onHoverCirculaciones, codigo_vago
             {boton_todos ?
                 (
                 <>
-                <SelectorEventosVagon
+                <SelectorEventosSlim
                     rango = {rango}
                     setRango = {setRango}
-                    height = {220}
-                    width = {160}/>
+                    minWidth = {170}/>
                 <Button size="medium" variant="outlined" onClick = {HandleClick} sx ={{mt:1, mb:0, pl:2, pr:2, color:'green', height:40}}>Ver todos</Button>
                 </>
                 )

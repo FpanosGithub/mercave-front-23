@@ -19,14 +19,14 @@ function InicioActores ({actores}) {
         <Card sx={{ minWidth: 125, overflowY:'auto'  }}>
             <CardContent>
                 <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
-                    Operadores:
+                    Owners:
                 </Typography>
                 <List dense={false}>
-                {actores.operadores.map((operador, id)=>
+                {actores.owners.map((owner, id)=>
                     (
                     <ListItem disablePadding key = {id}>
                         <ListItemText 
-                            primary={operador.organizacion} 
+                            primary={owner.organizacion} 
                             primaryTypographyProps={{
                                 fontSize: 16,
                                 fontWeight: 'light',
@@ -46,11 +46,35 @@ function InicioActores ({actores}) {
                     keepers:
                 </Typography>
                 <List dense={false}>
-                {actores.operadores.map((operador, id)=>
+                {actores.keepers.map((keeper, id)=>
                     (
                     <ListItem disablePadding key = {id}>
                         <ListItemText 
-                            primary={operador.organizacion} 
+                            primary={keeper.organizacion} 
+                            primaryTypographyProps={{
+                                fontSize: 16,
+                                fontWeight: 'light',
+                                lineHeight: '12px',
+                                mb: '0px'}}
+                                />
+                    </ListItem>
+                    )
+                )}
+                </List>
+            </CardContent>
+        </Card>
+
+        <Card sx={{ minWidth: 140, overflowY:'auto' }}>
+            <CardContent>
+                <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
+                    E.E.M.:
+                </Typography>
+                <List dense={false}>
+                {actores.EEMs.map((EEM, id)=>
+                    (
+                    <ListItem disablePadding key = {id}>
+                        <ListItemText 
+                            primary={EEM.organizacion} 
                             primaryTypographyProps={{
                                 fontSize: 16,
                                 fontWeight: 'light',
@@ -71,30 +95,6 @@ function InicioActores ({actores}) {
                 </Typography>
                 <List dense={false}>
                 {actores.fabricantes.map((fabricante, id)=>
-                    (
-                    <ListItem disablePadding key = {id}>
-                        <ListItemText 
-                            primary={fabricante.organizacion} 
-                            primaryTypographyProps={{
-                                fontSize: 16,
-                                fontWeight: 'light',
-                                lineHeight: '12px',
-                                mb: '0px'}}
-                                />
-                    </ListItem>
-                    )
-                )}
-                </List>
-            </CardContent>
-        </Card>
-
-        <Card sx={{ minWidth: 140, overflowY:'auto' }}>
-            <CardContent>
-                <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
-                    Mantenedores:
-                </Typography>
-                <List dense={false}>
-                {actores.mantenedores.map((fabricante, id)=>
                     (
                     <ListItem disablePadding key = {id}>
                         <ListItemText 
