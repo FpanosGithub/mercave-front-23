@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import ListaAlarmas from './ListaAlarmas'
+
 
 function AlarmasEjes ({alarmas})
     {      

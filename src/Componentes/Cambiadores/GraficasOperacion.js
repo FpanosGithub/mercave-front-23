@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Paper from '@mui/material/Paper';
 import PrepararDatos from '../../Utilidades/PrepararDatosCambiosEje';
 import CabeceraGrafica from '../Varios/CabeceraGrafica';
 import HistogramaCambios from '../Varios/HistogramaCambios';

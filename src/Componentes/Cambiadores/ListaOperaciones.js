@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import LensBlurOutlinedIcon from '@mui/icons-material/LensBlurOutlined';
-import { red, grey, green, orange } from '@mui/material/colors';
+import { red, grey, green } from '@mui/material/colors';
 
 
 export default function ListaOperaciones({operaciones, onSeleccion}) {
