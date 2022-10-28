@@ -17,7 +17,7 @@ function FichaCambio ({cambios, cambio, onSeleccion}){
             seleccion = {cambio.id}
             onSeleccion = {onSeleccion}/>
         <GraficasCambios
-            eventos = {cambios}/>
+            cambios = {cambios}/>
     </PanelEventos>
     )
 }

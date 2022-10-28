@@ -11,7 +11,7 @@ function GraficoEncerrojamiento ({datos, minWidth}){
     <PanelGeneral>
         <CabeceraGrafica
           titulo = 'Encerrojamiento.'
-          subtitulo = 'Distribución Fuerza mínima  - kN -'
+          subtitulo = 'Distribución F. mín.(kN)'
           height = {65}/>
         <HistogramaCambios
           datos = {datos.encerrojamiento} 
@@ -19,14 +19,14 @@ function GraficoEncerrojamiento ({datos, minWidth}){
       <Resumen>
         <DatosCambioRueda
           rueda = 'A'
-          textoA = 'mínima'
-          valorA = {`${datos.feam} kN`}
+          textoA = 'mín.'
+          valorA = {datos.feam}
           textoB = 'pos.'
           valorB = {`${datos.deam} mm`}/>
         <DatosCambioRueda
           rueda = 'B'
-          textoA = 'mínima'
-          valorA = {`${datos.febm} kN`}
+          textoA = 'mín.'
+          valorA = {datos.febm}
           textoB = 'pos.'
           valorB = {`${datos.debm} mm`}/>  
       </Resumen>

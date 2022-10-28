@@ -19,7 +19,7 @@ function FichaCirculacion ({circulacion, eje, url}){
             const requestParams = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({'id_operacion': circulacion.id})
+                body: JSON.stringify({'id_circulacion': circulacion.id})
             }
             const getDataCambios = async () => {
                 eventosDispatcher({type:'CARGANDO'})

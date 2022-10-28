@@ -1,7 +1,6 @@
 function PrepararDatosCambios (cambios)
 {
-  console.log('!!!!!!!PrepararDatosCambios!!!!!!')
-  console.log(cambios)
+
     let datos = 
             {
               duracion_dias:0,

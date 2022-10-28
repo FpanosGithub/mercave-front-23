@@ -10,7 +10,7 @@ function GraficoDescerrojamiento ({datos, minWidth}){
         <PanelDescerrojamiento>
             <CabeceraGrafica
               titulo = 'Descerrojamiento.'
-              subtitulo = 'Distribución Fuerza Máxima   - kN -'
+              subtitulo = 'Distribución F. Máx.(kN)'
               height = {65}/>
             <HistogramaCambios
               datos = {datos.descerrojamiento} 
@@ -19,15 +19,15 @@ function GraficoDescerrojamiento ({datos, minWidth}){
             <DatosCambioRueda
               rueda = 'A'
               textoA = 'Media'
-              valorA = {`${datos.fda_med} kN`}
+              valorA = {datos.fda_med}
               textoB = 'Máx.'
-              valorB = {`${datos.fdaM} kN`} />
+              valorB = {datos.fdaM}/>
             <DatosCambioRueda
               rueda = 'B'
               textoA = 'Media'
-              valorA = {`${datos.fdb_med} kN`}
+              valorA = {datos.fdb_med}
               textoB = 'Máx.'
-              valorB = {`${datos.fdbM} kN`} />
+              valorB = {datos.fdbM}/>
           </Resumen>
         </PanelDescerrojamiento>
       </Paper>

@@ -6,17 +6,17 @@ import Typography from '@mui/material/Typography';
 function DatosCambioRueda ({rueda, textoA, valorA, textoB, valorB, colorA, colorB}){
   return(
     <PanelPrincipal>
-      <Card sx={{pl:7, pr:1, height:40}}>
+      <Card sx={{height:40}}>
         <CardContent>
-          <Typography sx={{ fontSize: 16, mt:-1, mb:0.5 }} color="text.primary" gutterBottom>
+          <Typography sx={{ fontSize: 16, mt:-1, mb:0.5, textAlign:'center' }} color="text.primary" gutterBottom>
             Rueda {rueda}
           </Typography>
         </CardContent>
       </Card>
       <PanelDatos>
-        <Card sx={{height:65}}>
+        <Card sx={{height:65, textAlign:'center' }}>
           <CardContent>
-            <Typography sx={{ fontSize: 16, mt:-1, mb:0 }} color="text.secondary" gutterBottom>
+            <Typography sx={{ fontSize: 14, mt:-1, mb:0 }} color="text.secondary" gutterBottom>
                 {textoA}
             </Typography>
             <Typography sx={{ fontSize: 16, mb:-2 }} color="text.primary">
@@ -24,9 +24,9 @@ function DatosCambioRueda ({rueda, textoA, valorA, textoB, valorB, colorA, color
             </Typography>
           </CardContent>
         </Card>
-        <Card sx={{height:65}}>
+        <Card sx={{height:65, textAlign:'center'}}>
           <CardContent>
-            <Typography sx={{ fontSize: 16, mt:-1, mb:0  }} color="text.secondary" gutterBottom>
+            <Typography sx={{ fontSize: 14, mt:-1, mb:0  }} color="text.secondary" gutterBottom>
                 {textoB}
             </Typography>
             <Typography sx={{ fontSize: 16, mb:-2 }} color="error">

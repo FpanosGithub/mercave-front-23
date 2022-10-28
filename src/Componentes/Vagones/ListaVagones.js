@@ -10,14 +10,6 @@ import TableRow from '@mui/material/TableRow';
 import LensBlurOutlinedIcon from '@mui/icons-material/LensBlurOutlined';
 import { red, green } from '@mui/material/colors';
 
-const columns = [
-  {id:'codigo',    label:'Vagón',     minWidth: 85},
-  {id:'modelo',    label:'Tipo',      minWidth: 60},
-  {id:'owner',  label:'Owner',  minWidth: 70},
-  {id:'keeper',    label:'Keeper',    minWidth: 70},
-  {id:'EEM',label:'E.E.M.',minWidth: 70},
-  {id:'alarma',    label:'Alarma',    minWidth: 40},
-];
 
 export default function ListaVagones({vagones, onSeleccion, onHover, setVerTodos}) {
 
@@ -51,14 +43,12 @@ export default function ListaVagones({vagones, onSeleccion, onHover, setVerTodos
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}>
-                      {column.label}
-                </TableCell>
-              ))}
+              <TableCell key={'codigo'}>Vagón</TableCell>
+              <TableCell key={'modelo'}>Tipo</TableCell>
+              <TableCell key={'fecha_ultimo_mant'}>Último Mant.</TableCell>
+              <TableCell key={'km_proximo_mant'}>Km proximo M</TableCell>
+              <TableCell key={'tipo_proximo_mant'}>Tipo proximo</TableCell>
+              <TableCell key={'alarma'}>Alarma</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -73,18 +63,18 @@ export default function ListaVagones({vagones, onSeleccion, onHover, setVerTodos
                       onClick={(event) => handleClick(event,vagon.id)}
                       onMouseOver={() => handleHover(vagon.id)}
                       selected={isItemSelected}>
-                    {columns.map((column) => {
-                      const value = vagon[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {typeof value === 'boolean'
-                            ? (value 
-                              ? (<LensBlurOutlinedIcon fontSize='small' sx={{color: red[500]}}/>)
-                              : (<LensBlurOutlinedIcon fontSize='small' sx={{color: green[500]}}/>))
-                            : value}
+                    <TableCell key='codigo'> {vagon.codigo} </TableCell>
+                    <TableCell key='modelo'> {vagon.modelo} </TableCell>
+                    <TableCell key='fecha_ultimo_mant'> {vagon.fecha_ultimo_mant} </TableCell>
+                    <TableCell key='km_proximo_mant'> {vagon.km_proximo_mant} </TableCell>
+                    <TableCell key='tipo_proximo_mant'> {vagon.tipo_proximo_mant} </TableCell>
+                    <TableCell key='alarma'> 
+                      {vagon.alarma?
+                            (<LensBlurOutlinedIcon fontSize='small' sx={{color: red[500]}}/>)
+                            :
+                            (<LensBlurOutlinedIcon fontSize='small' sx={{color: green[500]}}/>)
+                      }  
                         </TableCell>
-                      );
-                    })}
                   </TableRow>
                 );
               })}

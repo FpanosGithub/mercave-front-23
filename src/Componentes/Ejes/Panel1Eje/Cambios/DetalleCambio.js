@@ -9,8 +9,6 @@ import { pink, green } from '@mui/material/colors';
 
 function DetalleCambio ({cambio}){
 
-        console.log(cambio)
-
         let fecha_corta = '2023-01-01'
         let hora = '12:00:00'
         let alarma = 0

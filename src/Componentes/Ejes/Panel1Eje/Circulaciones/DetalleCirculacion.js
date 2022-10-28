@@ -48,11 +48,11 @@ export default function DetalleCirculacion({circulacion}) {
                         </Typography>
                 </Paper>
                 <PanelDetalle>
-                <Card sx={{width:80, height:200}}>
+                <Card sx={{width:90, height:200}}>
                         <CardContent>
                                 <Typography sx={{ fontSize: 18, textAlign:'center', mt:-0.5, mb:1.2 }} color="green" gutterBottom>[ {circulacion.id} ]</Typography>
                                 <Typography sx={{ fontSize: 16, mt:0, textAlign:'center'}} color="text.secondary" gutterBottom>Alarma</Typography>
-                                <Paper elevation = {1} sx={{ display: 'flex', alignContent: 'center', justifyContent: 'center', ml:0.8, mt:2, mb:3, width:40, height:35}}>
+                                <Paper elevation = {1} sx={{ display: 'flex', alignContent: 'center', justifyContent: 'center', ml:1, mt:2, mb:3, width:40, height:35}}>
                                 {alarma ? 
                                         (activa ?(<LensBlurOutlinedIcon fontSize='large' sx={{ color: pink[500], mt:0.2 }}/>)
                                                 :(<LensBlurOutlinedIcon fontSize='large' sx={{ color: grey[500], mt:0.2  }}/>))
@@ -60,7 +60,7 @@ export default function DetalleCirculacion({circulacion}) {
                                         (<LensBlurOutlinedIcon fontSize='large' sx={{ color: green[500], mt:0.2  }}/>)}
                                 </Paper>  
                                 {activa ? 
-                                        (<Button size="small" variant="outlined" sx={{ fontSize: 14, textAlign:'center', mt:0, ml:-0.4 }}>Reset</Button>)
+                                        (<Button size="small" variant="outlined" sx={{ fontSize: 14, textAlign:'center', mt:0, ml:-0.6 }}>Reset</Button>)
                                         :
                                         (alarma?
                                                 (<Typography sx={{ fontSize: 16, mt:0, textAlign:'center'}} color="text.secondary" gutterBottom>Inactiva</Typography>)    

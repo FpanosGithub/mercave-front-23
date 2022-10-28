@@ -57,7 +57,7 @@ export default function ListaCambios({cambios}) {
                       key={cambio.id}
                       onClick={(event) => handleClick(event,cambio.id)}
                       selected={isItemSelected}>
-                    <TableCell key='eje'> {cambio.eje.codigo} </TableCell>
+                    <TableCell key='eje'> {cambio.eje} </TableCell>
                     <TableCell key='alarma'> 
                       {cambio.alarma?
                             (<LensBlurOutlinedIcon fontSize='small' sx={{color: red[500]}}/>)

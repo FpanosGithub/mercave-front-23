@@ -11,7 +11,7 @@ function GraficoCambio ({datos, minWidth}){
     <PanelCambio>
         <CabeceraGrafica
           titulo = 'Cambio.'
-          subtitulo = 'Distribución Fuerza Máxima   - kN -'
+          subtitulo = 'Distribución F. Máx.(kN)'
           height = {65}/>
       <HistogramaCambios
           datos = {datos.cambio} 
@@ -20,15 +20,15 @@ function GraficoCambio ({datos, minWidth}){
         <DatosCambioRueda
           rueda = 'A'
           textoA = 'Media'
-          valorA = {`${datos.fca_med} kN`}
+          valorA = {datos.fca_med}
           textoB = 'Máx.'
-          valorB = {`${datos.fcaM} kN`}  />
+          valorB = {datos.fcaM}  />
         <DatosCambioRueda
           rueda = 'B'
           textoA = 'Media'
-          valorA = {`${datos.fcb_med} kN`}
+          valorA = {datos.fcb_med}
           textoB = 'Máx.'
-          valorB = {`${datos.fcbM} kN`} />
+          valorB = {datos.fcbM} />
       </Resumen>
     </PanelCambio>
     </Paper>

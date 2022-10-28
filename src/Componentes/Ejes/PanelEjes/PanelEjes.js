@@ -11,7 +11,7 @@ import MapaEjes from './MapaEjes';
 export default function PanelEjes ({filtro, filtro_dispatcher, actores, onSeleccion, ejes, alarmas, url}) {
 
         const [hover, setHover] = React.useState(-1)
-        
+        console.log(alarmas)
         return (
                 <>
                 {(ejes.cargando) ?
@@ -45,7 +45,8 @@ export default function PanelEjes ({filtro, filtro_dispatcher, actores, onSelecc
                                                         onHover = {setHover}
                                                         onSeleccion = {onSeleccion}/>    
                                                 <AlarmasEjes 
-                                                        alarmas = {alarmas.activas} />
+                                                        alarmas = {alarmas}
+                                                        onSeleccion = {onSeleccion} />
                                         </PanelMapa>
                                         
                                 </PanelLista> 
@@ -68,7 +69,7 @@ width:100%;
 `
 const PanelMapa = styled.div`
 display:grid;
-grid-template-rows: 1fr 0.6fr;
+grid-template-rows: 1fr 0fr;
 gap:2px;
 width:100%;
 `

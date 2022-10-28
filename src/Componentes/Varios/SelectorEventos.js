@@ -7,7 +7,7 @@ import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
 
 function SelectorEventos ({rango, setRango, height, width}) {
-    
+
     const [dia_inicio_interno, setDiaInicioInterno] = React.useState(rango.inicio.slice(0,10))
     const [dia_fin_interno, setDiaFinInterno] = React.useState(rango.fin.slice(0,10))
     const [hora_inicio_interno, setHoraInicioInterno] = React.useState(rango.inicio.slice(11,19))
@@ -41,7 +41,7 @@ function SelectorEventos ({rango, setRango, height, width}) {
         setDiaInicioInterno(rango.origen.slice(0,10))
         setHoraInicioInterno(rango.origen.slice(11,19))
         setDiaFinInterno(rango.hoy.slice(0,10))
-        setDiaFinInterno(rango.hoy.slice(11,19))
+        setHoraFinInterno(rango.hoy.slice(11,19))
         setNumMaxInterno(100)
         setTodos(event.target.checked)
         setColorBoton('error')

@@ -6,7 +6,13 @@ import Typography from '@mui/material/Typography';
 import { Map, ZoomControl, Marker, Overlay } from "pigeon-maps";
 import { stamenToner } from 'pigeon-maps/providers';
 
-const ColorEvento = (tipo)=>
+
+
+//------------//
+// COMPONENTE //
+//------------//
+function MapaCirculacion ({eventos, eje, hoverEventos, onHoverEventos,}) {
+    const ColorEvento = (tipo)=>
         {
             switch (tipo){
                 case 'CIRC':
@@ -28,18 +34,38 @@ const ColorEvento = (tipo)=>
                 default:
                     return 'violet';
             }
-
         }
 
-//------------//
-// COMPONENTE //
-//------------//
-function MapaCirculacion ({
-    eventos,
-    eje,
-    hoverEventos,
-    onHoverEventos,})
-    {
+    // Start / Stop y Hover
+    let coord_start = [eje.lat, eje.lng]
+    let id_start = -1
+    let coord_stop = [eje.lat, eje.lng]
+    let id_stop = -1
+    let coord_hover = [0,0]
+    let color_hover = ''
+    let texto1_hover = ''
+    let dia_hover = ''
+    let hora_hover = ''
+
+
+    eventos.forEach(evento => {
+        if (evento.evento === 'START') {
+            coord_start = [evento.lat, evento.lng]
+            id_start = evento.id
+        }
+        if (evento.evento === 'STOP') {
+            coord_stop = [evento.lat, evento.lng]
+            id_stop = evento.id
+        }
+        if (hoverEventos === evento.id) {
+            coord_hover = [evento.lat, evento.lng]
+            color_hover = ColorEvento(evento.evento)
+            texto1_hover = evento.evento
+            dia_hover = evento.dt.slice(0,10)
+            hora_hover = evento.dt.slice(11,19)
+        }
+
+    });
 
     return(
         <>
@@ -48,47 +74,60 @@ function MapaCirculacion ({
                 provider={stamenToner}
                 dprs={[1, 2]} 
                 defaultHeight={400} 
-                defaultCenter={[40.4200, -3.5800]} 
+                defaultCenter={[eje.lat, eje.lng]} 
                 defaultZoom={6} 
                 attribution = {false}
                 metaWheelZoom = {true}>
                 <ZoomControl />
-                <Marker 
-                    width={40} 
-                    color = 'red'
-                    anchor={[eje.lat, eje.lng]} 
-                    />)
-                {eventos.map((evento)=>(
-                    (hoverEventos !== evento.id)?
-                    (<Marker 
-                        key = {evento.id}
+                {eventos.map((evento,id)=>(
+                    <Marker 
+                        key = {id}
                         width={30} 
-                        color = {()=>ColorEvento(evento.evento)}
+                        color = 'blue'
                         anchor={[evento.lat, evento.lng]} 
                         onMouseOver={() => onHoverEventos(evento.id)}
-                        />)
-                    :
-                    (<>
+                        onClick = {() => onHoverEventos(-1)}
+                        />))}
                     <Marker 
-                        key = {evento.id}
-                        width={30} 
-                        color = {()=>ColorEvento(evento.evento)}
-                        anchor={[evento.lat, evento.lng]} 
-                        onMouseOver={() => onHoverEventos(evento.id)}/>
-                    <Overlay anchor={[evento.lat, evento.lng]}>
-                        <Card sx={{ width:140, height:55}}>
+                        width={40} 
+                        color = 'red'
+                        anchor={[eje.lat, eje.lng]} 
+                        onClick = {() => onHoverEventos(-1)}
+                        />
+                    <Marker 
+                        width={40} 
+                        color = 'green'
+                        anchor={coord_start}
+                        onMouseOver={() => onHoverEventos(id_start)} 
+                        />
+                     <Marker 
+                        width={40} 
+                        color = 'red'
+                        anchor={coord_stop}
+                        onMouseOver={() => onHoverEventos(id_stop)}
+                        />
+                    <Marker 
+                        width={40} 
+                        color = {color_hover}
+                        anchor={coord_hover}
+                        />
+                    <Overlay 
+                        anchor={coord_hover}>
+                        <Card sx={{ width:120, height:80}} onClick = {() => onHoverEventos(-1)}>
                             <CardContent>
-                            <Typography sx={{ fontSize: 14, mt:-0.7, ml:-0.6, textAlign:'center' }} color={()=>ColorEvento(evento.evento)} gutterBottom>
-                                {evento.evento}
+                            <Typography sx={{ fontSize: 14, mt:-0.7, ml:-0.6, textAlign:'center' }} color="darkgreen" gutterBottom>
+                                {texto1_hover}
                             </Typography>
-                            <Typography sx={{ fontSize: 10, mt:-0.7, ml:-0.6, textAlign:'center' }} color={()=>ColorEvento(evento.evento)} gutterBottom>
-                                {evento.dt}
+                            <Typography sx={{ fontSize: 14, mt:-0.7, ml:-0.6, textAlign:'center' }} color="darkgreen" gutterBottom>
+                                {dia_hover}
+                            </Typography>
+                            <Typography sx={{ fontSize: 14, mt:-0.7, ml:-0.6, textAlign:'center' }} color="darkgreen" gutterBottom>
+                                {hora_hover}
                             </Typography>
                             </CardContent>
                         </Card>
-                    </Overlay>
-                    </>)
-                    ))}      
+                    </Overlay> 
+                    
             </Map>
         </PanelMapa>
         </>

@@ -1,97 +1,65 @@
-import * as React from 'react';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import styled from 'styled-components';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 
-const columns = [
-  {id: 'id', label: 'ID', minWidth: 20},
-  {id: 'eje',label: 'Eje', minWidth: 45, align:'center'},
-  {id: 'dt', label: 'Dia/Hora',minWidth: 90},
-  {id: 'tipo',label: 'Tipo', minWidth: 50},
-  {id: 'mensaje',label: 'mensaje', minWidth: 100},
-];
-
-export default function ListaAlarmas({alarmas, onSeleccion}) {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(2);
-  const [selected, setSelected] = React.useState([]);
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-
-  const handleClick = (event, id) => {
-    setSelected(id)
-//    onSeleccion ({type:'SELECCIONAR_EJE', payload:id})
-  };
-
-  const isSelected = (id) => selected === id;
-
-  return (
-    <>
-    <Paper sx={{ overflow: 'hidden' }}>
-      <TableContainer sx={{ height: 205 }}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}>
-                      {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {alarmas
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((eje) => {
-                const isItemSelected = isSelected(eje.id);
-                return (
-                  <TableRow 
-                      hover role="checkbox" 
-                      tabIndex={-1} 
-                      key={eje.id}
-                      onClick={(event) => handleClick(event,eje.id)}
-                      selected={isItemSelected}>
-                    {columns.map((column) => {
-                      const value = eje[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[]}
-        component="div"
-        count={alarmas.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </Paper>
-    </>
-  );
+function ListaAlarmas ({alarmas, onSeleccion}) {
+    console.log(alarmas)
+    const colorAlarma = (tipo)=> {
+        if (tipo === 'CAMBIO') {return 'orange'}
+        else if (tipo === 'CIRCULACION') {return 'grey'}
+        else {return 'purple'}
+    }
+    
+    return(
+    <PanelListaLista>
+        <Card sx={{ minWidth: 250, overflowY:'auto', pl:2, pr:1}}>
+            <CardContent>
+                <List dense={false} sx={{mt:-2, mb:1, pb:2}}>
+                    {alarmas.activas.map((alarma, id)=>
+                    (
+                    <ListItem disablePadding sx= {{ml:0}} key={id}>
+                        <ListItemText 
+                            primary={`Eje ${alarma.eje.codigo} - ${alarma.tipo} - ${alarma.mensaje}  - ACTIVA`}
+                            secondary={`Día: ${alarma.dt.slice(0,10)} - Hora: ${alarma.dt.slice(11,20)}`}
+                                primaryTypographyProps={{
+                                            fontSize: 14,
+                                            fontWeight: 'light',
+                                            lineHeight: '16px',
+                                            color:'darkred',
+                                            mb: '0px'}}
+                                        />
+                                </ListItem>
+                    )
+                    )}
+                    {alarmas.resueltas.map((alarma, id)=>
+                    (
+                    <ListItem disablePadding sx= {{ml:0}} key={id}>
+                        <ListItemText 
+                            primary={`EJE ${alarma.eje.codigo} - ${alarma.tipo} - ${alarma.mensaje} - RESUELTA - ${alarma.informe_solucion}`}
+                            secondary={`Día: ${alarma.dt.slice(0,10)} - Hora: ${alarma.dt.slice(11,20)}`}
+                            primaryTypographyProps={{
+                                            fontSize: 14,
+                                            fontWeight: 'light',
+                                            lineHeight: '16px',
+                                            color:`${colorAlarma(alarma.tipo)}`,
+                                            mb: '0px'}}
+                                        />
+                    </ListItem>))}
+                </List>      
+            </CardContent>
+        </Card>
+    </PanelListaLista>
+    )
 }
+
+
+const PanelListaLista = styled.div`
+    display:grid;
+    overflow-y:scroll;
+    width:100%;
+    height:200px;
+`
+export default ListaAlarmas

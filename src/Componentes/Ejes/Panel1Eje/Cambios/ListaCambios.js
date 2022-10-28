@@ -43,7 +43,8 @@ export default function ListaCambios({cambios, seleccion, onSeleccion}) {
           <TableHead>
             <TableRow>
               <TableCell key={'id'}>Id</TableCell>
-              <TableCell key={'cambiador'}>Fecha Inic.</TableCell>
+              <TableCell key={'cambiador'}>Cambiador</TableCell>
+              <TableCell key={'fecha'}>Fecha</TableCell>
               <TableCell key={'alarma'}>Alarma</TableCell>
               <TableCell key={'fdM'}>F.D.Max</TableCell>
               <TableCell key={'fcM'}>F.C.Max</TableCell>
@@ -63,7 +64,8 @@ export default function ListaCambios({cambios, seleccion, onSeleccion}) {
                       onClick={() => handleClick(cambio.id)}
                       selected={isItemSelected}>
                     <TableCell key='id'> {cambio.id} </TableCell>
-                    <TableCell key='cambiador'> {cambio.cambiador.codigo} </TableCell>
+                    <TableCell key='cambiador'> {cambio.operacion.cambiador.codigo} </TableCell>
+                    <TableCell key='fecha'> {cambio.inicio.slice(0,10)} </TableCell>
                     <TableCell key='alarma'> 
                       {cambio.alarma?
                         (<LensBlurOutlinedIcon fontSize='small' sx={{color: red[500]}}/>)

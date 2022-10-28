@@ -11,7 +11,7 @@ import { stamenToner } from 'pigeon-maps/providers';
 function MapaCambios ({ cambios, seleccion, onSeleccion}){
     
     let punto_violeta = [0, 0]
-    let sentido_violeta = ''
+    let cambiador_violeta = ''
     let num_violeta = ''
     let dt_violeta = ''
     let color = 'purple'
@@ -19,9 +19,9 @@ function MapaCambios ({ cambios, seleccion, onSeleccion}){
         {
         cambios.forEach((cambio)=> {
         if (seleccion === cambio.id) {
-            punto_violeta = [cambio.cambiador.lat, cambio.cambiador.lng]
-            sentido_violeta = cambio.sentido
-            num_violeta = cambio.num_cambio_eje
+            punto_violeta = [cambio.operacion.cambiador.lat, cambio.operacion.cambiador.lng]
+            cambiador_violeta = cambio.operacion.cambiador.codigo
+            num_violeta = cambio.id
             dt_violeta = cambio.inicio.slice(0,10)
             if (cambio.alarma) {color = 'red'}        
             }
@@ -44,7 +44,7 @@ function MapaCambios ({ cambios, seleccion, onSeleccion}){
                 key = {cambios.id}
                 width={30} 
                 color = 'blue'
-                anchor={[cambio.cambiador.lat, cambio.cambiador.lng]} 
+                anchor={[cambio.operacion.cambiador.lat, cambio.operacion.cambiador.lng]} 
                 onMouseOver={() => onSeleccion(cambio.id)} />)
             :
             ('')
@@ -54,16 +54,13 @@ function MapaCambios ({ cambios, seleccion, onSeleccion}){
             color = {color}
             anchor={punto_violeta} />
         <Overlay anchor={punto_violeta}>
-            <Card sx={{ width:140, height:155}}>
+            <Card sx={{ width:120, height:60}}>
             <CardContent>
                 <Typography sx={{ fontSize: 14, mt:-0.7, ml:-0.6, textAlign:'center' }} color={color} gutterBottom>
-                    {num_violeta}
+                    {num_violeta} - {cambiador_violeta}
                 </Typography>
-                <Typography sx={{ fontSize: 10, mt:-0.7, ml:-0.6, textAlign:'center' }} color={color} gutterBottom>
+                <Typography sx={{ fontSize: 12, mt:-0.7, ml:-0.6, textAlign:'center' }} color={color} gutterBottom>
                     {dt_violeta}
-                </Typography>
-                <Typography sx={{ fontSize: 10, mt:-0.7, ml:-0.6, textAlign:'center' }} color={color} gutterBottom>
-                    {sentido_violeta}
                 </Typography>
             </CardContent>
             </Card>

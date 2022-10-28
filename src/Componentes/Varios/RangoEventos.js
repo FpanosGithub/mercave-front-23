@@ -19,9 +19,9 @@ export default function RangoEventos({rango, setRango, mostrar, onMostrar}) {
         return (<>
         <PanelSelector>
         <Paper elevation ={2} sx={{mb:0}}>
-                <Button size="big" variant='outlined' onClick = {()=>onMostrar('Circulaciones')} sx={{ color:`${color1}`, fontSize: 16, textAlign:'center', ml:1, mt:1, width:190 }}>Circulaciones</Button>
-                <Button size="big" variant='outlined' onClick = {()=>onMostrar('Cambios')} sx={{ color:`${color2}`, fontSize: 16, textAlign:'center', ml:1, mt:0.5, width:190 }}>Cambios</Button>
-                <Button size="big" variant='outlined' onClick = {()=>onMostrar('Mantenimientos')} sx={{ color:`${color3}`, fontSize: 16, textAlign:'center', ml:1, mt:0.5, mb:1, width:190 }}>Mantenimientos</Button>
+                <Button size="big" variant='contained' onClick = {()=>onMostrar('Circulaciones')} sx={{  fontSize: 16, textAlign:'center', ml:1, mt:1, width:190 }}>Circulaciones</Button>
+                <Button size="big" variant='contained' onClick = {()=>onMostrar('Cambios')} sx={{  fontSize: 16, textAlign:'center', ml:1, mt:0.5, width:190 }}>Cambios</Button>
+                <Button size="big" variant='contained' onClick = {()=>onMostrar('Mantenimientos')} sx={{  fontSize: 16, textAlign:'center', ml:1, mt:0.5, mb:1, width:190 }}>Mantenimientos</Button>
         </Paper>
         <CabeceraGrafica
                 titulo = 'Rango' 
