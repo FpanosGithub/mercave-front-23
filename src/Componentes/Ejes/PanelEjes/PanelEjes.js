@@ -63,7 +63,7 @@ gap:2px;
 `
 const PanelLista = styled.div`
 display:grid;
-grid-template-columns: 0fr 1fr;
+grid-template-columns: 1fr 0.7fr;
 gap:2px;
 width:100%;
 `

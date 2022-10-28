@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import adif from '../../Static/arte/logoMercave.jpg'
 
-const pages = ['Vagones','Ejes','Cambios',];
+const pages = ['Vagones','Ejes','Cambiadores',];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const ResponsiveAppBar = ({onClick}) => {

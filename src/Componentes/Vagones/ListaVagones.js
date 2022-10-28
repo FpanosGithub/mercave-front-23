@@ -46,8 +46,8 @@ export default function ListaVagones({vagones, onSeleccion, onHover, setVerTodos
               <TableCell key={'codigo'}>Vagón</TableCell>
               <TableCell key={'modelo'}>Tipo</TableCell>
               <TableCell key={'fecha_ultimo_mant'}>Último Mant.</TableCell>
-              <TableCell key={'km_proximo_mant'}>Km proximo M</TableCell>
-              <TableCell key={'tipo_proximo_mant'}>Tipo proximo</TableCell>
+              <TableCell key={'km_proximo_mant'}>Km-&gt;Mto.</TableCell>
+              <TableCell key={'tipo_proximo_mant'}>Tipo-&gt;Mto.</TableCell>
               <TableCell key={'alarma'}>Alarma</TableCell>
             </TableRow>
           </TableHead>

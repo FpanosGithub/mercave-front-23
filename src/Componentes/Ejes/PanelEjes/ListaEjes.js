@@ -7,18 +7,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import LensBlurOutlinedIcon from '@mui/icons-material/LensBlurOutlined';
+import { red, green } from '@mui/material/colors';
 
-const columns = [
-  {id: 'codigo', label: 'Eje', minWidth: 45},
-  {id: 'version',label: 'Versión', minWidth: 65},
-  {id: 'km', label: 'Kilometros', align: 'right', minWidth: 50},
-  {id: 'num_cambios',label: 'Cambios', align: 'right', minWidth: 40},
-  {id: 'keeper',label: 'Keeper', minWidth: 60},
-  {id: 'owner',label: 'Owner', minWidth: 60},
-  {id: 'fabricante',label: 'Fabricante', minWidth: 60},
-  {id: 'EEM',label: 'E.E.M.', minWidth: 60},
-  {id: 'vagon',label: 'Vagón', minWidth: 90},
-];
 
 export default function ListaEjes({ejes, onSeleccion, onHover}) {
   const [page, setPage] = React.useState(0);
@@ -48,19 +39,19 @@ export default function ListaEjes({ejes, onSeleccion, onHover}) {
 
   return (
     <>
-    <Paper sx={{ width: 890, overflow: 'hidden' }}>
-      <TableContainer sx={{ height: 700 }}>
+    <Paper sx={{ minWidth: 600, overflow: 'hidden' }}>
+      <TableContainer sx={{ height: 760 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}>
-                      {column.label}
-                </TableCell>
-              ))}
+            <TableCell key={'codigo'}>Eje</TableCell>
+              <TableCell key={'version'}>Version</TableCell>
+              <TableCell key={'vagon'}>Vagón</TableCell>
+              <TableCell key={'km'}>Km Tot</TableCell>
+              <TableCell key={'num_cambios'}>Cambios</TableCell>
+              <TableCell key={'fecha_ultimo_mant'}>Último Mant.</TableCell>
+              <TableCell key={'km_proximo_mant'}>Km-&gt;Mto.</TableCell>
+              <TableCell key={'alarma'}>Alarma</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -76,16 +67,20 @@ export default function ListaEjes({ejes, onSeleccion, onHover}) {
                       onClick={(event) => handleClick(event,eje.id)}
                       onMouseOver={() => handleHover(eje.id)}
                       selected={isItemSelected}>
-                    {columns.map((column) => {
-                      const value = eje[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
-                            : value}
+                    <TableCell key='codigo'> {eje.codigo} </TableCell>
+                    <TableCell key='version'> {eje.version} </TableCell>
+                    <TableCell key={'vagon'}>{eje.vagon}</TableCell>
+                    <TableCell key={'km'}>{eje.km}</TableCell>
+                    <TableCell key={'num_cambios'}>{eje.num_cambios}</TableCell>
+                    <TableCell key='fecha_ultimo_mant'> {eje.fecha_ultimo_mant} </TableCell>
+                    <TableCell key='km_proximo_mant'> {eje.km_proximo_mant} </TableCell>
+                    <TableCell key='alarma'> 
+                      {(eje.alarma_temp||eje.alarma_aceleraciones||eje.alarma_cambio||eje.alarma_mantenimiento)?
+                            (<LensBlurOutlinedIcon fontSize='small' sx={{color: red[500]}}/>)
+                            :
+                            (<LensBlurOutlinedIcon fontSize='small' sx={{color: green[500]}}/>)
+                      }  
                         </TableCell>
-                      );
-                    })}
                   </TableRow>
                 );
               })}
