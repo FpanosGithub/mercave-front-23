@@ -3,7 +3,6 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import CabeceraGrafica from './CabeceraGrafica'
 import SelectorEventos from './SelectorEventos'
-import {grey, green} from '@mui/material/colors';
 
 
 export default function RangoEventos({rango, setRango, mostrar, onMostrar}) {
