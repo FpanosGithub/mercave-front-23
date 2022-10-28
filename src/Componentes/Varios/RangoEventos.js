@@ -8,13 +8,13 @@ import {grey, green} from '@mui/material/colors';
 
 export default function RangoEventos({rango, setRango, mostrar, onMostrar}) {
         
-        let color1 = grey[500]
-        let color2 = grey[500]
-        let color3 = grey[500]
+//        let color1 = grey[500]
+//        let color2 = grey[500]
+//        let color3 = grey[500]
 
-        if (mostrar === 'Circulaciones'){color1 = green[700]}
-        if (mostrar === 'Cambios'){color2 = green[700]}
-        if (mostrar === 'Mantenimientos'){color3 = green[700]}
+//        if (mostrar === 'Circulaciones'){color1 = green[700]}
+//        if (mostrar === 'Cambios'){color2 = green[700]}
+//        if (mostrar === 'Mantenimientos'){color3 = green[700]}
 
         return (<>
         <PanelSelector>
