@@ -11,7 +11,6 @@ import MapaEjes from './MapaEjes';
 export default function PanelEjes ({filtro, filtro_dispatcher, actores, onSeleccion, ejes, alarmas, url}) {
 
         const [hover, setHover] = React.useState(-1)
-        console.log(alarmas)
         return (
                 <>
                 {(ejes.cargando) ?

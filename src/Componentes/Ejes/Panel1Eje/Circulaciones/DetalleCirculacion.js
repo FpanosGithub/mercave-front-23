@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 import Paper from '@mui/material/Paper';
 import Card from '@mui/material/Card';
-import Button from '@mui/material/Button';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Tarjeta33 from '../../../Varios/Tarjeta33';
 import LensBlurOutlinedIcon from '@mui/icons-material/LensBlurOutlined';
-import { pink, grey, green } from '@mui/material/colors';
+import { pink, green } from '@mui/material/colors';
 
 export default function DetalleCirculacion({circulacion}) {
         const fecha_larga_inicial = circulacion.dt_inicial
@@ -20,7 +19,6 @@ export default function DetalleCirculacion({circulacion}) {
         let coord_final = '[40.4200, -3.5800]'
         let lugar_final = 'Algeciras'
         let alarma = 0
-        let activa = 0
         let en_vagon = 0
         let en_bogie = 0
         
@@ -30,13 +28,12 @@ export default function DetalleCirculacion({circulacion}) {
                 fecha_corta_final = fecha_larga_final.slice(0,10)
                 hora_final = fecha_larga_final.slice(11,19)
                 alarma = circulacion.alarma
-                activa = circulacion.alarma_activa
                 en_vagon = circulacion.en_vagon
                 en_bogie = circulacion.en_bogie
                 lugar_inicial = circulacion.punto_red_inicial
                 lugar_final = circulacion.punto_red_final
-                coord_inicial = `[${circulacion.lat_inicial},${circulacion.lng_inicial}]`
-                coord_final = `[${circulacion.lat_final},${circulacion.lng_final}]`
+                coord_inicial = `[${circulacion.lat_inicial.toFixed(4)}, ${circulacion.lng_inicial.toFixed(4)}]`
+                coord_final = `[${circulacion.lat_final.toFixed(4)}, ${circulacion.lng_final.toFixed(4)}]`
         }
 
         // Render JSX
@@ -48,24 +45,16 @@ export default function DetalleCirculacion({circulacion}) {
                         </Typography>
                 </Paper>
                 <PanelDetalle>
-                <Card sx={{width:90, height:200}}>
+                <Card sx={{width:100, height:160}}>
                         <CardContent>
                                 <Typography sx={{ fontSize: 18, textAlign:'center', mt:-0.5, mb:1.2 }} color="green" gutterBottom>[ {circulacion.id} ]</Typography>
                                 <Typography sx={{ fontSize: 16, mt:0, textAlign:'center'}} color="text.secondary" gutterBottom>Alarma</Typography>
-                                <Paper elevation = {1} sx={{ display: 'flex', alignContent: 'center', justifyContent: 'center', ml:1, mt:2, mb:3, width:40, height:35}}>
+                                <Paper elevation = {1} sx={{ display: 'flex', alignContent: 'center', justifyContent: 'center', ml:1.5, mt:2, mb:0, width:40, height:35}}>
                                 {alarma ? 
-                                        (activa ?(<LensBlurOutlinedIcon fontSize='large' sx={{ color: pink[500], mt:0.2 }}/>)
-                                                :(<LensBlurOutlinedIcon fontSize='large' sx={{ color: grey[500], mt:0.2  }}/>))
+                                        (<LensBlurOutlinedIcon fontSize='large' sx={{ color: pink[500], mt:0.2 }}/>)
                                         :
                                         (<LensBlurOutlinedIcon fontSize='large' sx={{ color: green[500], mt:0.2  }}/>)}
                                 </Paper>  
-                                {activa ? 
-                                        (<Button size="small" variant="outlined" sx={{ fontSize: 14, textAlign:'center', mt:0, ml:-0.6 }}>Reset</Button>)
-                                        :
-                                        (alarma?
-                                                (<Typography sx={{ fontSize: 16, mt:0, textAlign:'center'}} color="text.secondary" gutterBottom>Inactiva</Typography>)    
-                                                :
-                                                (<Typography sx={{ fontSize: 16, mt:0, textAlign:'center'}} color="text.secondary" gutterBottom>NO</Typography>))}
                         </CardContent>
                 </Card>
                 <Tarjeta33

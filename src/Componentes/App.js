@@ -93,7 +93,7 @@ function App() {
         url = {url}
         />
           }
-    if (seleccion.menu === 'Cambios') 
+    if (seleccion.menu === 'Cambiadores') 
       { return <ContainerCambiadores 
         //!!!!//
         filtro = {filtro_cambiadores}

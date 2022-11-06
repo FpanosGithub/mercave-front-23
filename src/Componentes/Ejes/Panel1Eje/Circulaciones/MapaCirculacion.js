@@ -90,7 +90,7 @@ function MapaCirculacion ({eventos, eje, hoverEventos, onHoverEventos,}) {
                         />))}
                     <Marker 
                         width={40} 
-                        color = 'red'
+                        color = 'purple'
                         anchor={[eje.lat, eje.lng]} 
                         onClick = {() => onHoverEventos(-1)}
                         />

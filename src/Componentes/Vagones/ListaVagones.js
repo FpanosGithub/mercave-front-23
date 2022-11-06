@@ -66,7 +66,11 @@ export default function ListaVagones({vagones, onSeleccion, onHover, setVerTodos
                     <TableCell key='codigo'> {vagon.codigo} </TableCell>
                     <TableCell key='modelo'> {vagon.modelo} </TableCell>
                     <TableCell key='fecha_ultimo_mant'> {vagon.fecha_ultimo_mant} </TableCell>
-                    <TableCell key='km_proximo_mant'> {vagon.km_proximo_mant} </TableCell>
+                    {(vagon.km_proximo_mant > 2000)?
+                      <TableCell key='km_proximo_mant'> {Math.round(vagon.km_proximo_mant)} </TableCell>
+                      :
+                      <TableCell key='km_proximo_mant' sx={{ color: 'red' }}> {Math.round(vagon.km_proximo_mant)} </TableCell>
+                    }
                     <TableCell key='tipo_proximo_mant'> {vagon.tipo_proximo_mant} </TableCell>
                     <TableCell key='alarma'> 
                       {vagon.alarma?

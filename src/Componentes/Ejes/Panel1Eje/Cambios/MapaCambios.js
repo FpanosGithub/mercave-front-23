@@ -54,7 +54,7 @@ function MapaCambios ({ cambios, seleccion, onSeleccion}){
             color = {color}
             anchor={punto_violeta} />
         <Overlay anchor={punto_violeta}>
-            <Card sx={{ width:120, height:60}}>
+            <Card sx={{ width:140, height:60}}>
             <CardContent>
                 <Typography sx={{ fontSize: 14, mt:-0.7, ml:-0.6, textAlign:'center' }} color={color} gutterBottom>
                     {num_violeta} - {cambiador_violeta}

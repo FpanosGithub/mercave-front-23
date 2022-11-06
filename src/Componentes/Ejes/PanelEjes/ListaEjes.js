@@ -70,10 +70,14 @@ export default function ListaEjes({ejes, onSeleccion, onHover}) {
                     <TableCell key='codigo'> {eje.codigo} </TableCell>
                     <TableCell key='version'> {eje.version} </TableCell>
                     <TableCell key={'vagon'}>{eje.vagon}</TableCell>
-                    <TableCell key={'km'}>{eje.km}</TableCell>
+                    <TableCell key={'km'}>{Math.round(eje.km)}</TableCell>
                     <TableCell key={'num_cambios'}>{eje.num_cambios}</TableCell>
                     <TableCell key='fecha_ultimo_mant'> {eje.fecha_ultimo_mant} </TableCell>
-                    <TableCell key='km_proximo_mant'> {eje.km_proximo_mant} </TableCell>
+                    {(eje.km_proximo_mant > 2000)?
+                      <TableCell key='km_proximo_mant'> {Math.round(eje.km_proximo_mant)} </TableCell>
+                      :
+                      <TableCell key='km_proximo_mant' sx={{ color: 'red' }}> {Math.round(eje.km_proximo_mant)} </TableCell>
+                    }
                     <TableCell key='alarma'> 
                       {(eje.alarma_temp||eje.alarma_aceleraciones||eje.alarma_cambio||eje.alarma_mantenimiento)?
                             (<LensBlurOutlinedIcon fontSize='small' sx={{color: red[500]}}/>)

@@ -21,14 +21,14 @@ function GraficoEncerrojamiento ({datos, minWidth}){
           rueda = 'A'
           textoA = 'mín.'
           valorA = {datos.feam}
-          textoB = 'pos.'
-          valorB = {`${datos.deam} mm`}/>
+          textoB = 'mm'
+          valorB = {datos.deam}/>
         <DatosCambioRueda
           rueda = 'B'
           textoA = 'mín.'
           valorA = {datos.febm}
-          textoB = 'pos.'
-          valorB = {`${datos.debm} mm`}/>  
+          textoB = 'mm'
+          valorB = {datos.debm}/>  
       </Resumen>
     </PanelGeneral>
     </Paper>

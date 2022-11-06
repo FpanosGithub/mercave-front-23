@@ -101,7 +101,7 @@ function Panel1Eje ({eje, ejes_mismo_vagon, onVolver, url}){
 
 const PanelContenido = styled.div`
   display:grid;
-  grid-template-rows: 10rem 0fr 0fr;
+  grid-template-rows: 10rem 1fr;
   gap: 2px;
   min-height: 100%;
   width:100%;

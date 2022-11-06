@@ -6,14 +6,6 @@ import SelectorEventos from './SelectorEventos'
 
 
 export default function RangoEventos({rango, setRango, mostrar, onMostrar}) {
-        
-//        let color1 = grey[500]
-//        let color2 = grey[500]
-//        let color3 = grey[500]
-
-//        if (mostrar === 'Circulaciones'){color1 = green[700]}
-//        if (mostrar === 'Cambios'){color2 = green[700]}
-//        if (mostrar === 'Mantenimientos'){color3 = green[700]}
 
         return (<>
         <PanelSelector>
@@ -39,7 +31,7 @@ const PanelSelector = styled.div`
 display:grid;
 padding:1px, 1px;
 margin-left: 1px;
-margin-bottom: 1px;
+margin-bottom: 3px;
 gap:1px;
 grid-template-rows: 0fr 0fr 1fr;
 `

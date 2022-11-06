@@ -3,7 +3,7 @@ import InicioActores from './InicioActores';
 import InicioEjes from './InicioEjes';
 import InicioVagones from './InicioVagones';
 import InicioCambiadores from './InicioCambiadores';
-import InicioAlarmas from './InicioAlarmas V2';
+import InicioAlarmas from './InicioAlarmas copy';
 import Fallback from '../Varios/Fallback';
 import BannerMercave from '../Varios/BannerMercave';
 
@@ -14,6 +14,22 @@ function Inicio ({ejes, vagones, actores, alarmas})
     return (
     <>
         <BannerMercave height = {180} imagen = 'arte/homeCabecera.jpg'/>
+        {alarmas.cargando ?
+            (<Fallback
+                elemento = 'Alarmas' 
+                modo = 'CARGANDO'
+                imagen = 'arte/alarmasImagen.jpg'/> )
+            :                                       
+            (alarmas.error ?
+                (<Fallback
+                    elemento = 'Alarmas' 
+                    modo = 'ERROR'
+                    imagen = 'arte/alarmasImagen.jpg'/>)
+                :
+                (<InicioAlarmas
+                    alarmas = {alarmas} />)
+            )
+        }
         {actores.cargando ?
             (<Fallback
                 elemento = 'Actores Mercave' 
@@ -66,13 +82,13 @@ function Inicio ({ejes, vagones, actores, alarmas})
                     imagen = 'arte/vagonesImagen.jpg'/>)
             )
         }
-        {vagones.cargando ?
+        {actores.cargando ?
             (<Fallback
                 elemento = 'Cambiadores' 
                 modo = 'CARGANDO'
                 imagen = 'arte/cambiadoresImagen.jpg'/> )
             :                                       
-            (vagones.error ?
+            (actores.error ?
                 (<Fallback
                     elemento = 'Cambiadores' 
                     modo = 'ERROR'
@@ -81,22 +97,6 @@ function Inicio ({ejes, vagones, actores, alarmas})
                 (<InicioCambiadores
                     cambiadores = {actores.cambiadores} 
                     versiones = {actores.versiones_cambiadores}/>)
-            )
-        }
-        {alarmas.cargando ?
-            (<Fallback
-                elemento = 'Alarmas' 
-                modo = 'CARGANDO'
-                imagen = 'arte/alarmasImagen.jpg'/> )
-            :                                       
-            (alarmas.error ?
-                (<Fallback
-                    elemento = 'Alarmas' 
-                    modo = 'ERROR'
-                    imagen = 'arte/alarmasImagen.jpg'/>)
-                :
-                (<InicioAlarmas
-                    alarmas = {alarmas} />)
             )
         }
     </>

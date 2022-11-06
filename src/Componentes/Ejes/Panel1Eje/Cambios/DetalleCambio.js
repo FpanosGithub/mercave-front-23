@@ -48,20 +48,15 @@ function DetalleCambio ({cambio}){
                         </Typography>
                 </Paper>
                 <PanelDetalle>
-                <Card sx={{width:80, height:200}}>
+                <Card sx={{width:100, height:160}}>
                         <CardContent>
-                                <Typography sx={{ fontSize: 18, textAlign:'center', mt:-0.5, mb:1.2 }} color="green" gutterBottom>[ {cambio.id} ]</Typography>
                                 <Typography sx={{ fontSize: 16, mt:0, textAlign:'center'}} color="text.secondary" gutterBottom>Alarma</Typography>
-                                <Paper elevation = {1} sx={{ display: 'flex', alignContent: 'center', justifyContent: 'center', ml:0.8, mt:2, mb:3, width:40, height:35}}>
+                                <Paper elevation = {1} sx={{ display: 'flex', alignContent: 'center', justifyContent: 'center', ml:1.5, mt:2, mb:3, width:40, height:35}}>
                                         {alarma ? 
                                                 (<LensBlurOutlinedIcon fontSize='large' sx={{ color: pink[500], mt:0.2 }}/>)
                                                 :
                                                 (<LensBlurOutlinedIcon fontSize='large' sx={{ color: green[500], mt:0.2  }}/>)}
                                 </Paper>  
-                                {alarma?
-                                        (<Typography sx={{ fontSize: 16, mt:0, textAlign:'center'}} color="text.secondary" gutterBottom>SI</Typography>)    
-                                        :
-                                        (<Typography sx={{ fontSize: 16, mt:0, textAlign:'center'}} color="text.secondary" gutterBottom>NO</Typography>)}
                         </CardContent>
                 </Card>
                 <Tarjeta33
@@ -69,7 +64,7 @@ function DetalleCambio ({cambio}){
                         valor1 = {fecha_corta}
                         texto2 = 'hora:'
                         valor2 = {hora}
-                        minWidth = {90}
+                        minWidth = {100}
                         />
                 <Tarjeta33
                         texto1 = 'Cambiador:'
@@ -80,30 +75,30 @@ function DetalleCambio ({cambio}){
                         />
                 <Tarjeta33
                         texto1 = 'Velocidad:'
-                        valor1 = {`${V} Km/h`}
+                        valor1 = {`${V.toFixed(1)} Km/h`}
                         texto2 = 'Peso:'
-                        valor2 = {`${FV} kN`}
+                        valor2 = {`${FV.toFixed(1)} kN`}
                         minWidth = {100}
                         />
                 <Tarjeta33
                         texto1 = 'F.Desc.A:'
-                        valor1 = {`${fdaM} kN`}
+                        valor1 = {`${fdaM.toFixed(2)} kN`}
                         texto2 = 'F.Desc.B:'
-                        valor2 = {`${fdbM} kN`}
+                        valor2 = {`${fdbM.toFixed(2)} kN`}
                         minWidth = {90}
                         />
                 <Tarjeta33
                         texto1 = 'F.Camb.A:'
-                        valor1 = {`${fcaM} kN`}
+                        valor1 = {`${fcaM.toFixed(2)} kN`}
                         texto2 = 'F.Camb.B:'
-                        valor2 = {`${fcbM} kN`}
+                        valor2 = {`${fcbM.toFixed(2)} kN`}
                         minWidth = {90}
                         />
                 <Tarjeta33
                         texto1 = 'F.Enc.A:'
-                        valor1 = {`${feam} kN`}
+                        valor1 = {`${feam.toFixed(2)} kN`}
                         texto2 = 'F.Enc.B:'
-                        valor2 = {`${febm} kN`}
+                        valor2 = {`${febm.toFixed(2)} kN`}
                         minWidth = {90}
                         />
                 </PanelDetalle>

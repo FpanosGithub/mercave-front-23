@@ -10,6 +10,15 @@ function PrepararDatosCirculaciones (circulaciones)
       tempb_med:0,
       tempa_min:1000,
       tempb_min:1000,
+      axM:[],
+      ayM:[],
+      azM:[],
+      axmed:[],
+      aymed:[],
+      azmed:[],
+      fx:[],
+      fy:[],
+      fz:[],
     }  
     let num = 0
     let sum_tempa = 0
@@ -28,6 +37,15 @@ function PrepararDatosCirculaciones (circulaciones)
           if (obj.tempb<datos.tempb_min){datos.tempb_min = obj.tempb}
           sum_tempa = sum_tempa + obj.tempa
           sum_tempb = sum_tempb + obj.tempb
+          datos.axM.unshift({'a':obj.axMa, 'b': obj.axMb})
+          datos.ayM.unshift({'a':obj.ayMa, 'b': obj.ayMb})
+          datos.azM.unshift({'a':obj.azMa, 'b': obj.azMb})
+          datos.axmed.unshift({'a':obj.axmeda, 'b': obj.axmedb})
+          datos.aymed.unshift({'a':obj.aymeda, 'b': obj.aymedb})
+          datos.azmed.unshift({'a':obj.azmeda, 'b': obj.azmedb})
+          datos.fx.unshift({'a':obj.fxa, 'b': obj.fxb})
+          datos.fy.unshift({'a':obj.fya, 'b': obj.fyb})
+          datos.fz.unshift({'a':obj.fya, 'b': obj.fzb})
           num = num +1
         })
       datos.tempa_med = (sum_tempb/num).toFixed(2)

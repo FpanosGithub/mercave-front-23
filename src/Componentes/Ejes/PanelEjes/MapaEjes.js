@@ -46,14 +46,14 @@ function MapaEjes ({ejes, hover, onHover, onSeleccion}){
                 ))}
                     <Marker 
                             width={50} 
-                            color = '#de071c'
+                            color = 'purple'
                             anchor={punto_rojo} 
                             onClick={()=> onSeleccion({type:'SELECCIONAR_EJE', payload:id_eje})}
                             />
                     <Overlay anchor={punto_rojo}>
                         <Card sx={{ width:80, height:40}}>
                             <CardContent>
-                            <Typography sx={{ fontSize: 14, mt:-0.7, ml:-0.6 }} color="red" gutterBottom>
+                            <Typography sx={{ fontSize: 14, mt:-0.7, ml:-0.6 }} color="grey" gutterBottom>
                                 {texto}
                             </Typography>
                             </CardContent>

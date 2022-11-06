@@ -65,11 +65,7 @@ export default function ListaOperaciones({operaciones, onSeleccion}) {
                     <TableCell key='dia'> {operacion.dt.slice(0,10)} </TableCell>
                     <TableCell key='alarma'> 
                       {operacion.alarma?
-                          (operacion.alarma_activa?
-                            (<LensBlurOutlinedIcon fontSize='small' sx={{color: red[500]}}/>)
-                            :
-                            (<LensBlurOutlinedIcon fontSize='small' sx={{color: grey[500]}}/>)
-                          )
+                          (<LensBlurOutlinedIcon fontSize='small' sx={{color: red[500]}}/>) 
                           :
                           (<LensBlurOutlinedIcon fontSize='small' sx={{color: green[500]}}/>)
                       } 

@@ -8,7 +8,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import Button from '@mui/material/Button';
 
 function ListaAlarmas ({alarmas, onSeleccion}) {
-    console.log(alarmas)
     const colorAlarma = (tipo)=> {
         if (tipo === 'CAMBIO') {return 'orange'}
         else if (tipo === 'CIRCULACION') {return 'grey'}

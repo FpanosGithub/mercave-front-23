@@ -53,7 +53,7 @@ function BannerEjes ({eje, ejes_mismo_vagon, onVolver}){
                         texto1 = 'Num. Cambios:'
                         valor1 = {eje.num_cambios}
                         texto2 = 'Km recorridos:'
-                        valor2 = {eje.km}
+                        valor2 = {Math.round(eje.km)}
                         minWidth= {145}/>
             </PanelBanner></> 
         )

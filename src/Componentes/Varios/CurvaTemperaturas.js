@@ -6,7 +6,7 @@ function CustomTooltip({ payload, label, active }) {
       try {
         return (
           <div className="custom-tooltip">
-            <p className="label">{`${payload[0].value} m/s`}</p>
+            <p className="label">{`${payload[0].value} º`}</p>
           </div>
         );
       }

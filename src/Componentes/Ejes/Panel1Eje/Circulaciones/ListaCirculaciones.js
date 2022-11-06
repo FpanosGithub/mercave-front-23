@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import LensBlurOutlinedIcon from '@mui/icons-material/LensBlurOutlined';
-import { red, grey, green} from '@mui/material/colors';
+import { red, green} from '@mui/material/colors';
 
 export default function ListaCirculaciones({seleccion, onSeleccion, circulaciones}) {
   const [page, setPage] = React.useState(0);
@@ -33,7 +33,7 @@ export default function ListaCirculaciones({seleccion, onSeleccion, circulacione
   return (
     <>
     
-    <Paper sx={{ overflow: 'hidden', minWidth:450 }}>
+    <Paper sx={{ overflow: 'hidden', minWidth:450, height:1810, mb:0 }}>
       <Paper elevation = {1} sx={{mt:0, p:1.5, mb:1}}>
         <Typography color={green[800]} sx={{fontSize: 18, textAlign:'center'}}>
                     LISTA DE CIRCULACIONES:
@@ -66,13 +66,9 @@ export default function ListaCirculaciones({seleccion, onSeleccion, circulacione
                     <TableCell key='dia_fin'> {circulacion.dt_final.slice(0,10)} </TableCell>
                     <TableCell key='alarma'> 
                       {circulacion.alarma?
-                          (circulacion.alarma_activa?
                             (<LensBlurOutlinedIcon fontSize='small' sx={{color: red[500]}}/>)
                             :
-                            (<LensBlurOutlinedIcon fontSize='small' sx={{color: grey[500]}}/>)
-                          )
-                          :
-                          (<LensBlurOutlinedIcon fontSize='small' sx={{color: green[500]}}/>)
+                            (<LensBlurOutlinedIcon fontSize='small' sx={{color: green[500]}}/>)
                       } 
                     </TableCell>
                   </TableRow>
