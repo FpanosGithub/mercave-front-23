@@ -19,25 +19,27 @@ const seleccionarEje = (seleccion, ejes)=> {
     
 //Función que busca los ejes que van en el vagón del eje seleccionado
 const IdentificarEjesMismoVagon = (eje, ejes) =>{
+        
+        let id_eje = eje.id
+        let id_vagon = null
         let ejes_mismo_vagon = []
-        try {
-                let vagon = eje.vagon
-                if (vagon) {
-                        ejes.forEach((value) =>{
-                        if ((value.vagon === vagon) && (value.id !== eje.id)) {ejes_mismo_vagon.push({'codigo':value.codigo, 'id':value.id})}
-                        })
-                        if (ejes_mismo_vagon.length > 0){return (ejes_mismo_vagon)}
-                        else {return ([ {'codigo':'-', 'id':eje.id},
-                                {'codigo':'-', 'id':eje.id},
-                                {'codigo':'-', 'id':eje.id}])}
-                }
-                else {return ([ {'codigo':'-', 'id':eje.id},
-                                {'codigo':'-', 'id':eje.id},
-                                {'codigo':'-', 'id':eje.id}])}
-        }
-        catch {
-                return ([{'codigo':'-', 'id':0}])
-        } 
+        
+        if (eje){id_vagon = eje.vagon.id}
+        
+        if (id_vagon)
+        {
+                ejes.forEach((eje) =>{ 
+                        try 
+                        {        
+                                if ((eje.vagon.id === id_vagon) && (eje.id !== id_eje)) 
+                                        {ejes_mismo_vagon.push({'codigo':eje.codigo, 'id':eje.id})}
+                        }
+                        catch {}
+                        
+                })
+        }       
+        
+        return (ejes_mismo_vagon)
     }
 
 // COMPONENTE //
@@ -45,6 +47,7 @@ function ContainerEjes ({ejes, filtro, filtroDispatcher, alarmas, actores, selec
         {
         const eje = seleccionarEje (seleccion.eje, ejes.lista)
         const ejes_mismo_vagon = IdentificarEjesMismoVagon (eje, ejes.lista)
+        
         //Render
         return (
                 <>

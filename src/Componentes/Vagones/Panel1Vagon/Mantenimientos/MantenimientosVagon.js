@@ -9,7 +9,7 @@ import MapaMantenimientos from './MapaMantenimientos';
 import FichaIntervencion from './FichaIntervencion';
 import InformeIntervencion from './InformeIntervencion';
 
-function MantenimientosEje ({eje, mantenimientos, rango, rangoDispatcher, onMostrar, url}){
+function MantenimientosVagon ({vagon, mantenimientos, rango, rangoDispatcher, onMostrar, url}){
 
     const [seleccion_mantenimiento, setSeleccionMantenimiento] = React.useState (-1)
     
@@ -24,16 +24,17 @@ function MantenimientosEje ({eje, mantenimientos, rango, rangoDispatcher, onMost
                 setRango = {rangoDispatcher}
                 mostrar = 'Mantenimientos'
                 onMostrar = {onMostrar}
+                origen = 'Vagones'
                 minWidth = {165}/>
             {mantenimientos.cargando ?
                 (<><div></div><Fallback
-                                    elemento = {`Mantenimientos del eje ${eje.codigo}`}
+                                    elemento = {`Mantenimientos del vagón ${vagon.codigo}`}
                                     modo = 'CARGANDO'
                                     imagen = 'arte/ejesImagen.jpg'/></>)
                 :
                 (mantenimientos.error ?
                 (<><div></div><Fallback
-                                    elemento = {`Mantenimientos del eje ${eje.codigo}`}
+                                    elemento = {`Mantenimientos del vagón ${vagon.codigo}`}
                                     modo = 'CARGANDO'
                                     imagen = 'arte/ejesImagen.jpg'/></>)
                     :
@@ -42,8 +43,8 @@ function MantenimientosEje ({eje, mantenimientos, rango, rangoDispatcher, onMost
                         <PlanMantenimiento
                             pm = {mantenimientos.pm}
                             niveles = {mantenimientos.niveles}
-                            km = {eje.km_proximo_mant}
-                            fecha = {eje.fecha_ultimo_mant}/>
+                            km = {vagon.km_proximo_mant}
+                            fecha = {vagon.fecha_ultimo_mant}/>
                         <PanelListaMantenimiento>
                             <ListaMantenimientos 
                                 intervenciones={mantenimientos.lista}
@@ -81,4 +82,4 @@ grid-template-columns: 0fr 1fr;
 gap:2px;
 width:100%;
 `
-export default MantenimientosEje;
+export default MantenimientosVagon;

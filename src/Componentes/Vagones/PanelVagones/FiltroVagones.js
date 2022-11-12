@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import SelectorElementos from '../Varios/SelectorElementos';
+import SelectorElementos from '../../Varios/SelectorElementos';
 
 function ids_a_codigos (lista_ids, lista_actores){
     const codigos = lista_ids.map((id_filtro)=> {

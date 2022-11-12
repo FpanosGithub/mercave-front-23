@@ -26,22 +26,22 @@ function App() {
 
   // Efecto para cargar los ejes con el filtro de ejes que haya activo
   React.useEffect(() => {
-          const requestOptions = {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({"filtro": {filtro_ejes}})
-              }
-          const getDataBD = async () => {
-            ejesDispatcher({type:'CARGANDO'})
-                  try {
-                          const response = await fetch(url.servidor_backend + url.ejes, requestOptions);
-                          let actual_data = await response.json();
-                          ejesDispatcher ({type:'CARGAR_ACTIVOS', data: actual_data});
-                  }
-                  catch(err) {ejesDispatcher ({type:'ERROR', data: err.message})} }
-                  getDataBD();
-                  console.log ('FETCH FETCH EJES')
-          }, [filtro_ejes, ejesDispatcher, url.ejes, url.servidor_backend]);
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({"filtro": {filtro_ejes}})
+      }
+    const getDataBD = async () => {
+      ejesDispatcher({type:'CARGANDO'})
+        try {
+            const response = await fetch(url.servidor_backend + url.ejes, requestOptions);
+            let actual_data = await response.json();
+            ejesDispatcher ({type:'CARGAR_ACTIVOS', data: actual_data});
+            }
+        catch(err) {ejesDispatcher ({type:'ERROR', data: err.message})} }     
+      getDataBD();       
+      console.log ('FETCH FETCH EJES')
+  }, [filtro_ejes, ejesDispatcher, url.ejes, url.servidor_backend]);
   
   // Efecto para cargar los vagones con el filtro de vagones que haya activo
   React.useEffect(() => {
@@ -58,10 +58,9 @@ function App() {
                     vagonesDispatcher ({type:'CARGAR_ACTIVOS', data: actual_data});
             }
             catch(err) {vagonesDispatcher ({type:'ERROR', data: err.message})} }
-            getDataBD();
-            console.log ('FETCH FETCH VAGONES')
-    }, [filtro_vagones, vagonesDispatcher, url.vagones, url.servidor_backend]);
-
+    getDataBD();
+    console.log ('FETCH FETCH VAGONES')
+  }, [filtro_vagones, vagonesDispatcher, url.vagones, url.servidor_backend]);
 
   const MuestraComponente = () => {
     if (seleccion.menu === 'Inicio') 
@@ -69,9 +68,8 @@ function App() {
         ejes = {ejes} 
         vagones = {vagones}
         actores = {actores}
-        alarmas = {alarmas}
-        />
-        }
+        alarmas = {alarmas}/>
+      }
     if (seleccion.menu === 'Ejes') 
       {return <ContainerEjes 
         ejes = {ejes}
@@ -82,27 +80,26 @@ function App() {
         seleccion = {seleccion}
         seleccionDispatcher = {seleccionDispatcher}
         url = {url} />
-        }
+      }
     if (seleccion.menu === 'Vagones') 
-      { return <ContainerVagones 
+      {return <ContainerVagones 
         vagones = {vagones}
         filtro = {filtro_vagones}
         filtroDispatcher = {filtroVagonesDispatcher}
+        alarmas = {alarmas.vagones}
         actores = {actores}
+        seleccion = {seleccion}
         seleccionDispatcher = {seleccionDispatcher}
-        url = {url}
-        />
-          }
+        url = {url}/>
+      }
     if (seleccion.menu === 'Cambiadores') 
       { return <ContainerCambiadores 
-        //!!!!//
         filtro = {filtro_cambiadores}
         filtroDispatcher = {filtroCambiadoresDispatcher}
         actores = {actores}
         seleccionDispatcher = {seleccionDispatcher}
-        url = {url}
-        />
-          }
+        url = {url}/>
+      }
     }
     return (<>
       <ResponsiveAppBar onClick = {seleccionDispatcher}/>
@@ -128,5 +125,4 @@ const PanelFooter = styled.div`
   padding:10px 10px;
 
 `
-
 export default App;

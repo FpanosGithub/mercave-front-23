@@ -76,7 +76,7 @@ function GraficasCirculacion ({eventos, url}){
                                 height = {40}/>
                         <CurvaAceleraciones
                                 datos = {datos.ayM}
-                                lim_max = {4} 
+                                lim_max = {6} 
                                 height = {200} />
                 </PanelGrafica>
                 <PanelGrafica>
@@ -86,7 +86,7 @@ function GraficasCirculacion ({eventos, url}){
                                 height = {40}/>
                         <CurvaAceleraciones
                                 datos = {datos.aymed} 
-                                lim_max = {3} 
+                                lim_max = {4} 
                                 height = {200} />
                 </PanelGrafica>
                 </PanelGraficas>
@@ -101,7 +101,7 @@ function GraficasCirculacion ({eventos, url}){
                                 height = {40}/>
                         <CurvaAceleraciones
                                 datos = {datos.axM} 
-                                lim_max = {3} 
+                                lim_max = {5} 
                                 height = {200} />
                 </PanelGrafica>
                 <PanelGrafica>

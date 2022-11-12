@@ -3,9 +3,9 @@ import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-function TarjetaVolver ({onVolver}) {
+function TarjetaVolver ({onVolver, target}) {
     const handleClick = (event) => {
-        onVolver ({type:'SELECCIONAR_MENU', payload:'Ejes'})
+        onVolver ({type:'SELECCIONAR_MENU', payload:target})
         };
 
     return(

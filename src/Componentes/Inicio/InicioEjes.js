@@ -19,7 +19,7 @@ function InicioEjes ({ejes, versiones}) {
         
         
         
-        <Card sx={{ minWidth: 125, overflowY:'auto' }}>
+        <Card sx={{ minWidth: 100, overflowY:'auto' }}>
             <CardContent>
                 <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
                     Versiones Ejes:
@@ -43,7 +43,7 @@ function InicioEjes ({ejes, versiones}) {
             </CardContent>
         </Card>
         
-        <Card sx={{ minWidth: 125}}>
+        <Card sx={{ minWidth: 100}}>
             <CardContent>
                 <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
                     Número Ejes:
@@ -54,10 +54,10 @@ function InicioEjes ({ejes, versiones}) {
             </CardContent>
         </Card>
 
-        <Card sx={{ minWidth: 125}}>
+        <Card sx={{ minWidth: 100}}>
             <CardContent>
                 <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
-                    En Mantenimiento:
+                    En Mto.:
                 </Typography>
                 <Typography sx={{ fontSize: 26, mt:4, textAlign:'center' }} color="text.primary" gutterBottom>
                     ---
@@ -65,7 +65,7 @@ function InicioEjes ({ejes, versiones}) {
             </CardContent>
         </Card>
         
-        <Card sx={{ minWidth: 140}}>
+        <Card sx={{ minWidth: 100}}>
             <CardContent>
                 <Typography sx={{ fontSize: 18 }} color="darkgreen" gutterBottom>
                     Km semana:

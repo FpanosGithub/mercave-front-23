@@ -33,7 +33,7 @@ function InicioAlarmas ({alarmas}) {
                 valor2 = {alarmas.ejes.activas.length}
                 minWidth= {130}/>
             <PanelListaLista>
-            <Card sx={{ minWidth: 250, overflowY:'auto'}}>
+            <Card sx={{ minWidth: 200, overflowY:'auto'}}>
                 <List dense={false} sx={{mt:1, ml:3, mr:3, mb:1, pb:2}}>
                     {alarmas.ejes.activas.map((alarma, id)=>
                         (
@@ -60,7 +60,7 @@ function InicioAlarmas ({alarmas}) {
                 valor2 = {alarmas.vagones.activas.length}
                 minWidth= {130}/>
             <PanelListaLista>
-            <Card sx={{ minWidth: 250, overflowY:'auto'}}>
+            <Card sx={{ minWidth: 200, overflowY:'auto'}}>
                 <List dense={false} sx={{mt:1, ml:3, mr:3, mb:1, pb:2}}>
                     {alarmas.vagones.activas.map((alarma, id)=>
                         (

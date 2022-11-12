@@ -1,7 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
+// Hooks
 import useEventos from '../../../Hooks/useEventos';
+import useMantenimientos from '../../../Hooks/useMantenimientos';
 import useRango from '../../../Hooks/useRango';
+// Componentes
 import BannerEje from './BannerEje';
 import CirculacionesEje from './Circulaciones/CirculacionesEje';
 import CambiosEje from './Cambios/CambiosEje';
@@ -12,7 +15,7 @@ function Panel1Eje ({eje, ejes_mismo_vagon, onVolver, url}){
 
         const [circulaciones, circulacionesDispatcher] = useEventos()
         const [cambios, cambiosDispatcher] = useEventos()
-        //const [mantenimientos, mantenimientosDispatcher] = useEventos()
+        const [mantenimientos, mantenimientosDispatcher] = useMantenimientos()
         
         const [rango, rangoDispatcher] = useRango (60)
         //const [rango_mantenimientos, rangoMantenimientosDispatcher] = useRango (60)
@@ -62,7 +65,28 @@ function Panel1Eje ({eje, ejes_mismo_vagon, onVolver, url}){
         console.log('FETCH FETCH CAMBIOS')
         },[eje.id, cambiosDispatcher, rango, url.cambios_eje, url.servidor_backend]);
         
-    
+        // Lanzamos el side effect para cragar la info de los mantenimientos del eje seleccionado
+        React.useEffect(() => {
+            const requestParams = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({"rango": rango, 'id_eje': eje.id})
+            }
+            const getDataMtos = async () => {
+                mantenimientosDispatcher({type:'CARGANDO'})
+                try {
+                    const response = await fetch(url.servidor_backend + url.mantenimientos_eje, requestParams);
+                    if (!response.ok) {throw new Error(`HTTP error: The status is ${response.status}`);}
+                    let actual_data = await response.json();
+                    mantenimientosDispatcher({type:'CARGAR_MANTENIMIENTOS', data: actual_data})
+                    } 
+                catch(err) {mantenimientosDispatcher({type:'ERROR', data: err.message})} 
+            }
+            getDataMtos()
+            console.log('FETCH FETCH CAMBIOS')
+            },[eje.id, rango, url.servidor_backend, mantenimientosDispatcher, url.mantenimientos_eje]);
+    console.log('!!!!!!!!!!!!!MANTENIMIENTOS!!!!!!!!!!!!')       
+    console.log(mantenimientos)
     // RENDER INFO DE 1 EJE!!!!!!
         return (
                 <PanelContenido>
@@ -90,7 +114,7 @@ function Panel1Eje ({eje, ejes_mismo_vagon, onVolver, url}){
                                         :
                                         (<MantenimientosEje
                                                 eje={eje}
-                                                mantenimientos = {{cargando:true, lista:[]}}
+                                                mantenimientos = {mantenimientos}
                                                 rango = {rango}
                                                 rangoDispatcher = {rangoDispatcher}
                                                 onMostrar = {setMostrar}

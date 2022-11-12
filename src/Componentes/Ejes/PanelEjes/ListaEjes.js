@@ -49,8 +49,8 @@ export default function ListaEjes({ejes, onSeleccion, onHover}) {
               <TableCell key={'vagon'}>Vagón</TableCell>
               <TableCell key={'km'}>Km Tot</TableCell>
               <TableCell key={'num_cambios'}>Cambios</TableCell>
-              <TableCell key={'fecha_ultimo_mant'}>Último Mant.</TableCell>
               <TableCell key={'km_proximo_mant'}>Km-&gt;Mto.</TableCell>
+              <TableCell key={'tipo_proximo_mant'}>Días-&gt;Mto.</TableCell>
               <TableCell key={'alarma'}>Alarma</TableCell>
             </TableRow>
           </TableHead>
@@ -69,15 +69,26 @@ export default function ListaEjes({ejes, onSeleccion, onHover}) {
                       selected={isItemSelected}>
                     <TableCell key='codigo'> {eje.codigo} </TableCell>
                     <TableCell key='version'> {eje.version} </TableCell>
-                    <TableCell key={'vagon'}>{eje.vagon}</TableCell>
-                    <TableCell key={'km'}>{Math.round(eje.km)}</TableCell>
+                    <TableCell key={'vagon'}>{eje.vagon.codigo}</TableCell>
+                    <TableCell key={'km'}>{Math.round(eje.km_totales)}</TableCell>
                     <TableCell key={'num_cambios'}>{eje.num_cambios}</TableCell>
-                    <TableCell key='fecha_ultimo_mant'> {eje.fecha_ultimo_mant} </TableCell>
+
                     {(eje.km_proximo_mant > 2000)?
                       <TableCell key='km_proximo_mant'> {Math.round(eje.km_proximo_mant)} </TableCell>
                       :
-                      <TableCell key='km_proximo_mant' sx={{ color: 'red' }}> {Math.round(eje.km_proximo_mant)} </TableCell>
-                    }
+                      (eje.km_proximo_mant > 500)?
+                        <TableCell key='km_proximo_mant' sx={{ color: 'violet' }}> {Math.round(eje.km_proximo_mant)} </TableCell>
+                        :
+                        <TableCell key='km_proximo_mant' sx={{ color: 'red' }}> {Math.round(eje.km_proximo_mant)} </TableCell>}
+                    
+                    {(eje.dias_proximo_mant > 10)?
+                      <TableCell key='dias_proximo_mant'> {eje.dias_proximo_mant} </TableCell>
+                      :
+                      (eje.dias_proximo_mant > 2)?
+                        <TableCell key='dias_proximo_mant' sx={{ color: 'violet' }}> {eje.dias_proximo_mant} </TableCell>
+                        :
+                        <TableCell key='dias_proximo_mant' sx={{ color: 'red' }}> {eje.dias_proximo_mant} </TableCell>}
+                    
                     <TableCell key='alarma'> 
                       {(eje.alarma_temp||eje.alarma_aceleraciones||eje.alarma_cambio||eje.alarma_mantenimiento)?
                             (<LensBlurOutlinedIcon fontSize='small' sx={{color: red[500]}}/>)

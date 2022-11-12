@@ -16,7 +16,7 @@ function TarjetaEjesVagon ({ejes, onSeleccion, minWidth}) {
                 </Typography>
                 
                 {ejes.map((eje) => (
-                    <Button key={eje.id} variant="text" sx={{mb:-1.2, fontSize: 16}} onClick={() => handleClick(eje.id)}>{eje.codigo}</Button>
+                    <Button key={eje.id} variant="text" sx={{mb:-1.6, fontSize: 16}} onClick={() => handleClick(eje.id)}>{eje.codigo}</Button>
                 ))} 
             </CardContent>
             </Card>
