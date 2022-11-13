@@ -15,6 +15,8 @@ function MantenimientosVagon ({vagon, mantenimientos, rango, rangoDispatcher, on
     
     // Sacamos el mantenimiento seleccionado de la lista de cambios para pasarlo al componente <DetalleCambioEje>
     const intervencion = SeleccionarEvento (seleccion_mantenimiento, setSeleccionMantenimiento, mantenimientos.lista)
+    console.log('jkhkjfeqrknjknnmasdnkjweoiiohkjwenjknjknmzkjkjndskjnkjsdjk')
+    console.log(mantenimientos.lista)
     console.log(intervencion)
     // RENDER MANTENIMIENTOS DE 1 EJE!!!!!!
     return (     

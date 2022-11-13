@@ -25,21 +25,22 @@ function BannerVagon ({vagon, onSeleccion}){
                         tipo= '' 
                         activa = {vagon.alarma}/>
                 <TarjetaCirculacionVagon
-                        estado = {vagon.parado}
+                        estado = {vagon.estado_servicio}
+                        transmitiendo = {vagon.transmitiendo}
                         velocidad = {vagon.vel}
+                        minWidth= {120}/>
+                <Tarjeta22     
+                        texto1 = 'E.E.M.:'
+                        valor1 = {vagon.EEM}
+                        texto2 = 'Dias->Mto.:'
+                        valor2 = {vagon.dias_proximo_mant}
                         minWidth= {120}/>
                 <Tarjeta22
                         texto1 = 'km totales:'
-                        valor1 = {vagon.km_totales}
-                        texto2 = 'Prox.Mto.(Km):'
+                        valor1 = {Math.round(vagon.km_totales)}
+                        texto2 = 'Km->Mto.:'
                         valor2 = {Math.round(vagon.km_proximo_mant)}
-                        minWidth= {150}/>
-                <Tarjeta23
-                        texto1 = 'Tipo:'
-                        valor1 = {vagon.modelo}
-                        texto2 = 'Matricula:'
-                        valor2 = {vagon.matricula}
-                        minWidth= {170}/>
+                        minWidth= {120}/>
                 <TarjetaEjesVagon
                         ejes = {vagon.ejes}
                         onSeleccion = {onSeleccion}
@@ -50,12 +51,12 @@ function BannerVagon ({vagon, onSeleccion}){
                         texto2 = 'keeper:'
                         valor2 = {vagon.keeper}
                         minWidth= {150}/>
-                <Tarjeta22     
-                        texto1 = 'E.E.M.:'
-                        valor1 = {vagon.EEM}
-                        texto2 = 'En Mto.:'
-                        valor2 = {vagon.mantenimiento_abierto}
-                        minWidth= {150}/>
+                <Tarjeta23
+                        texto1 = 'Tipo:'
+                        valor1 = {vagon.modelo}
+                        texto2 = 'Matricula:'
+                        valor2 = {vagon.matricula}
+                        minWidth= {170}/>
                 <TarjetaImagen
                         nombre = {`vagones/${vagon.imagen}`}
                         alt = ''

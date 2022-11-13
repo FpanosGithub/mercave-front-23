@@ -1,6 +1,5 @@
 
 function seleccionReducer(state, action) {
-  console.log(action)
   switch (action.type) {
     case 'SELECCIONAR_MENU':
       return {...state,

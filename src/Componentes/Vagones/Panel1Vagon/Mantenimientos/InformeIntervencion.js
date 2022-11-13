@@ -1,88 +1,123 @@
 import * as React from 'react';
+import styled from 'styled-components';
+import Informe from './Informe';
+import InformeEjes from './InformeEjes';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import { green} from '@mui/material/colors';
+import BuildIcon from '@mui/icons-material/Build';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import {grey, green} from '@mui/material/colors';
 
 export default function InformeIntervencion({mantenimientos, seleccion, onSeleccion}) {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(15);
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-
-  const handleClick = (id) => {
-    onSeleccion(id)
-  };
-
-  const isSelected = (id) => seleccion === id;
 
   return (
     <>
     <Paper sx={{overflow: 'hidden', minWidth:550 }}>
-    <Paper elevation = {1} sx={{mt:0, p:1.5, mb:1}}>
-        <Typography color={green[800]} sx={{fontSize: 18, textAlign:'center'}}>
-                    INFORME DE LA INTERVENCIÓN:
-          </Typography>
+      
+      <Paper elevation = {1} sx={{mt:0, p:1.5, mb:1}}>
+      <PanelTitulo>
+        <Typography sx={{fontSize: 16, ml:2}}>
+                    VAGÓN:
+        </Typography>
+        {/*<BuildIcon fontSize='medium' sx={{ color: grey[500], mt:0.2 }}/>*/}
+        <Typography color="text.secondary" sx={{fontSize: 16, fontWeight: 700, ml:2}}>
+                    IM
+        </Typography>
+        <CheckBoxIcon fontSize='medium' sx={{ color: green[500], ml:4 }}/>
+      </PanelTitulo>
       </Paper>
-      <TableContainer>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              <TableCell key={'id'}>Id</TableCell>
-              <TableCell key={'tipo'}>tipo</TableCell>
-              <TableCell key={'inicio'}>Fecha Inic.</TableCell>
-              <TableCell key={'fin'}>Fecha Fin.</TableCell>
-              <TableCell key={'abierto'}>Abierto</TableCell>
-              <TableCell key={'lugar'}>Lugar</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {mantenimientos
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((mantenimiento) => {
-                const isItemSelected = isSelected(mantenimiento.id);
-                return (
-                  <TableRow 
-                      hover role="checkbox" 
-                      tabIndex={-1} 
-                      key={mantenimiento.id}
-                      onClick={() => handleClick(mantenimiento.id)}
-                      selected={isItemSelected}>
-                    <TableCell key='id'> {mantenimiento.id} </TableCell>
-                    <TableCell key='tipo'> {mantenimiento.tipo} </TableCell>
-                    <TableCell key='inicio'> {mantenimiento.tipo} </TableCell>
-                    <TableCell key='fin'> {mantenimiento.tipo} </TableCell>
-                    <TableCell key='abierto'> {mantenimiento.tipo} </TableCell>
-                    <TableCell key='lugar'> --- </TableCell>
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[]}
-        component="div"
-        count={mantenimientos.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+      {/* ********** */}
+      <Informe/>
+      {/* ********** */}
+
+      <Paper elevation = {1} sx={{mt:1, p:1.5, mb:1}}>
+        <Typography sx={{fontSize: 16, ml:2}}>
+                    EJES :
+        </Typography>
+      </Paper>
+      <Paper elevation = {1} sx={{mt:1, p:1, mb:1}}>
+        <PanelTitulo>
+          <Typography sx={{fontSize: 16, ml:2}}>
+                    EAV10.001
+          </Typography>
+          <Typography color="text.secondary" sx={{fontSize: 16, fontWeight: 700, ml:2}}>
+                    IS1
+          </Typography>
+          <CheckBoxIcon fontSize='medium' sx={{ color: green[500], ml:4 }}/>
+        </PanelTitulo>
+      </Paper>
+      {/* ********** */}
+      <InformeEjes/>
+      {/* ********** */}
+
+      <Paper elevation = {1} sx={{mt:1, p:1.5, mb:1}}>
+        <Typography sx={{fontSize: 16, ml:2}}>
+                    EJES :
+        </Typography>
+      </Paper>
+      <Paper elevation = {1} sx={{mt:1, p:1, mb:1}}>
+        <PanelTitulo>
+          <Typography sx={{fontSize: 16, ml:2}}>
+                    EAV10.002
+          </Typography>
+          <Typography color="text.secondary" sx={{fontSize: 16, fontWeight: 700, ml:2}}>
+                    IS2
+          </Typography>
+          <CheckBoxIcon fontSize='medium' sx={{ color: green[500], ml:4 }}/>
+        </PanelTitulo>
+      </Paper>
+      {/* ********** */}
+      <InformeEjes/>
+      {/* ********** */}
+
+      <Paper elevation = {1} sx={{mt:1, p:1.5, mb:1}}>
+        <Typography sx={{fontSize: 16, ml:2}}>
+                    EJES :
+        </Typography>
+      </Paper>
+      <Paper elevation = {1} sx={{mt:1, p:1, mb:1}}>
+        <PanelTitulo>
+          <Typography sx={{fontSize: 16, ml:2}}>
+                    EAV10.003
+          </Typography>
+          <Typography color="text.secondary" sx={{fontSize: 16, fontWeight: 700, ml:2}}>
+                    IM
+          </Typography>
+          <CheckBoxIcon fontSize='medium' sx={{ color: green[500], ml:4 }}/>
+        </PanelTitulo>
+      </Paper>
+      {/* ********** */}
+      <InformeEjes/>
+      {/* ********** */}
+
+      <Paper elevation = {1} sx={{mt:1, p:1.5, mb:1}}>
+        <Typography sx={{fontSize: 16, ml:2}}>
+                    EJES :
+        </Typography>
+      </Paper>
+      <Paper elevation = {1} sx={{mt:1, p:1, mb:1}}>
+        <PanelTitulo>
+          <Typography sx={{fontSize: 16, ml:2}}>
+                    EAV10.004
+          </Typography>
+          <Typography color="text.secondary" sx={{fontSize: 16, fontWeight: 700, ml:2}}>
+                    IS3
+          </Typography>
+          <CheckBoxIcon fontSize='medium' sx={{ color: green[500], ml:4 }}/>
+        </PanelTitulo>
+      </Paper>
+      {/* ********** */}
+      <InformeEjes/>
+      {/* ********** */}
+
     </Paper>
     </>
   );
 }
+
+const PanelTitulo = styled.div`
+display:grid;
+grid-template-columns: 1fr 0fr 0fr 0fr;
+justify-content:'stretch';
+width:100%;
+`

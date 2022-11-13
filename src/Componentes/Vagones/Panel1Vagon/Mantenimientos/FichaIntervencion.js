@@ -8,12 +8,14 @@ import Tarjeta22Links from '../../../Varios/Tarjeta22Links';
 import TarjetaLed from '../../../Varios/TarjetaLed';
 
 function FichaIntervencion ({intervencion}){
-        const instrumentos = ['TR.IM.23/Calibre', 'TR.IM.77/UltraS']
-        const elementos = ['TR.0023/Bulón', 'TR.124/Tornillo', 'TR.721/Valona', 'TR.021/Fieltro']
-        const Hay_NC = ()=>{
-                if (intervencion.NC ) {return 'SI'}
-                return 'NO'}
-
+        let NC = 'NO'
+        if (intervencion.NC){NC = 'SI'}
+        let punto_red = ''
+        try {punto_red = intervencion.punto_red.codigo}
+        catch {}
+        let instrumentos = ['TR.IM.23/Calibre', 'TR.IM.77/UltraS']
+        let elementos = ['TR.0023/Bulón', 'TR.124/Tornillo', 'TR.721/Valona', 'TR.021/Fieltro']
+        
         // Render JSX
         return (
         <Paper elevation = {3}>
@@ -28,7 +30,7 @@ function FichaIntervencion ({intervencion}){
                         texto1 = 'Nivel:'
                         valor1 = {intervencion.nivel}
                         texto2 = 'Lugar:'
-                        valor2 = {intervencion.punto_red.codigo}
+                        valor2 = {punto_red}
                         minWidth = {150}
                         />
                 <Tarjeta33
@@ -47,7 +49,7 @@ function FichaIntervencion ({intervencion}){
                         />
                 <Tarjeta22Links
                         texto1 = 'No Conformidad:'
-                        valor1 = {Hay_NC()}
+                        valor1 = {NC}
                         texto2 = 'Número:'
                         valor2 = {intervencion.NoConformidad}
                         minWidth = {160}
